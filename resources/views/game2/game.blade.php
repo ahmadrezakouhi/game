@@ -1,0 +1,373 @@
+@extends("layouts.main")
+@section('title','بازی دوم')
+@section('content')
+
+
+
+
+
+    <div id="result" class="">
+        <div class="w3-row w3-margin-top ">
+            <div class="w3-col  l9">
+                <div class="w3-row-padding w3-margin-top">
+                    <div class="w3-col l6">
+
+
+                        @include('layouts.onlineUser')
+                    </div>
+
+                    <div id="title" class="w3-right-align w3-margin-right persian w3-xlarge bold "
+                         style="position: relative;top:-20px;right:20px"></div>
+
+                    <div class="w3-col l6" style="margin-top: 30px">
+                        <div id="label" class="pr-5 mb-2 w3-right w3-text-right persian w3-large" dir="rtl"
+                             style=" line-height: 50px">
+                            مبلغ
+                            اهدایی
+
+
+                        </div>
+                        <form action="" style="" class="">
+                            <div class="pr-4 w3-row w3-clear">
+
+                                <div class="w3-col l6 w3-right">
+                                    <div class="w3-row">
+                                        <div class="w3-col l3 w3-right w3-xlarge" style="position: relative;top:10px">
+                                            000
+                                        </div>
+                                        <div class="w3-col l3  w3-right">
+                                            <input type="text" class="w3-input w3-border w3-round w3-xlarge" min="0"
+                                                   max="50" required
+                                            >
+
+                                        </div>
+                                        <div class="w3-col l6 persian w3-right-align font-weight-bold w3-large"
+                                             style="position: relative;right:5px;top:10px">
+                                            تومان
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="w3-col  w3-right l3">
+                                    <button type="submit"
+                                            class="w3-button w3-right persian w3-round w3-light-gray w3-border "
+                                            style="position: relative;top:5px">ثبت
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </form>
+
+                        <div class="w3-padding-large" style="" id="showRandom">
+
+                            <div class="persian w3-justify w3-large " dir="rtl">
+                                منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
+                                از اعضاء را در دست قبل مشاهده کنید
+                            </div>
+                            <button class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint">
+                                موافقم
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col l3">
+
+
+                <h6 id="title" class="w3-right-align w3-margin-right persian">رتبه بندی نهایی</h6>
+                @include("layouts.orderList")
+            </div>
+        </div>
+
+        <div class="w3-content w3-center">
+            <button class="w3-button w3-round w3-light-gray w3-border persian" id="next">بعدی</button>
+            <a href="/end" class="w3-button w3-round w3-light-gray w3-border persian w3-hide" id="nextPath">مرحله
+                پایانی</a>
+        </div>
+    </div>
+
+
+
+    @include('layouts.progress_bar')
+    <script>
+
+
+        var constPersons = ["P", "N", "B", "A"];
+        var varPersons = ["H", "M", "O", "G"];
+        var i = 1;
+        var id;
+        var category = 2;
+        var countSession = 0;
+        var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
+        var conditions = [
+            [1, 50000],
+            [7, 0],
+            [3, 25000],
+            [4, 0],
+            [1, 50000],
+            [2, 10000],
+            [5, 50000],
+            [6, 35000],
+            [8, 50000]
+        ];
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+            var option = {content: "50000", placement: "left", html: true};
+
+            $("#pp4").removeClass("w3-hide ");
+            var width = 100;
+
+            mainProgram();
+
+            var user = Cookies.get('user_letter');
+            removeVarPerson();
+            varPersons.push(user);
+            var persons = varPersons.concat(constPersons);
+
+
+            setPersons();
+            $('form').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "answers/store_answer_question_game1"
+                    ,
+                    type: "POST"
+                    ,
+                    data: {
+                        "result": $('input').val()
+                        ,
+                        "time": parseInt((100 - timer) / (100 / 15))
+                        ,
+                        "category": category
+                    }
+                })
+
+                var value = $('input').val();
+                option.content = value;
+                var remind = 50000 - value;
+                if (i % 2 != 0) {
+                    coinAnimation();
+
+
+                    $("#money").text(remind);
+                } else {
+                    option.placement = "top";
+                    option.content = value.toString();
+                    $("#user").popover(option);
+                    console.log(option)
+                    $("#user").popover("show");
+                    if (countSession == 5) {
+                        conditions[4][1] = value;
+                    }
+                }
+                $('form').addClass('w3-hide')
+
+            })
+
+            var timeID;
+            option.content = "nothing";
+
+
+            $("#randomPoint").click(function () {
+                $('#showRandom').addClass("w3-hide");
+                timeID = setInterval(randomPoint, 50);
+                setTimeout(function () {
+                    var o = {
+                        content:"<span class='font-weight-bold'>"+ conditions[countSession - 1][1]+"</span>",
+                        placement: "left",
+                        html:true
+                    };
+                    var id = "#pps" + conditions[countSession - 1][0];
+                    $(id).popover(o);
+                    $(id).popover("show");
+                    $('form').removeClass("w3-hide");
+                    $('#showRandom').addClass("w3-hide");
+                    width = 100;
+                    move(20);
+
+                }, 6000)
+
+            });
+            var t = 0;
+
+            function randomPoint() {
+
+                t++;
+
+                var random = Math.floor((Math.random() * 8) + 1);
+                var id = "#pn" + random;
+                var space = "";
+                for (var i = 0; i < 10; i++) {
+                    space += "&nbsp;"
+                }
+
+
+                $(id).popover({
+                    content: space,
+                    placement: "left",
+                    html: true
+                });
+
+                $(id).popover("show");
+
+                setTimeout(function () {
+                    $(id).popover('hide');
+
+                }, 1000)
+
+                if (t >= 100) {
+                    clearInterval(timeID);
+                    t = 0;
+
+
+                }
+            }
+
+
+            $('#next').click(function () {
+                console.log(countSession)
+                if (countSession >= 1 && countSession < 10) {
+                    $("#pps" + conditions[countSession - 1][0]).popover("hide");
+                }
+                clearInterval(id);
+
+                $('form').removeClass('w3-hide')
+                mainProgram();
+
+            })
+
+
+            function mainProgram() {
+                move(40);
+                $('input').val("");
+                // $("#next").addClass("w3-hide");
+                if (i <= 20) {
+                    console.log(i)
+                    if (i % 2 != 0) {
+
+                        if (i > 1) {
+                            $('form').addClass("w3-hide");
+                            $('#showRandom').removeClass("w3-hide");
+
+                        } else {
+                            $('#showRandom').addClass("w3-hide");
+
+                        }
+                        $("#label").text("مبلغی که تنها به دیگران  نمایش داده می شود(مبلغ اعلامی) ");
+                        $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
+                        $('#title').text("دست " + session[countSession]);
+                        category = 2;
+
+
+                    } else {
+                        width = 100;
+                        move(20);
+                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی <br> به آنها نمایش داده نمی شود (مبلغ اهدایی)");
+                        $('#showRandom').addClass("w3-hide");
+                        $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
+                        $("#money").text(50000);
+                        $("#user").popover("dispose");
+                        category = 3;
+
+
+                        countSession++;
+                    }
+                } else {
+                    $("#next").addClass("w3-hide");
+                    $("#nextPath").removeClass("w3-hide");
+                }
+
+
+                i++;
+            }
+
+            function selectOfPersonMoney() {
+                option.content = "<span class='w3-red'>" + conditions[countSession][1] + "</span>";
+                $("#pn1").popover({
+                    content: content
+                });
+                $("#pn1").popover("show");
+            }
+
+
+            function move(times) {
+                clearInterval(id);
+                $('#mybar').css("width", "100%")
+                var elem = document.getElementById("mybar");
+
+                id = setInterval(frame, 1000);
+
+                function frame() {
+                    if (width <= 0) {
+                        $('#mybar').css('width', '0');
+                        clearInterval(id);
+                    } else {
+                        width -= 100 / times;
+                        elem.style.width = width + '%';
+                        timer = width;
+                        // console.log(timer)
+                    }
+                }
+            }
+
+
+            function removeVarPerson() {
+                var index;
+                for (var i = 0; i <= varPersons.length; i++) {
+                    if (varPersons[i] === user) {
+                        index = i;
+                    }
+                }
+                varPersons.splice(index, 1);
+            }
+
+
+            function setPersons() {
+                for (var x = 1; x <= persons.length; x++) {
+                    var id = "#p" + x;
+                    $(id).text(persons[x - 1]);
+                    if (x == 4) {
+
+                    }
+                }
+            }
+
+
+            function coinAnimation() {
+
+                $('#coin').removeClass("w3-hide");
+                $('#coin').animate({
+                    top: "33px"
+
+
+                }, 1000, function () {
+
+                })
+                $('#coin').animate({
+                    opacity: "0"
+
+
+                }, 200, function () {
+                    $('#coin').css({opacity: "1", top: "150px"})
+                    $('#coin').addClass("w3-hide");
+                })
+            }
+
+
+        })
+    </script>
+
+@endsection
+
+
