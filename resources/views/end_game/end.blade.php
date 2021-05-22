@@ -32,7 +32,9 @@
             var i =0
             selectDescription();
             $('button').click(function(){
-
+if(i>=2){
+    $('#answer').addClass("w3-hide");
+}
     selectDescription()
 if(i>=3) {
     $("#result").addClass("w3-hide");
