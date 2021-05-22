@@ -181,6 +181,10 @@
 
 
             $("#randomPoint").click(function () {
+                for(var n = 1 ; n <=8 ; n++){
+                    $(('#pn'+n)).popover('dispose')
+                }
+                $('#pp4').popover('dispose');
                 $('#showRandom').addClass("w3-hide");
                 timeID = setInterval(randomPoint, 50);
                 setTimeout(function () {
