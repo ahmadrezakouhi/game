@@ -10,25 +10,26 @@
         <div class="w3-row w3-margin-top ">
             <div class="w3-col  l9">
                 <div class="w3-row-padding w3-margin-top">
-                    <div class="w3-col l6">
+                    <div class="w3-col l6 w3-border">
 
 
                         @include('layouts.onlineUser')
                     </div>
 
-                    <div id="title" class="w3-right-align w3-margin-right persian w3-xlarge bold "
-                         style="position: relative;top:-20px;right:20px"></div>
 
-                    <div class="w3-col l6" style="margin-top: 30px">
-                        <div id="label" class="pr-5 mb-2 w3-right w3-text-right persian w3-large" dir="rtl"
-                             style=" line-height: 50px">
+
+                    <div class="w3-col l6 mx-auto w3-center w3-border" style="">
+                        <div id="title" class=" w3-margin-right persian w3-xlarge bold w3-border"
+                             style=""></div>
+                        <div id="label" class="w3-justify px-5 w3-text-right persian w3-large w3-border" dir="rtl"
+                             style=" line-height: 35px;">
                             مبلغ
                             اهدایی
 
 
                         </div>
-                        <form action="" style="" class="">
-                            <div class="pr-4 w3-row w3-clear">
+                        <form action="" style="" class="mt-2 w3-border px-5">
+                            <div class=" w3-row px-5">
 
                                 <div class="w3-col l6 w3-right">
                                     <div class="w3-row">
@@ -105,15 +106,15 @@
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
         var conditions = [
-            [1, 50000],
+            [1, 50],
             [7, 0],
-            [3, 25000],
+            [3, 25],
             [4, 0],
-            [1, 50000],
-            [2, 10000],
-            [5, 50000],
-            [6, 35000],
-            [8, 50000]
+            [1, 50],
+            [2, 10],
+            [5, 50],
+            [6, 35],
+            [8, 50]
         ];
         $(document).ready(function () {
             $.ajaxSetup({
@@ -184,11 +185,16 @@
                 timeID = setInterval(randomPoint, 50);
                 setTimeout(function () {
                     var o = {
-                        content:"<span class='font-weight-bold'>"+ conditions[countSession - 1][1]+"</span>",
+                        content:"<span class='font-weight-bold w3-medium' >"+ conditions[countSession - 1][1]+",000</span>",
                         placement: "left",
                         html:true
                     };
-                    var id = "#pps" + conditions[countSession - 1][0];
+                    var id;
+                    if(conditions[countSession - 1][0]==4){
+                        id = "#pp" + conditions[countSession - 1][0];
+                    }else {
+                        id = "#pn" + conditions[countSession - 1][0];
+                    }
                     $(id).popover(o);
                     $(id).popover("show");
                     $('form').removeClass("w3-hide");
@@ -196,7 +202,7 @@
                     width = 100;
                     move(20);
 
-                }, 6000)
+                }, 7000)
 
             });
             var t = 0;
@@ -222,7 +228,7 @@
                 $(id).popover("show");
 
                 setTimeout(function () {
-                    $(id).popover('hide');
+                    $(id).popover('dispose');
 
                 }, 1000)
 
@@ -238,7 +244,7 @@
             $('#next').click(function () {
                 console.log(countSession)
                 if (countSession >= 1 && countSession < 10) {
-                    $("#pps" + conditions[countSession - 1][0]).popover("hide");
+                    $("#pps" + conditions[countSession - 1][0]).popover("dispose");
                 }
                 clearInterval(id);
 
@@ -264,7 +270,7 @@
                             $('#showRandom').addClass("w3-hide");
 
                         }
-                        $("#label").text("مبلغی که تنها به دیگران  نمایش داده می شود(مبلغ اعلامی) ");
+                        $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده می شود را در زیر بنویسید (مبلغ اعلامی) ");
                         $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                         $('#title').text("دست " + session[countSession]);
                         category = 2;
@@ -273,7 +279,7 @@
                     } else {
                         width = 100;
                         move(20);
-                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی <br> به آنها نمایش داده نمی شود (مبلغ اهدایی)");
+                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی <br> به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
