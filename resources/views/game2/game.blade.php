@@ -172,7 +172,9 @@
                         conditions[4][1] = value;
                     }
                 }
-                $('form').addClass('w3-hide')
+                $('form').addClass('w3-hide');
+                $('#label').addClass('w3-hide');
+
 
             })
 
@@ -202,6 +204,8 @@
                     $(id).popover(o);
                     $(id).popover("show");
                     $('form').removeClass("w3-hide");
+                    $('#label').removeClass('w3-hide');
+
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
                     move(20);
@@ -252,7 +256,9 @@
                 }
                 clearInterval(id);
 
-                $('form').removeClass('w3-hide')
+                $('form').removeClass('w3-hide');
+                $('#label').removeClass('w3-hide');
+
                 mainProgram();
 
             })
@@ -268,6 +274,8 @@
 
                         if (i > 1) {
                             $('form').addClass("w3-hide");
+                            $('#label').addClass('w3-hide');
+
                             $('#showRandom').removeClass("w3-hide");
 
                         } else {
