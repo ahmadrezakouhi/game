@@ -90,18 +90,19 @@
             <a href="/end" class="w3-button w3-round w3-light-gray w3-border persian w3-hide" id="nextPath">مرحله
                 پایانی</a>
         </div>
+        @include('layouts.progress_bar')
     </div>
 
 
 
-    @include('layouts.progress_bar')
+
     <script>
 
 
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
-        var id;
+
         var category = 2;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
