@@ -85,11 +85,7 @@
             </div>
         </div>
 
-        <div class="w3-content w3-center">
-            <button class="w3-button w3-round w3-light-gray w3-border persian" id="next">بعدی</button>
-            <a href="/end" class="w3-button w3-round w3-light-gray w3-border persian w3-hide" id="nextPath">مرحله
-                پایانی</a>
-        </div>
+
         @include('layouts.progress_bar')
     </div>
 
@@ -255,10 +251,7 @@
             }
 
 
-            $('#next').click(function () {
-             next();
 
-            })
 function next() {
     console.log(countSession)
     if (countSession >= 1 && countSession < 10) {
