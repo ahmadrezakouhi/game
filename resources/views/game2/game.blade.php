@@ -131,7 +131,9 @@
             var width = 100;
 
             mainProgram();
-
+            setInterval(function(){
+                next();
+            },40000)
             var user = Cookies.get('user_letter');
             removeVarPerson();
             varPersons.push(user);
@@ -184,6 +186,9 @@
 
 
             $("#randomPoint").click(function () {
+                width=100;
+                $('#mybar').css('width','100%');
+                clearInterval(id);
                 for(var n = 1 ; n <=8 ; n++){
                     $(('#pn'+n)).popover('dispose')
                 }
@@ -209,7 +214,7 @@
 
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
-                    move(20);
+                    move(40);
 
                 }, 7000)
 
@@ -251,19 +256,21 @@
 
 
             $('#next').click(function () {
-                console.log(countSession)
-                if (countSession >= 1 && countSession < 10) {
-                    $("#pps" + conditions[countSession - 1][0]).popover("dispose");
-                }
-                clearInterval(id);
-
-                $('form').removeClass('w3-hide');
-                $('#label').removeClass('w3-hide');
-
-                mainProgram();
+             next();
 
             })
+function next() {
+    console.log(countSession)
+    if (countSession >= 1 && countSession < 10) {
+        $("#pps" + conditions[countSession - 1][0]).popover("dispose");
+    }
+    clearInterval(id);
 
+    $('form').removeClass('w3-hide');
+    $('#label').removeClass('w3-hide');
+
+    mainProgram();
+}
 
             function mainProgram() {
                 move(40);
@@ -291,7 +298,7 @@
 
                     } else {
                         width = 100;
-                        move(20);
+                        move(40);
                         $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی <br> به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
