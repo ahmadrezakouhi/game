@@ -10,7 +10,7 @@
         <div class="w3-row w3-margin-top ">
             <div class="w3-col  l9">
                 <div class="w3-row-padding w3-margin-top">
-                    <div class="w3-col l6 w3-border">
+                    <div class="w3-col l6 ">
 
 
                         @include('layouts.onlineUser')
@@ -18,17 +18,17 @@
 
 
 
-                    <div class="w3-col l6 mx-auto w3-center w3-border" style="">
-                        <div id="title" class=" w3-margin-right persian w3-xlarge bold w3-border"
+                    <div class="w3-col l6 mx-auto w3-center w3-content " style="">
+                        <div id="title" class=" w3-margin-right persian w3-xlarge bold "
                              style=""></div>
-                        <div id="label" class="w3-justify px-5 w3-text-right persian w3-large w3-border" dir="rtl"
+                        <div id="label" class=" px-5 w3-text-right persian w3-large " dir="rtl"
                              style=" line-height: 35px;">
                             مبلغ
                             اهدایی
 
 
                         </div>
-                        <form action="" style="" class="mt-2 w3-border px-5">
+                        <form action="" style="" class="mt-2  px-5">
                             <div class=" w3-row px-5">
 
                                 <div class="w3-col l6 w3-right">
