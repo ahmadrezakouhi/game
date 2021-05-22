@@ -319,25 +319,7 @@
             }
 
 
-            function move(times) {
-                clearInterval(id);
-                $('#mybar').css("width", "100%")
-                var elem = document.getElementById("mybar");
 
-                id = setInterval(frame, 1000);
-
-                function frame() {
-                    if (width <= 0) {
-                        $('#mybar').css('width', '0');
-                        clearInterval(id);
-                    } else {
-                        width -= 100 / times;
-                        elem.style.width = width + '%';
-                        timer = width;
-                        // console.log(timer)
-                    }
-                }
-            }
 
 
             function removeVarPerson() {
