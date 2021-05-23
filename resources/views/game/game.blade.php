@@ -348,6 +348,7 @@
                     $("#min").text(questions[i].min);
                     $("#max").text(questions[i].max);
                     $("#question_section").removeClass("w3-hide");
+                    $("form").addClass("w3-hide");
                     i++;
                 },3000)
 
