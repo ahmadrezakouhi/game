@@ -4,7 +4,7 @@
     <div class="w3-content w3-center
 " style="margin-top:25px;width:400px">
 
-<div class="persian w3-xlarge" dir="rtl">
+<div class="persian w3-xlarge w3-margin-bottom" dir="rtl">
     رتبه بندی نهایی بر اساس مجموع امتیازات
 </div>
 
