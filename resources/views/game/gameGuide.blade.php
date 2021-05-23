@@ -65,6 +65,9 @@ $('button').click(function () {
             if(i==3) {
                 $('a').removeClass("w3-hide");
                 $(this).addClass("w3-hide");
+                setTimeout(function(){
+                    window.location.replace("/game1");
+                },10000);
             }
             $(".guide").addClass("w3-hide");
             $(("#guide" + i)).removeClass("w3-hide");
