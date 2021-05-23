@@ -1,7 +1,7 @@
 
 
 
-        <div class="w3-border w3-margin w3-round-xxlarge " style="position: absolute; bottom: 0;right:0;left: 0">
+        <div id="progressBar" class="w3-border w3-margin w3-round-xxlarge " style="position: absolute; bottom: 0;right:0;left: 0">
             <div id="mybar" class=" w3-round-xxlarge" style="height:24px;width:100%;background-color: #77abbf"></div>
         </div>
 
