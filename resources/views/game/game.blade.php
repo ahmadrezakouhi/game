@@ -61,7 +61,7 @@
 {{--            <a href="/result" class="w3-button w3-border w3-round w3-light-gray persian w3-hide" id="nextPath">مرحله بعد</a>--}}
 {{--        </div>--}}
     </div>
-    <div class="w3-content w3-center" id="question_section" style="margin-top: 100px">
+    <div class="w3-content w3-center w3-hide" id="question_section" style="margin-top: 100px">
         <div id="titleOfQuestion" class="persian w3-large bold"></div>
         <div class="w3-section w3-xlarge persian" id="question" style="">
         </div>
@@ -86,7 +86,7 @@
 
     </div>
 
-
+<div id="second_counter" class="w3-content w3-center w3-jumbo w3-hide" style="margin-top: 300px">3</div>
 
 {{--    <div class="w3-border w3-margin w3-round-xxlarge " style="position: absolute; bottom: 0;right:0;left: 0">--}}
 {{--        <div id="mybar" class=" w3-round-xxlarge" style="height:24px;width:100%;background-color: rgb(136,181,199)"></div>--}}
@@ -178,8 +178,11 @@
             varPersons.push(user);
             var persons = varPersons.concat(constPersons);
             console.log(varPersons);
-            console.log(user)
-            createQuestion();
+            console.log(user);
+
+
+              createQuestion();
+
 
 
             var r= 0;
@@ -190,12 +193,14 @@
                    clearInterval(idRepeat);
                }
                choose_section();
-            },30000)
+            },33000)
             function choose_section(){
                if(rec){
+                   $('#second_counter').addClass("w3-hide");
                    record();
                    rec=false;
                }else{
+
                    next();
                    rec=true;
                }
@@ -252,7 +257,7 @@
                     "top": '-3000px',
                     "opacity": '0'
                 })
-                var time = 1250;
+                var time = 1600;
                 $('#p1').parent().animate(
                     animation,
                     time,
@@ -309,26 +314,42 @@
             }
 
             function createQuestion() {
-                clearInterval(id);
-                $('#mybar').css('width', "100%");
-                width = 100;
-
-                move(30);
-
-                $('#titleOfQuestion').text(" سوال " + (i+1));
-                $("#question").text(questions[i].question);
-                $("#myRange").attr({
-                    "max": questions[i].max,
-                    "min": questions[i].min
-                });
-
-
-
-                $("#min").text(questions[i].min);
-                $("#max").text(questions[i].max);
-                $("#question_section").removeClass("w3-hide");
                 $("#result").addClass("w3-hide");
-                i++;
+                $('#second_counter').removeClass("w3-hide");
+                $('#second_counter').text("3");
+                var second_counter = 2;
+                var second_counter_id = setInterval(function(){
+                    if(second_counter==1){
+                        clearInterval(second_counter_id);
+                    }
+                    $('#second_counter').text(second_counter);
+                    second_counter--;
+                },1000);
+                setTimeout(function(){
+                    $('#second_counter').addClass("w3-hide");
+
+                    clearInterval(id);
+                    $('#mybar').css('width', "100%");
+                    width = 100;
+
+                    move(30);
+
+                    $('#titleOfQuestion').text(" سوال " + (i+1));
+                    $("#question").text(questions[i].question);
+                    $("#myRange").attr({
+                        "max": questions[i].max,
+                        "min": questions[i].min,
+
+                    });
+
+
+
+                    $("#min").text(questions[i].min);
+                    $("#max").text(questions[i].max);
+                    $("#question_section").removeClass("w3-hide");
+                    i++;
+                },3000)
+
             }
 
 
