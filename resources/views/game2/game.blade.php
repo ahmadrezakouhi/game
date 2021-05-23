@@ -9,16 +9,22 @@
     <div id="result" class="">
         <div class="w3-row w3-margin-top ">
 
-            <div class="w3-col  l9">
-                <div id="title" class="w3-right  persian w3-xlarge bold w3-border"
-                     style=""></div>
+            <div class="w3-col  l9 ">
+                <div class="w3-row">
+                    <div class="w3-col l6 w3-center w3-right">
+                        <div id="title" class=" persian w3-xlarge bold "
+                             style=""></div>
+                    </div>
+                    <div class="w3-col l6">
+
+                    </div>
+                </div>
                 <div class="w3-row-padding w3-margin-top">
                     <div class="w3-col l6 ">
 
 
                         @include('layouts.onlineUser')
                     </div>
-
 
 
                     <div class="w3-col l6 mx-auto w3-center w3-content " style="">
@@ -38,13 +44,13 @@
                                         <div class="w3-col l3 w3-right w3-xlarge" style="position: relative;top:10px">
                                             000
                                         </div>
-                                        <div class="w3-col l3  w3-right">
+                                        <div class="w3-col l4  w3-right">
                                             <input type="text" class="w3-input w3-border w3-round w3-xlarge" min="0"
                                                    max="50" required
                                             >
 
                                         </div>
-                                        <div class="w3-col l6 persian w3-right-align font-weight-bold w3-large"
+                                        <div class="w3-col l5 persian w3-right-align font-weight-bold w3-large"
                                              style="position: relative;right:5px;top:10px">
                                             تومان
                                         </div>
@@ -129,9 +135,9 @@
             var width = 100;
 
             mainProgram();
-            setInterval(function(){
+            setInterval(function () {
                 next();
-            },40000)
+            }, 40000)
             var user = Cookies.get('user_letter');
             removeVarPerson();
             varPersons.push(user);
@@ -155,7 +161,7 @@
                     }
                 })
 
-                var value = $('input').val();
+                var value = ($('input').val()*1000);
                 option.content = value;
                 var remind = 50000 - value;
                 if (i % 2 != 0) {
@@ -184,25 +190,25 @@
 
 
             $("#randomPoint").click(function () {
-                width=100;
-                $('#mybar').css('width','100%');
+                width = 100;
+                $('#mybar').css('width', '100%');
                 clearInterval(id);
-                for(var n = 1 ; n <=8 ; n++){
-                    $(('#pn'+n)).popover('dispose')
+                for (var n = 1; n <= 8; n++) {
+                    $(('#pn' + n)).popover('dispose')
                 }
                 $('#pp4').popover('dispose');
                 $('#showRandom').addClass("w3-hide");
                 timeID = setInterval(randomPoint, 50);
                 setTimeout(function () {
                     var o = {
-                        content:"<span class='font-weight-bold w3-medium' >"+ conditions[countSession - 1][1]+",000</span>",
+                        content: "<span class='font-weight-bold w3-medium' >" + conditions[countSession - 1][1] + ",000</span>",
                         placement: "left",
-                        html:true
+                        html: true
                     };
                     var id;
-                    if(conditions[countSession - 1][0]==4){
+                    if (conditions[countSession - 1][0] == 4) {
                         id = "#pp" + conditions[countSession - 1][0];
-                    }else {
+                    } else {
                         id = "#pn" + conditions[countSession - 1][0];
                     }
                     $(id).popover(o);
@@ -253,19 +259,18 @@
             }
 
 
+            function next() {
+                console.log(countSession)
+                if (countSession >= 1 && countSession < 10) {
+                    $("#pps" + conditions[countSession - 1][0]).popover("dispose");
+                }
+                clearInterval(id);
 
-function next() {
-    console.log(countSession)
-    if (countSession >= 1 && countSession < 10) {
-        $("#pps" + conditions[countSession - 1][0]).popover("dispose");
-    }
-    clearInterval(id);
+                $('form').removeClass('w3-hide');
+                $('#label').removeClass('w3-hide');
 
-    $('form').removeClass('w3-hide');
-    $('#label').removeClass('w3-hide');
-
-    mainProgram();
-}
+                mainProgram();
+            }
 
             function mainProgram() {
                 move(40);
@@ -285,7 +290,7 @@ function next() {
                             $('#showRandom').addClass("w3-hide");
 
                         }
-                        $("#label").html("مبلغی که به صورت رندوم فقط قرار است به دیگران  نمایش داده <br> می شود را در زیر بنویسید (مبلغ اعلامی) ");
+                        $("#label").html("مبلغی که به صورت رندوم فقط قرار است به دیگران  نمایش داده شود را در زیر بنویسید (مبلغ اعلامی) ");
                         $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                         $('#title').text("دست " + session[countSession]);
                         category = 2;
@@ -294,7 +299,7 @@ function next() {
                     } else {
                         width = 100;
                         move(40);
-                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی <br> به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
+                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
@@ -320,9 +325,6 @@ function next() {
                 });
                 $("#pn1").popover("show");
             }
-
-
-
 
 
             function removeVarPerson() {
