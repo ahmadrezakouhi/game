@@ -50,14 +50,14 @@ $(document).ready(function () {
     }
 
 
-move(15);
+move(10);
     // setTimeout(function(){
     //     $('#next').removeClass('w3-hide')
     // },5000)
 
     setInterval(function(){
         window.location.replace("{{route('game2.guide')}}");
-    },15000)
+    },10000)
 
 
     {{--setInterval(function(){--}}
