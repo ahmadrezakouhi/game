@@ -8,7 +8,10 @@
 
     <div id="result" class="">
         <div class="w3-row w3-margin-top ">
+
             <div class="w3-col  l9">
+                <div id="title" class="w3-right  persian w3-xlarge bold w3-border"
+                     style=""></div>
                 <div class="w3-row-padding w3-margin-top">
                     <div class="w3-col l6 ">
 
@@ -19,9 +22,8 @@
 
 
                     <div class="w3-col l6 mx-auto w3-center w3-content " style="">
-                        <div id="title" class=" w3-margin-right persian w3-xlarge bold "
-                             style=""></div>
-                        <div id="label" class=" px-5 w3-text-right persian w3-large " dir="rtl"
+
+                        <div id="label" class=" px-5 w3-text-right persian w3-large w3-margin-top" dir="rtl"
                              style=" line-height: 35px;">
                             مبلغ
                             اهدایی
@@ -283,7 +285,7 @@ function next() {
                             $('#showRandom').addClass("w3-hide");
 
                         }
-                        $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده می شود را در زیر بنویسید (مبلغ اعلامی) ");
+                        $("#label").html("مبلغی که به صورت رندوم فقط قرار است به دیگران  نمایش داده <br> می شود را در زیر بنویسید (مبلغ اعلامی) ");
                         $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                         $('#title').text("دست " + session[countSession]);
                         category = 2;
