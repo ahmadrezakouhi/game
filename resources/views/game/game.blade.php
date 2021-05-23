@@ -315,6 +315,7 @@
 
             function createQuestion() {
                 $("#result").addClass("w3-hide");
+                $('#progressBar').addClass("w3-hide");
                 $('#second_counter').removeClass("w3-hide");
                 $('#second_counter').text("3");
                 var second_counter = 2;
@@ -327,7 +328,7 @@
                 },1000);
                 setTimeout(function(){
                     $('#second_counter').addClass("w3-hide");
-
+                    $('#progressBar').removeClass('w3-hide');
                     clearInterval(id);
                     $('#mybar').css('width', "100%");
                     width = 100;
