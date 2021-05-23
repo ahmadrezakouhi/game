@@ -13,7 +13,7 @@
 
 
 
-
+@include('layouts.progress_bar')
     </div>
 
     <script>
@@ -39,8 +39,14 @@
 
             function showFirst() {
                 $('#first').parent().show();
-                $('#text').html("<p class='persian'>همه اعضا آنلاین شدند</p>" +
-                    "<a class='w3-button w3-round  w3-light-gray persian' href='/game1/guide' style='text-decoration: none'>بعدی</a>");
+                $('#text').html("<p class='persian'>همه اعضا آنلاین شدند</p>"
+                    //+
+                    // "<a class='w3-button w3-round  w3-light-gray persian' href='/game1/guide' style='text-decoration: none'>بعدی</a>"
+                     );
+                setTimeout(function(){
+                    window.location.replace("/game1/guide");
+                },5000)
+                move(5);
             }
 
             function showThird() {
@@ -52,7 +58,7 @@
             }
 
             //20 seconds
-            {{--setInterval(function(){--}}
+            {{--settime(function(){--}}
             {{--    window.location.replace("{{route('logout')}}");--}}
             {{--},22000)--}}
 
