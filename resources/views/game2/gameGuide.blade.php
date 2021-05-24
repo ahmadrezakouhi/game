@@ -57,9 +57,7 @@
 
         </div>
 
-        <button class="w3-button w3-border w3-padding-large w3-round  w3-section persian">بعدی</button>
-        <a href="/game2" class="w3-button w3-border w3-padding-large w3-round  w3-section persian w3-hide" id="next"
-           style="">شروع</a>
+
         @include('layouts.progress_bar')
     </div>
 
@@ -70,15 +68,14 @@
 
         $(document).ready(function () {
             var i = 2;
-            $('button').click(function () {
-                next();
-            })
+
 
             function next(time) {
-                if (i == 6) {
-                    $('a').removeClass("w3-hide");
-                    $(this).addClass("w3-hide");
+                if(i==7){
+                    window.location.replace('/game2');
+                    return;
                 }
+
                 $(".guide").addClass("w3-hide");
                 $(("#guide" + i)).removeClass("w3-hide");
                 width = 100;
@@ -89,12 +86,9 @@
             move(25);
 
 
-            // setTimeout(function(){
-            //     next(20);
-            // },25000);
-            // setTimeout(function(){
-            //     next(10);
-            // },40000);
+          var id = setInterval(function(){
+              next(25);
+          },25000);
         })
 
 
