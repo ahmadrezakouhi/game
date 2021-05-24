@@ -40,13 +40,13 @@
         <div id="guide5" class="w3-xlarge w3-hide guide" dir="rtl" style="line-height: 50px">
             با این حال، مقدار کل مبالغ اهدایی از سوی شرکت کنندگان در هر دست
             <br>
-            3 برابر شده و میانگین آن  بین 8 نفر شرکت کننده تقسیم میشود
+            3 برابر شده و میانگین آن بین 8 نفر شرکت کننده تقسیم میشود
             <br>
             در پایان،
             <br>
-            نسبتی از مبالغ  دست های بازی به صورت رندوم انتخاب شده
+            نسبتی از مبالغ بدست آمده در نتیجه عملکردتان در تمامی دست ها به
             <br>
-            و به شما تعلق میگیرد
+            شما تعلق می گیرد
         </div>
         <div id="guide6" class="w3-xlarge w3-hide guide" dir="rtl" style="line-height: 50px">
             برای نوشتن و ثبت مبالغ اعلامی و اهدایی خود در این مرحله
@@ -58,7 +58,8 @@
         </div>
 
         <button class="w3-button w3-border w3-padding-large w3-round  w3-section persian">بعدی</button>
-        <a href="/game2" class="w3-button w3-border w3-padding-large w3-round  w3-section persian w3-hide" id="next" style="">شروع</a>
+        <a href="/game2" class="w3-button w3-border w3-padding-large w3-round  w3-section persian w3-hide" id="next"
+           style="">شروع</a>
         @include('layouts.progress_bar')
     </div>
 
@@ -70,22 +71,22 @@
         $(document).ready(function () {
             var i = 2;
             $('button').click(function () {
-next();
+                next();
             })
-function next(time){
-    if(i==6) {
-        $('a').removeClass("w3-hide");
-        $(this).addClass("w3-hide");
-    }
-    $(".guide").addClass("w3-hide");
-    $(("#guide" + i)).removeClass("w3-hide");
-    width=100;
-move(time);
-    i++;
-}
+
+            function next(time) {
+                if (i == 6) {
+                    $('a').removeClass("w3-hide");
+                    $(this).addClass("w3-hide");
+                }
+                $(".guide").addClass("w3-hide");
+                $(("#guide" + i)).removeClass("w3-hide");
+                width = 100;
+                move(time);
+                i++;
+            }
 
             move(25);
-
 
 
             // setTimeout(function(){
