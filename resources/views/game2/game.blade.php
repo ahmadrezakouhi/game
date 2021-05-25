@@ -97,6 +97,8 @@
         @include('layouts.progress_bar')
     </div>
 
+    <div id="second_counter" class="w3-content w3-center w3-jumbo " style="margin-top: 300px">3</div>
+
 
 
 
@@ -135,9 +137,9 @@
             var width = 100;
 
             mainProgram();
-            setInterval(function () {
-                next();
-            }, 40000)
+
+            var session_id;
+
             var user = Cookies.get('user_letter');
             removeVarPerson();
             varPersons.push(user);
@@ -190,8 +192,11 @@
 
 
             $("#randomPoint").click(function () {
-                width = 100;
-                $('#mybar').css('width', '100%');
+
+                clearTimeout(session_id);
+                width=100;
+                $('#mybar').css('width','100%');
+
                 clearInterval(id);
                 for (var n = 1; n <= 8; n++) {
                     $(('#pn' + n)).popover('dispose')
@@ -219,7 +224,9 @@
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
                     move(40);
-
+                    setTimeout(function(){
+                        next();
+                    },40000)
                 }, 7000)
 
             });
@@ -290,10 +297,36 @@
                             $('#showRandom').addClass("w3-hide");
 
                         }
-                        $("#label").html("مبلغی که به صورت رندوم فقط قرار است به دیگران  نمایش داده شود را در زیر بنویسید (مبلغ اعلامی) ");
-                        $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
-                        $('#title').text("دست " + session[countSession]);
-                        category = 2;
+
+                        $("#result").addClass("w3-hide");
+                        $('#second_counter').removeClass("w3-hide");
+                        $('#second_counter').text("3");
+                        var second_counter = 2;
+                        var second_counter_id = setInterval(function(){
+                            if(second_counter==1){
+                                clearInterval(second_counter_id);
+                            }
+                            $('#second_counter').text(second_counter);
+                            second_counter--;
+                        },1000);
+                        setTimeout(function(){
+                            $('#second_counter').addClass("w3-hide");
+                            $('#result').removeClass("w3-hide");
+                            clearInterval(id);
+                            $('#mybar').css('width', "100%");
+                            width = 100;
+
+                            move(40);
+                            $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده می شود را در زیر بنویسید (مبلغ اعلامی) ");
+                            $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
+                            $('#title').text("دست " + session[countSession]);
+                            category = 2;
+                          session_id= setTimeout(function(){
+                                next();
+                            },40000);
+                        },3000)
+
+
 
 
                     } else {
@@ -308,6 +341,9 @@
 
 
                         countSession++;
+                      session_id=  setTimeout(function(){
+                            next();
+                        },40000);
                     }
                 } else {
                     $("#next").addClass("w3-hide");
@@ -316,6 +352,7 @@
 
 
                 i++;
+
             }
 
             function selectOfPersonMoney() {
