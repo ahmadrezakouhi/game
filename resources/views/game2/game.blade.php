@@ -104,7 +104,7 @@
 
     <script>
 
-
+        var gameTimer=40;
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -220,10 +220,10 @@
 
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
-                    move(40);
+                    move(gameTimer);
                     setTimeout(function(){
                         next();
-                    },40000)
+                    },(gameTimer*1000))
                 }, 7000)
 
             });
@@ -277,7 +277,7 @@
             }
 
             function mainProgram() {
-                move(40);
+                move(gameTimer);
                 $('input').val("");
                 // $("#next").addClass("w3-hide");
                 if (i <= 20) {
@@ -313,14 +313,14 @@
                             $('#mybar').css('width', "100%");
                             width = 100;
 
-                            move(40);
+                            move(gameTimer);
                             $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده می شود را در زیر بنویسید (مبلغ اعلامی) ");
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
                             category = 2;
                           session_id= setTimeout(function(){
                                 next();
-                            },40000);
+                            },(gameTimer*1000));
                         },3000)
 
 
@@ -328,7 +328,7 @@
 
                     } else {
                         width = 100;
-                        move(40);
+                        move(gameTimer);
                         $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
@@ -340,7 +340,7 @@
                         countSession++;
                       session_id=  setTimeout(function(){
                             next();
-                        },40000);
+                        },(gameTimer*1000));
                     }
                 } else {
                     $("#next").addClass("w3-hide");
