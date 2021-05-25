@@ -89,6 +89,8 @@
         @include('layouts.progress_bar')
     </div>
 
+    <div id="second_counter" class="w3-content w3-center w3-jumbo " style="margin-top: 300px">3</div>
+
 
 
 
