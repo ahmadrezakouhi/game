@@ -343,8 +343,7 @@
                         },(gameTimer*1000));
                     }
                 } else {
-                    $("#next").addClass("w3-hide");
-                    $("#nextPath").removeClass("w3-hide");
+                   window.location.replace('/end');
                 }
 
 
