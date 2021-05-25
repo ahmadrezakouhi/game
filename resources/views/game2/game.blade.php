@@ -198,10 +198,7 @@
                 $('#mybar').css('width','100%');
 
                 clearInterval(id);
-                for (var n = 1; n <= 8; n++) {
-                    $(('#pn' + n)).popover('dispose')
-                }
-                $('#pp4').popover('dispose');
+                clearPopOver();
                 $('#showRandom').addClass("w3-hide");
                 timeID = setInterval(randomPoint, 50);
                 setTimeout(function () {
@@ -297,7 +294,7 @@
                             $('#showRandom').addClass("w3-hide");
 
                         }
-
+                        clearPopOver();
                         $("#result").addClass("w3-hide");
                         $('#second_counter').removeClass("w3-hide");
                         $('#second_counter').text("3");
@@ -404,6 +401,15 @@
                     $('#coin').css({opacity: "1", top: "150px"})
                     $('#coin').addClass("w3-hide");
                 })
+            }
+
+
+
+            function clearPopOver(){
+                for (var n = 1; n <= 8; n++) {
+                    $(('#pn' + n)).popover('dispose');
+                }
+                $('#pp4').popover('dispose');
             }
 
 
