@@ -104,7 +104,7 @@
 
     <script>
 
-        var gameTimer=40;
+        var gameTimer=10;
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -314,7 +314,7 @@
                             width = 100;
 
                             move(gameTimer);
-                            $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده می شود را در زیر بنویسید (مبلغ اعلامی) ");
+                            $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده میشود را در زیر بنویسید (مبلغ اعلامی) ");
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
                             category = 2;
