@@ -3,7 +3,7 @@
 
     <div class="w3-content w3-center persian w3-justify" style="margin-top: 200px">
 
-        <div id="description" class="w3-justify bold w3-large w3-center" dir="rtl">
+        <div id="description" class="w3-justify bold w3-large w3-center" dir="rtl" style="line-height: 50px">
 
         </div>
 
@@ -27,7 +27,7 @@
                 ,
                 "نفر اول در رتبه بندی نهایی در سوالات اطلاعات عمومی  را تا چه اندازه رقیب خود احساس کردید؟"
                 ,
-                "از مشارکت  شما شرکت کنندگان عزیز صمیمانه متشکریم تا 1 ساعت آینده، ایمیلی جهت راهنمایی دریافت هدیه با توجه به عملکرد شما در بازی و برای قدردانی در ترویج کارعلمی، برای شما ارسال خواهد شد. در صورتی که ایمیلی به دستتان نرسید، با مجری طرح در ارتباط باشید"
+                "از مشارکت  شما شرکت کنندگان عزیز صمیمانه متشکریم . <br>  پاسخ های شما بررسی خواهد شد و  با توجه به عملکرد شما در بازی و برای قدردانی در ترویج کارعلمی، با شما تماس خواهیم گرفت."
             ];
             var i =0
             selectDescription();
@@ -43,7 +43,7 @@ if(i>=3) {
             })
 
             function selectDescription(){
-                $("#description").text(descriptions[i]);
+                $("#description").html(descriptions[i]);
                 i++;
             }
 
