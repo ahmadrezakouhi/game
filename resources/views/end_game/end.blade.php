@@ -54,7 +54,7 @@ if(i>=3) {
                 skin:"big",
                 min: 0,
                 max: 10,
-                from: 5,
+                from: 0,
                 step: 1,            // default 1 (set step)
                   grid: true,         // default false (enable grid)
                 grid_num: 10,        // default 4 (set number of grid cells)
