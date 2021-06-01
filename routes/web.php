@@ -34,7 +34,7 @@ Route::get('/game1',function(){
 
 Route::get('/game1/guide',function(){
     return view("game.gameGuide");
-})->middleware('auth');
+});
 
 Route::get('/game2/guide',function(){
     return view("game2.gameGuide");
