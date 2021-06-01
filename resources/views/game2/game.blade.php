@@ -175,7 +175,7 @@
                     option.placement = "top";
                     option.content = value.toString();
                     $("#user").popover(option);
-                    console.log(option)
+
                     $("#user").popover("show");
                     if (countSession == 5) {
                         conditions[4][1] = value;
@@ -264,7 +264,7 @@
 
 
             function next() {
-                console.log(countSession)
+
                 if (countSession >= 1 && countSession < 10) {
                     $("#pps" + conditions[countSession - 1][0]).popover("dispose");
                 }
@@ -279,9 +279,9 @@
             function mainProgram() {
                 move(gameTimer);
                 $('input').val("");
-                // $("#next").addClass("w3-hide");
+                console.log(i)
                 if (i <= 20) {
-                    console.log(i)
+
                     if (i % 2 != 0) {
 
                         if (i > 1) {
