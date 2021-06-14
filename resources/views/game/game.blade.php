@@ -72,7 +72,7 @@
                     <div class="  w3-right-align w3-xlarge" style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
                 </div>
                 <div class="w3-col l10">
-                    <input type="range" min="" max="" value="" class="slider" id="myRange">
+                    <input type="range" class="slider" id="myRange">
                 </div>
                 <div class="w3-col l1 ">
                     <div class=" w3-left-align w3-xlarge" style="margin-top:0px;font-weight: bold;position: relative;top:-10px" id="max">150</div>
@@ -340,9 +340,9 @@
                     $("#myRange").attr({
                         "max": questions[i].max,
                         "min": questions[i].min,
-
+                       
                     });
-
+                    $("#myRange").val((questions[i].min+500));
 
 
                     $("#min").text(questions[i].min);
