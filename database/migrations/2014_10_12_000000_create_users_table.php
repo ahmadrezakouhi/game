@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('can_answer')->nullable();
             $table->tinyInteger('time')->nullable();
             $table->text('letter')->nullable();
+            $table->tinyInteger('enter_time')->nullable();
+            $table->tinyInteger('condition')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
