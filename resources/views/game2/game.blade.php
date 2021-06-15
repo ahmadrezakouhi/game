@@ -45,7 +45,7 @@
                                             000
                                         </div>
                                         <div class="w3-col l4  w3-right">
-                                            <input type="text" class="w3-input w3-border w3-round w3-xlarge"
+                                            <input type="number" min="0" max="50" class="w3-input w3-border w3-round w3-xlarge"
                                                     required
                                             >
 
