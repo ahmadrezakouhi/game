@@ -188,6 +188,7 @@
                    clearInterval(idRepeat);
                }
                choose_section();
+               
             },33000)
             function choose_section(){
                if(rec){
@@ -311,6 +312,10 @@
             }
 
             function createQuestion() {
+                if(i==8){
+                    window.location.replace("{{route('result')}}")
+                }
+
                 $("#result").addClass("w3-hide");
                 $('#progressBar').addClass("w3-hide");
                 $('#second_counter').removeClass("w3-hide");
