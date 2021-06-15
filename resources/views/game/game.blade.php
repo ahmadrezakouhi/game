@@ -56,10 +56,7 @@
                 @include("layouts.orderList")
             </div>
         </div>
-{{--        <div class="w3-content w3-center">--}}
-{{--            <button class="w3-button w3-round w3-light-gray w3-border w3-hide w3-margin-bottom persian" id="next">بعدی</button>--}}
-{{--            <a href="/result" class="w3-button w3-border w3-round w3-light-gray persian w3-hide" id="nextPath">مرحله بعد</a>--}}
-{{--        </div>--}}
+
     </div>
     <div class="w3-content w3-center w3-hide" id="question_section" style="margin-top: 100px">
         <div id="titleOfQuestion" class="persian w3-large bold"></div>
@@ -88,9 +85,7 @@
 
 <div id="second_counter" class="w3-content w3-center w3-jumbo w3-hide" style="margin-top: 300px">3</div>
 
-{{--    <div class="w3-border w3-margin w3-round-xxlarge " style="position: absolute; bottom: 0;right:0;left: 0">--}}
-{{--        <div id="mybar" class=" w3-round-xxlarge" style="height:24px;width:100%;background-color: rgb(136,181,199)"></div>--}}
-{{--    </div>--}}
+
 
 
     @include('layouts.progress_bar')
@@ -243,6 +238,8 @@
                 $('#valueOfMyRange').empty();
                 setPersonOrder();
                 animatePersons();
+
+                
             }
 
 
