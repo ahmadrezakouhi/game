@@ -46,7 +46,7 @@ Route::get('/game2',function(){
 
 Route::get('/result',function (){
    return view("game.result");
-})->middleware('auth');
+})->middleware('auth')->name('result');
 
 Route::get("/end",function (){
     return view("end_game.end");
