@@ -33,6 +33,8 @@ class UserController extends Controller
             ,
             'gender'=>$request->get('gender')
             ,
+            'condition'=>$request->get('condition')
+            ,
             'can_play'=>$request->get('can_play') == 'on' ? 1 : 0
             ,
             'can_answer'=>$request->get('can_answer')== 'on' ? 1 : 0
