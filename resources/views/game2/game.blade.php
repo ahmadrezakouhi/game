@@ -112,7 +112,7 @@
         var category = 2;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
-        var selectedCondition =3 ;
+        var selectedCondition = {{Auth()->user()->condition}} ;
         var conditions = [
            [  
                 [1, 50],
