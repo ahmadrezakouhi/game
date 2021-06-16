@@ -80,9 +80,9 @@ class UserController extends Controller
             ,
             'email'=>$request->get('email')
             ,
-
-
             'gender'=>$request->get('gender')
+            ,
+            'condition'=>$request->get('condition')
             ,
             'can_play'=>$request->get('can_play') == 'on' ? 1 : 0
             ,
