@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('title','انتخاب مرحله')
 @section('content')
-
-    <div class="container mt-5">
+@include('layouts.user.navbar')
+    <div class="container " style="margin-top: 200px">
         <div class="row">
             <div class="col-md-6">
 
