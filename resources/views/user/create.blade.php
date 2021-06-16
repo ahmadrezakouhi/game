@@ -76,6 +76,32 @@
                     </div>
                 </div>
 
+
+            <hr>
+
+                <div class="form-group clearfix">
+                    <div class="persian text-right">
+                        کاندیشن
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-right mt-2 ">
+                        <input type="radio" class="custom-control-input" id="pro1" name="condition" value="0" >
+                        <label class="custom-control-label " for="pro1">pro1</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-right mt-2">
+                        <input type="radio" class="custom-control-input" id="pro8" name="condition" value="1" checked>
+                        <label class="custom-control-label " for="pro8">pro8</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-right mt-2">
+                        <input type="radio" class="custom-control-input" id="anti8" name="condition" value="2" checked>
+                        <label class="custom-control-label " for="anti8">anti8</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline float-right mt-2">
+                        <input type="radio" class="custom-control-input" id="anti1" name="condition" value="3" checked>
+                        <label class="custom-control-label " for="anti1">anti1</label>
+                    </div>
+                </div>
+
+
                 <hr>
 
                 <div class="custom-control custom-checkbox clearfix" >
@@ -87,6 +113,7 @@
 
                 </div>
 
+                <hr>
                 <div class="custom-control custom-checkbox clearfix mt-3"  >
                     <div class="float-right">
                         <input type="checkbox" class="custom-control-input " id="can_answer" name="can_answer"

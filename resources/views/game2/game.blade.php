@@ -112,16 +112,58 @@
         var category = 2;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
+        var selectedCondition = {{Auth()->user()->condition}} ;
         var conditions = [
-            [1, 50],
-            [7, 0],
-            [3, 25],
-            [4, 0],
-            [1, 50],
-            [2, 10],
-            [5, 50],
-            [6, 35],
-            [8, 50]
+           [  
+                [1, 50],
+                [8, 0],
+                [5, 25],
+                [4, 0],
+                [8, 50],
+                [2, 10],
+                [7, 45],
+                [6, 35],
+                [3, 50] 
+            ],
+
+
+            [  
+                [8, 50],
+                [1, 0],
+                [5, 25],
+                [4, 0],
+                [1, 50],
+                [2, 10],
+                [7, 45],
+                [6, 35],
+                [3, 50] 
+            ],
+
+            [  
+                [8, 0],
+                [1, 50],
+                [5, 25],
+                [4, 0],
+                [8, 50],
+                [2, 10],
+                [7, 45],
+                [6, 35],
+                [3, 50] 
+            ],
+
+
+            [  
+                [1, 0],
+                [8, 50],
+                [5, 25],
+                [4, 0],
+                [1, 50],
+                [2, 10],
+                [7, 45],
+                [6, 35],
+                [3, 50] 
+            ],
+
         ];
         $(document).ready(function () {
             $.ajaxSetup({
@@ -178,7 +220,7 @@
 
                     $("#user").popover("show");
                     if (countSession == 5) {
-                        conditions[4][1] = value;
+                        conditions[selectedCondition][4][1] = value;
                     }
                 }
                 $('form').addClass('w3-hide');
@@ -203,15 +245,15 @@
                 timeID = setInterval(randomPoint, 50);
                 setTimeout(function () {
                     var o = {
-                        content: "<span class='font-weight-bold w3-medium' >" + conditions[countSession - 1][1] + ",000</span>",
+                        content: "<span class='font-weight-bold w3-medium' >" + conditions[selectedCondition][countSession - 1][1] + ",000</span>",
                         placement: "left",
                         html: true
                     };
                     var id;
-                    if (conditions[countSession - 1][0] == 4) {
-                        id = "#pp" + conditions[countSession - 1][0];
+                    if (conditions[selectedCondition][countSession - 1][0] == 4) {
+                        id = "#pp" + conditions[selectedCondition][countSession - 1][0];
                     } else {
-                        id = "#pn" + conditions[countSession - 1][0];
+                        id = "#pn" + conditions[selectedCondition][countSession - 1][0];
                     }
                     $(id).popover(o);
                     $(id).popover("show");
@@ -266,7 +308,7 @@
             function next() {
 
                 if (countSession >= 1 && countSession < 10) {
-                    $("#pps" + conditions[countSession - 1][0]).popover("dispose");
+                    $("#pps" + conditions[selectedCondition][countSession - 1][0]).popover("dispose");
                 }
                 clearInterval(id);
 
@@ -352,7 +394,7 @@
             }
 
             function selectOfPersonMoney() {
-                option.content = "<span class='w3-red'>" + conditions[countSession][1] + "</span>";
+                option.content = "<span class='w3-red'>" + conditions[selectedCondition][countSession][1] + "</span>";
                 $("#pn1").popover({
                     content: content
                 });
