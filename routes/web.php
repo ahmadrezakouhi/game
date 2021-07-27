@@ -17,7 +17,7 @@ Route::get('/', function () {
     return redirect()->to('login');
 });
 
-route::get('/selectLetter',function(){
+Route::get('/selectLetter',function(){
     $user = User::findOrFail(auth()->user()->id);
     $user->can_play= 0;
     $user->save();
