@@ -83,12 +83,12 @@
                 i++;
             }
 
-            move(25);
+            move(20);
 
 
           var id = setInterval(function(){
-              next(25);
-          },25000);
+              next(20);
+          },20000);
         })
 
 

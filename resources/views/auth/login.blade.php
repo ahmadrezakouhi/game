@@ -7,7 +7,7 @@
 {{--    <div class="row justify-content-center">--}}
 {{--        <div class="col-md-8">--}}
             <div class="card shadow-lg mx-auto" style="max-width: 500px">
-                <div class="card-header persian text-right">
+                <div class="card-header persian text-right ">
 {{--                    {{ __('Login') }}--}}
                     <h3>                    ورود
                     </h3>
@@ -66,7 +66,7 @@
 
                         <div class="form-group ">
 {{--                            <div class="col-md-8 offset-md-4">--}}
-                                <button type="submit" class="btn btn-primary persian float-left font-weight-bold">
+                                <button type="submit" class="btn btn-primary persian float-left font-weight-bold btn-block">
 {{--                                    {{ __('Login') }}--}}
                                     ورود
                                 </button>
