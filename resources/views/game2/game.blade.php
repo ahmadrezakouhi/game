@@ -103,8 +103,8 @@
 
 
     <script>
-
-        var gameTimer=10;
+        
+        var gameTimer=10; //40 s
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;

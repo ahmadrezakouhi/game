@@ -17,12 +17,10 @@ Route::get('/', function () {
     return redirect()->to('login');
 });
 
-route::get('selectLetter',function(){
-    $user = User::findOrFail(auth()->user()->id);
-    $user->can_play= 0;
-    $user->save();
+Route::get('/selectLetter', function () {
+
     return view('game.selectLetter');
-})->name('select_letter')->middleware('auth');
+})->name('select_letter')->middleware('auth','can_play');
 
 Route::get('connectUsers',function(){
    return  view('game.connectUsers');
@@ -59,8 +57,9 @@ Route::get('choose_level',function(){
    return view('choose_level');
 })->middleware('auth');
 
+
 Auth::routes();
-Route::get('logout',function(){
+Route::get('logout', function () {
     Auth::logout();
     return redirect()->to('login');
 })->name('logout');
@@ -73,37 +72,36 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::middleware('auth')->prefix('users')->group(function (){
-    Route::get('','UserController@index')->name('users');
-   Route::get('create',"UserController@create")->name('users.create');
-   Route::post('store','UserController@store')->name('users.store');
-    Route::get('{id}/edit','UserController@edit')->name('users.edit');
-    Route::put('{id}','UserController@update')->name('users.update');
-   Route::delete('{id}','UserController@destroy')->name('users.destroy');
+Route::middleware('auth')->prefix('users')->group(function () {
+    Route::get('', 'UserController@index')->name('users');
+    Route::get('create', "UserController@create")->name('users.create');
+    Route::post('store', 'UserController@store')->name('users.store');
+    Route::get('{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::put('{id}', 'UserController@update')->name('users.update');
+    Route::delete('{id}', 'UserController@destroy')->name('users.destroy');
 });
 
 
 
-   Route::get('users/{id}/answers','AnswerController@show')->name('users.answers.show');
-   Route::get('users/{id}/answers_question','QuestionController@show')->name('users.answers_question');
+Route::get('users/{id}/answers', 'AnswerController@show')->name('users.answers.show');
+Route::get('users/{id}/answers_question', 'QuestionController@show')->name('users.answers_question');
 
-   Route::prefix('questions')->group(function (){
-       Route::get('','QuestionController@index')->name('questions');
-    Route::post('','QuestionController@store')->name('questions.store');
-    Route::delete('{id}','QuestionController@destroy')->name('questions.destroy');
-   });
-
-Route::prefix('categories')->group(function(){
-   Route::post('','CategoryController@store')->name('categories.store');
-   Route::delete('{id}','CategoryController@destroy')->name('categories.destroy');
+Route::prefix('questions')->group(function () {
+    Route::get('', 'QuestionController@index')->name('questions');
+    Route::post('', 'QuestionController@store')->name('questions.store');
+    Route::delete('{id}', 'QuestionController@destroy')->name('questions.destroy');
 });
 
-Route::prefix('category_answers')->group(function(){
-    Route::post('','CategoryAnswerController@store')->name('category_answers');
-    Route::delete('{id}','CategoryAnswerController@destroy')->name('category_answers.destroy');
+Route::prefix('categories')->group(function () {
+    Route::post('', 'CategoryController@store')->name('categories.store');
+    Route::delete('{id}', 'CategoryController@destroy')->name('categories.destroy');
 });
 
-Route::post('answers/store_letter','AnswerController@store_letter');
-Route::post('answers/store_answer_question_game1','AnswerController@store_answer_question_game1');
-Route::post('answers/store_rank','AnswerController@store_rank');
+Route::prefix('category_answers')->group(function () {
+    Route::post('', 'CategoryAnswerController@store')->name('category_answers');
+    Route::delete('{id}', 'CategoryAnswerController@destroy')->name('category_answers.destroy');
+});
 
+Route::post('answers/store_letter', 'AnswerController@store_letter');
+Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1');
+Route::post('answers/store_rank', 'AnswerController@store_rank');

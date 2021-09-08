@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Auth;
+
+class CanPlay
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+
+        $user = Auth::user();
+
+        if($user->can_play == 1){
+
+            $user->can_play = 0;
+            $user->save();
+
+            return $next($request);
+        }
+
+        return redirect('choose_level');
+
+    }
+}
