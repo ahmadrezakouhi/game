@@ -17,45 +17,45 @@ Route::get('/', function () {
     return redirect()->to('login');
 });
 
-route::get('/selectLetter',function(){
+route::get('selectLetter',function(){
     $user = User::findOrFail(auth()->user()->id);
     $user->can_play= 0;
     $user->save();
     return view('game.selectLetter');
 })->name('select_letter')->middleware('auth');
 
-Route::get('/connectUsers',function(){
+Route::get('connectUsers',function(){
    return  view('game.connectUsers');
 })->middleware('auth');
 
-Route::get('/game1',function(){
+Route::get('game1',function(){
     return view("game.game");
 });
 
-Route::get('/game1/guide',function(){
+Route::get('game1/guide',function(){
     return view("game.gameGuide");
 });
 
-Route::get('/game2/guide',function(){
+Route::get('game2/guide',function(){
     return view("game2.gameGuide");
 })->name('game2.guide')->middleware('auth');
 
-Route::get('/game2',function(){
+Route::get('game2',function(){
     return view("game2.game");
 });
 
-Route::get('/result',function (){
+Route::get('result',function (){
    return view("game.result");
 })->middleware('auth')->name('result');
 
-Route::get("/end",function (){
+Route::get("end",function (){
     return view("end_game.end");
 });
 
 
 
 
-Route::get('/choose_level',function(){
+Route::get('choose_level',function(){
    return view('choose_level');
 })->middleware('auth');
 
