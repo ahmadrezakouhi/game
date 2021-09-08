@@ -52,9 +52,7 @@ Route::get("/end",function (){
     return view("end_game.end");
 });
 
-Route::get("/test",function(){
-    return view('layouts.progress_bar');
-});
+
 
 
 Route::get('/choose_level',function(){
