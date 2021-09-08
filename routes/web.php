@@ -18,11 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/selectLetter', function () {
-    $user = User::findOrFail(auth()->user()->id);
-    $user->can_play = 0;
-    $user->save();
+
     return view('game.selectLetter');
-})->name('select_letter')->middleware('auth');
+})->name('select_letter')->middleware('auth','can_play');
 
 Route::get('/connectUsers', function () {
     return  view('game.connectUsers');
@@ -59,7 +57,7 @@ Route::get("/test", function () {
 
 Route::get('/choose_level', function () {
     return view('choose_level');
-})->middleware('auth');
+})->middleware('auth')->name('choose_level');
 
 Auth::routes();
 Route::get('logout', function () {
