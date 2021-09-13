@@ -26,10 +26,11 @@ public function store(Request $request){
 }
 
 public function show($id){
-        $question_answers = QuestionAnswer::with('question')->with('category_answer')
-          ->where('user_id',$id)
+        $question_answers = QuestionAnswer::
+     //   with('question')->with('category_answer')
+          where('user_id',$id)
             ->get();
-        $categories = Category::get();
+        $categories = Category::all();
         return view('question.show',compact('question_answers','categories'));
 }
 

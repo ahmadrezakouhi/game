@@ -1,29 +1,86 @@
-@extends('layouts.main')
+@extends('layouts.question-layout')
+@section('title','سوالات')
 @section('content')
-<div class="container persian text-center border mt-5 rounded p-5 shadow-sm">
-    <h3 class="persian"> به نظر شما کدام یک درست است ؟
-    </h3>
-    <form>
-        <div class="custom-control custom-radio">
-          <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-          <label class="custom-control-label" for="customRadio">Custom radio</label>
+
+    <div class="text-center ">
+
+        <div class="rounded-circle bg-secondary text-center text-white d-flex justify-content-center" style="display: inline-block;
+        width: 70px;
+        height: 70px;
+        margin: 6px;
+        font-size : 25px
+        ">
+
+            <div class="align-self-center "><b>{{ $questions->total() - ($questions->currentPage() * $questions->perPage()) + $questions->perPage() }}</b></div>
+
         </div>
-        <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-            <label class="custom-control-label" for="customRadio">Custom radio</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-            <label class="custom-control-label" for="customRadio">Custom radio</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-            <label class="custom-control-label" for="customRadio">Custom radio</label>
-          </div>
-      </form> 
+    </div>
 
 
-</div>
+
+    <form method="POST" action="{{ route('answer-questions') }}">
+        @csrf
+
+        <input type="hidden" name="nextPageUrl" value="{{ $questions->nextPageUrl() }}">
+        <input type="hidden" name="hasMorePages" value="{{ $questions->hasMorePages() }}">
+
+        @foreach ($questions as $question)
+
+
+
+            <div class="container persian border my-4 text-right rounded p-3 shadow-sm ">
+                <h4 class="persian"> {{ $question->question }}
+                    </h3>
+
+
+
+
+
+                    @foreach ($question->category->category_answers as $answer)
+
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ $question->id }}" id="answer"
+                                value="{{ $answer->id }}">
+                            <label class="form-check-label" for="answer">
+                                {{ $answer->name }}
+                            </label>
+                        </div>
+
+                    @endforeach
+
+
+
+            </div>
+
+
+
+
+
+
+
+        @endforeach
+
+
+
+
+
+
+        <div class="my-3 text-center ">
+            <button  id="send" type="submit" class="btn btn-danger persian">{{ $questions->hasMorePages() ? 'بعدی' : 'ارسال' }}</button>
+
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
 @endsection
-
-

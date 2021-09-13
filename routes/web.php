@@ -68,9 +68,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
+// ##################  crud users ########################
 
 Route::middleware('auth')->prefix('users')->group(function () {
     Route::get('', 'UserController@index')->name('users');
@@ -81,7 +81,7 @@ Route::middleware('auth')->prefix('users')->group(function () {
     Route::delete('{id}', 'UserController@destroy')->name('users.destroy');
 });
 
-
+// #################### end crud user #######################
 
 Route::get('users/{id}/answers', 'AnswerController@show')->name('users.answers.show');
 Route::get('users/{id}/answers_question', 'QuestionController@show')->name('users.answers_question');
@@ -91,6 +91,9 @@ Route::prefix('questions')->group(function () {
     Route::post('', 'QuestionController@store')->name('questions.store');
     Route::delete('{id}', 'QuestionController@destroy')->name('questions.destroy');
 });
+
+
+
 
 Route::prefix('categories')->group(function () {
     Route::post('', 'CategoryController@store')->name('categories.store');
@@ -105,3 +108,13 @@ Route::prefix('category_answers')->group(function () {
 Route::post('answers/store_letter', 'AnswerController@store_letter');
 Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1');
 Route::post('answers/store_rank', 'AnswerController@store_rank');
+
+
+
+
+// ######################### user answer questions ################################################
+
+Route::get('answer-questions','UserAnswerQuestionController@questions')->middleware('auth');
+Route::post('answer-questions','UserAnswerQuestionController@answerQuestion')->middleware('auth')->name('answer-questions');
+
+// ######################### end user answer questions #############################################
