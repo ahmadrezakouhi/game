@@ -24,31 +24,31 @@ Route::get('/selectLetter', function () {
 
 Route::get('connectUsers',function(){
    return  view('game.connectUsers');
-})->middleware('auth');
+})->middleware('auth','can_play');
 
 Route::get('game1',function(){
     return view("game.game");
-});
+})->middleware('auth','can_play')->name('game2');
 
 Route::get('game1/guide',function(){
     return view("game.gameGuide");
-});
+})->middleware('auth','can_play')->name('game1.guide');
 
 Route::get('game2/guide',function(){
     return view("game2.gameGuide");
-})->name('game2.guide')->middleware('auth');
+})->middleware('auth','can_play')->name('game2.guide');
 
 Route::get('game2',function(){
     return view("game2.game");
-});
+})->middleware('auth','can_play')->name('game2');
 
 Route::get('result',function (){
    return view("game.result");
-})->middleware('auth')->name('result');
+})->middleware('auth','can_play')->name('result');
 
 Route::get("end",function (){
     return view("end_game.end");
-});
+})->middleware('auth','can_play')->name('end');
 
 
 
@@ -62,7 +62,7 @@ Auth::routes();
 Route::get('logout', function () {
     Auth::logout();
     return redirect()->to('login');
-})->name('logout');
+})->middleware('auth')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -83,8 +83,8 @@ Route::middleware('auth','admin')->prefix('users')->group(function () {
 
 // #################### end crud user #######################
 
-Route::get('users/{id}/answers', 'AnswerController@show')->name('users.answers.show');
-Route::get('users/{id}/answers_question', 'QuestionController@show')->name('users.answers_question');
+Route::get('users/{id}/answers', 'AnswerController@show')->middleware('auth','admin')->name('users.answers.show');
+Route::get('users/{id}/answers_question', 'QuestionController@show')->middleware('auth','admin')->name('users.answers_question');
 
 Route::middleware('auth','admin')->prefix('questions')->group(function () {
     Route::get('', 'QuestionController@index')->name('questions');
@@ -95,19 +95,19 @@ Route::middleware('auth','admin')->prefix('questions')->group(function () {
 
 
 
-Route::prefix('categories')->group(function () {
+Route::middleware('auth','admin')->prefix('categories')->group(function () {
     Route::post('', 'CategoryController@store')->name('categories.store');
     Route::delete('{id}', 'CategoryController@destroy')->name('categories.destroy');
 });
 
-Route::prefix('category_answers')->group(function () {
+Route::middleware('auth','admin')->prefix('category_answers')->group(function () {
     Route::post('', 'CategoryAnswerController@store')->name('category_answers');
     Route::delete('{id}', 'CategoryAnswerController@destroy')->name('category_answers.destroy');
 });
 
-Route::post('answers/store_letter', 'AnswerController@store_letter');
-Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1');
-Route::post('answers/store_rank', 'AnswerController@store_rank');
+Route::post('answers/store_letter', 'AnswerController@store_letter')->middleware('auth');
+Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1')->middleware('auth');
+Route::post('answers/store_rank', 'AnswerController@store_rank')->middleware('auth');
 
 
 
