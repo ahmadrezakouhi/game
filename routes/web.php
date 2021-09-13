@@ -72,7 +72,7 @@ Auth::routes();
 
 // ##################  crud users ########################
 
-Route::middleware('auth')->prefix('users')->group(function () {
+Route::middleware('auth','admin')->prefix('users')->group(function () {
     Route::get('', 'UserController@index')->name('users');
     Route::get('create', "UserController@create")->name('users.create');
     Route::post('store', 'UserController@store')->name('users.store');
@@ -86,7 +86,7 @@ Route::middleware('auth')->prefix('users')->group(function () {
 Route::get('users/{id}/answers', 'AnswerController@show')->name('users.answers.show');
 Route::get('users/{id}/answers_question', 'QuestionController@show')->name('users.answers_question');
 
-Route::prefix('questions')->group(function () {
+Route::middleware('auth','admin')->prefix('questions')->group(function () {
     Route::get('', 'QuestionController@index')->name('questions');
     Route::post('', 'QuestionController@store')->name('questions.store');
     Route::delete('{id}', 'QuestionController@destroy')->name('questions.destroy');
@@ -114,7 +114,7 @@ Route::post('answers/store_rank', 'AnswerController@store_rank');
 
 // ######################### user answer questions ################################################
 
-Route::get('answer-questions','UserAnswerQuestionController@questions')->middleware('auth');
-Route::post('answer-questions','UserAnswerQuestionController@answerQuestion')->middleware('auth')->name('answer-questions');
+Route::get('answer-questions','UserAnswerQuestionController@questions')->middleware('auth','can_answer');
+Route::post('answer-questions','UserAnswerQuestionController@answerQuestion')->middleware('auth','can_answer')->name('answer-questions');
 
 // ######################### end user answer questions #############################################
