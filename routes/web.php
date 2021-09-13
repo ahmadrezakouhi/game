@@ -20,41 +20,41 @@ Route::get('/', function () {
 Route::get('/selectLetter', function () {
 
     return view('game.selectLetter');
-})->name('select_letter')->middleware('auth','can_play');
+})->name('select_letter')->middleware('auth', 'can_play');
 
-Route::get('connectUsers',function(){
-   return  view('game.connectUsers');
-})->middleware('auth','can_play');
+Route::get('connectUsers', function () {
+    return  view('game.connectUsers');
+})->middleware('auth', 'can_play');
 
-Route::get('game1',function(){
+Route::get('game1', function () {
     return view("game.game");
-})->middleware('auth','can_play')->name('game2');
+})->middleware('auth', 'can_play')->name('game2');
 
-Route::get('game1/guide',function(){
+Route::get('game1/guide', function () {
     return view("game.gameGuide");
-})->middleware('auth','can_play')->name('game1.guide');
+})->middleware('auth', 'can_play')->name('game1.guide');
 
-Route::get('game2/guide',function(){
+Route::get('game2/guide', function () {
     return view("game2.gameGuide");
-})->middleware('auth','can_play')->name('game2.guide');
+})->middleware('auth', 'can_play')->name('game2.guide');
 
-Route::get('game2',function(){
+Route::get('game2', function () {
     return view("game2.game");
-})->middleware('auth','can_play')->name('game2');
+})->middleware('auth', 'can_play')->name('game2');
 
-Route::get('result',function (){
-   return view("game.result");
-})->middleware('auth','can_play')->name('result');
+Route::get('result', function () {
+    return view("game.result");
+})->middleware('auth', 'can_play')->name('result');
 
-Route::get("end",function (){
+Route::get("end", function () {
     return view("end_game.end");
-})->middleware('auth','can_play')->name('end');
+})->middleware('auth', 'can_play')->name('end');
 
 
 
 
-Route::get('choose_level',function(){
-   return view('choose_level');
+Route::get('choose_level', function () {
+    return view('choose_level');
 })->middleware('auth');
 
 
@@ -72,7 +72,7 @@ Auth::routes();
 
 // ##################  crud users ########################
 
-Route::middleware('auth','admin')->prefix('users')->group(function () {
+Route::middleware('auth', 'admin')->prefix('users')->group(function () {
     Route::get('', 'UserController@index')->name('users');
     Route::get('create', "UserController@create")->name('users.create');
     Route::post('store', 'UserController@store')->name('users.store');
@@ -83,10 +83,10 @@ Route::middleware('auth','admin')->prefix('users')->group(function () {
 
 // #################### end crud user #######################
 
-Route::get('users/{id}/answers', 'AnswerController@show')->middleware('auth','admin')->name('users.answers.show');
-Route::get('users/{id}/answers_question', 'QuestionController@show')->middleware('auth','admin')->name('users.answers_question');
+Route::get('users/{id}/answers', 'AnswerController@show')->middleware('auth', 'admin')->name('users.answers.show');
+Route::get('users/{id}/answers_question', 'QuestionController@show')->middleware('auth', 'admin')->name('users.answers_question');
 
-Route::middleware('auth','admin')->prefix('questions')->group(function () {
+Route::middleware('auth', 'admin')->prefix('questions')->group(function () {
     Route::get('', 'QuestionController@index')->name('questions');
     Route::post('', 'QuestionController@store')->name('questions.store');
     Route::delete('{id}', 'QuestionController@destroy')->name('questions.destroy');
@@ -95,12 +95,12 @@ Route::middleware('auth','admin')->prefix('questions')->group(function () {
 
 
 
-Route::middleware('auth','admin')->prefix('categories')->group(function () {
+Route::middleware('auth', 'admin')->prefix('categories')->group(function () {
     Route::post('', 'CategoryController@store')->name('categories.store');
     Route::delete('{id}', 'CategoryController@destroy')->name('categories.destroy');
 });
 
-Route::middleware('auth','admin')->prefix('category_answers')->group(function () {
+Route::middleware('auth', 'admin')->prefix('category_answers')->group(function () {
     Route::post('', 'CategoryAnswerController@store')->name('category_answers');
     Route::delete('{id}', 'CategoryAnswerController@destroy')->name('category_answers.destroy');
 });
@@ -114,7 +114,7 @@ Route::post('answers/store_rank', 'AnswerController@store_rank')->middleware('au
 
 // ######################### user answer questions ################################################
 
-Route::get('answer-questions','UserAnswerQuestionController@questions')->middleware('auth','can_answer');
-Route::post('answer-questions','UserAnswerQuestionController@answerQuestion')->middleware('auth','can_answer')->name('answer-questions');
+Route::get('answer-questions', 'UserAnswerQuestionController@questions')->middleware('auth', 'can_answer');
+Route::post('answer-questions', 'UserAnswerQuestionController@answerQuestion')->middleware('auth', 'can_answer')->name('answer-questions');
 
 // ######################### end user answer questions #############################################
