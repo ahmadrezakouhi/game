@@ -43,4 +43,25 @@
 
 
 
+    <div class="container" id="magnet-native-ad">
+    </div>
+
+
+
+    <script>
+        magnet_content_list = [
+            {
+                "adUnitId": "bcf08870786908d9a166bc8125720811",
+                "elementId": "magnet-native-ad"
+            }
+        ];
+        var magnetScript = document.createElement('script');
+         magnetScript.type = 'text/javascript';
+         magnetScript.async = true;
+          magnetScript.src =(location.protocol == 'http:'?'http':'https').concat('://static.magnetadservices.com/shared/mg.js');
+           document.body.appendChild(magnetScript);
+        </script>
+
+
+
 @endsection
