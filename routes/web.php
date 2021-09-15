@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/selectLetter', function () {
 
     return view('game.selectLetter');
-})->name('select_letter')->middleware('auth', 'can_play');
+})->name('select_letter')->middleware('auth');
 
 Route::get('connectUsers', function () {
     return  view('game.connectUsers');
