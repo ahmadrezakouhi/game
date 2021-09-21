@@ -7,6 +7,7 @@ cursor: pointer">
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <span class="dropdown-item-text persian text-right text-success">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item persian text-right" href="{{route('settings')}}">تنظیمات</a>
             <a class="dropdown-item persian text-right" href="{{route('logout')}}">خروج</a>
 
         </div>
