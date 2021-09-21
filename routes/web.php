@@ -11,6 +11,7 @@
 |
 */
 
+use App\Setting;
 use App\User;
 
 Route::get('/', function () {
@@ -39,8 +40,9 @@ Route::get('game2/guide', function () {
 })->middleware('auth', 'can_play')->name('game2.guide');
 
 Route::get('game2', function () {
-    return view("game2.game");
-})->middleware('auth', 'can_play')->name('game2');
+    $setting = Setting::first();
+    return view("game2.game",compact('setting'));
+})->middleware('auth','can_play')->name('game2');
 
 Route::get('result', function () {
     return view("game.result");
