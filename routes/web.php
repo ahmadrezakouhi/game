@@ -118,3 +118,14 @@ Route::get('answer-questions', 'UserAnswerQuestionController@questions')->middle
 Route::post('answer-questions', 'UserAnswerQuestionController@answerQuestion')->middleware('auth', 'can_answer')->name('answer-questions');
 
 // ######################### end user answer questions #############################################
+
+
+// ########################### settings section ####################################################
+
+
+Route::get('settings','SettingController@edit');
+
+// ########################### end setting section ##############################################
+
+
+
