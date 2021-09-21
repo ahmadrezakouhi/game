@@ -123,7 +123,8 @@ Route::post('answer-questions', 'UserAnswerQuestionController@answerQuestion')->
 // ########################### settings section ####################################################
 
 
-Route::get('settings','SettingController@edit');
+Route::get('settings','SettingController@edit')->middleware('auth','admin');
+Route::post('settings','SettingController@update')->middleware('auth','admin')->name('settings.update');
 
 // ########################### end setting section ##############################################
 
