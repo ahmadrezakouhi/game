@@ -8,7 +8,7 @@
 
 
                 <div class="card shadow-sm">
-                    <a href="{{ route('answer-questions') }}" style="text-decoration: none">
+                    <a href="https://forms.gle/i9aEJTqHEc56EFjF8" style="text-decoration: none">
                         <div class="card-body w3-hover-shadow py-5 ">
                             <h2 class="persian text-center text-secondary">پاسخ به پرسش ها</h2>
 
