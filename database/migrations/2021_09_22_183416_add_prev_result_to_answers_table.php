@@ -15,6 +15,7 @@ class AddPrevResultToAnswersTable extends Migration
     {
         Schema::table('answers', function (Blueprint $table) {
             $table->string('prev_result')->after('result');
+            $table->integer('prev_time')->after('time');
         });
     }
 
@@ -26,7 +27,8 @@ class AddPrevResultToAnswersTable extends Migration
     public function down()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->dropColumn('prevResult');
+            $table->dropColumn('prev_result');
+            $table->dropColumn('prev_time');
         });
     }
 }
