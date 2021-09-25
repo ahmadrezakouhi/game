@@ -25,9 +25,13 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('can_play')->nullable();
             $table->tinyInteger('can_answer')->nullable();
             $table->tinyInteger('time')->nullable();
-            $table->text('letter')->nullable();
             $table->tinyInteger('enter_time')->nullable();
             $table->tinyInteger('condition')->nullable();
+            $table->text('letter')->nullable();
+            $table->integer('letter_time')->nullable();
+            $table->time('enter')->nullable();
+            $table->time('exit')->nullable();
+            $table->string('resolution')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
