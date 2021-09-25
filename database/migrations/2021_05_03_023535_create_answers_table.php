@@ -17,8 +17,10 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('prev_result');
+            $table->integer('prev_time');
             $table->string('result');
-            $table->string('time');
+            $table->integer('time');
             $table->tinyInteger('category');
             $table->timestamps();
         });
