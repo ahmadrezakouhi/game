@@ -17,14 +17,16 @@ class CreateRanksTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('first_person');
-            $table->integer('first_person_time');
-            $table->string('prev_first_person');
-            $table->integer('prev_first_person_time');
-            $table->string('last_person');
-            $table->integer('last_person_time');
-            $table->string('prev_last_person');
-            $table->integer('prev_last_person_time');
+            $table->string('first_person')->nullable();
+            $table->integer('first_person_time')->nullable();
+            $table->string('new_first_person')->nullable();
+            $table->integer('new_first_person_time')->nullable();
+            $table->string('last_person')->nullable();
+            $table->integer('last_person_time')->nullable();
+            $table->string('new_last_person')->nullable();
+            $table->integer('new_last_person_time')->nullable();
+            $table->string('first_person_correct')->nullable();
+            $table->string('last_person_correct')->nullable();
             $table->timestamps();
         });
     }
