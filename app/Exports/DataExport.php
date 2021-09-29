@@ -31,8 +31,8 @@ class DataExport implements FromCollection, WithHeadings
             $a[$i][] = $user->letter_time;
 
             foreach ($user->answers as $answer) {
-                $a[$i][] = $answer->result;
                 $a[$i][] = $answer->time;
+                $a[$i][] = $answer->result;
             }
             if (count($user->answers) < 8) {
 
@@ -62,15 +62,15 @@ class DataExport implements FromCollection, WithHeadings
                 }
             }
             $persons = ["H", "M", "O", "G"];
-            if($user->letter){
+            if ($user->letter) {
                 if (($key = array_search($user->letter, $persons)) !== false) {
                     array_splice($persons, $key, 1);
                 }
                 for ($j = 0; $j < 3; $j++) {
                     $a[$i][] = $persons[$j];
                 }
-            }else {
-                for ($j=0; $j < 3; $j++) {
+            } else {
+                for ($j = 0; $j < 3; $j++) {
                     $a[$i][] = NULL;
                 }
             }
@@ -100,17 +100,17 @@ class DataExport implements FromCollection, WithHeadings
 
 
             foreach ($user->money as $m) {
-                $a[$i][]=$m->verbal_time;
-                $a[$i][]=$m->new_verbal_time;
-                $a[$i][]=$m->verbal;
-                $a[$i][]=$m->new_verbal;
-                $a[$i][]=$m->practical_time;
-                $a[$i][]=$m->new_practical_time;
-                $a[$i][]=$m->practical;
-                $a[$i][]=$m->new_practical;
+                $a[$i][] = $m->verbal_time;
+                $a[$i][] = $m->new_verbal_time;
+                $a[$i][] = $m->verbal;
+                $a[$i][] = $m->new_verbal;
+                $a[$i][] = $m->practical_time;
+                $a[$i][] = $m->new_practical_time;
+                $a[$i][] = $m->practical;
+                $a[$i][] = $m->new_practical;
             }
 
-            if(count($user->money) < 10){
+            if (count($user->money) < 10) {
                 for ($j = 1; $j <= (10 - count($user->money)) * 8; $j++) {
                     $a[$i][] = NULL;
                 }
