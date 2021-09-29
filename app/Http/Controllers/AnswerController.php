@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Rank;
 use App\Answer;
+use Carbon\Carbon;
+
 class AnswerController extends Controller
 {
 
@@ -23,7 +25,10 @@ class AnswerController extends Controller
     public function store_letter(Request $request){
         $user = auth()->user();
         $user->update([
-           "letter"=>$request->get('letter')
+           "letter"=>$request->get('letter'),
+           "letter_time"=>$request->get('letter_time'),
+          // "resolution"=>$request->get('resolution'),
+
         ]);
        return response()->json();
 
@@ -36,8 +41,7 @@ class AnswerController extends Controller
             'result'=>$request->get('result')
             ,
             'time'=>$request->get('time')
-            ,
-            'category'=>$request->get('category')
+           
         ]);
         return response()->json();
     }
