@@ -35,29 +35,18 @@ class AnswerController extends Controller
     }
 
     public function store_answer_question_game1(Request $request){
-        Answer::create([
-            'user_id'=>auth()->user()->id
-            ,
-            'result'=>$request->get('result')
-            ,
-            'time'=>$request->get('time')
-           
-        ]);
+        $input= $request->all();
+        $input['user_id']=auth()->user()->id;
+        Answer::create($input);
         return response()->json();
     }
 
     public function store_rank(Request $request){
-        Rank::create([
-            'user_id'=>auth()->user()->id
-            ,
-            'first_person'=> $request->get('first_person')
-            ,
-            'last_person'=>$request->get('last_person')
-            ,
-            'time'=>$request->get('time')
-        ]);
+       $input = $request->all();
+       $input['user_id']= auth()->user()->id;
+       Rank::create($input);
 
-        return response()->json();
+        return response()->json($input);
     }
 
 
