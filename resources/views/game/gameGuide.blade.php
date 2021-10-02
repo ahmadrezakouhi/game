@@ -16,7 +16,7 @@
 
 
             <span class="mx-auto"><div class="w3-row" style="">
-                <div class="w3-col l1 ">
+                <div class="w3-col l1  ">
                     <div class="  w3-right-align w3-xlarge" style="margin-top:0px; font-weight: bold;position: relative;top:-1px" id="min">0</div>
                 </div>
                 <div class="w3-col l10">

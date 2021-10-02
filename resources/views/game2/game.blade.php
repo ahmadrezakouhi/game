@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','بازی دوم')
+@section('title', 'بازی دوم')
 @section('content')
 
 
@@ -7,94 +7,91 @@
 
 
     <div id="result" class="">
-        <div class="w3-row w3-margin-top ">
+        <div class=" w3-row w3-margin-top ">
 
-            <div class="w3-col  l9 ">
-                <div class="w3-row">
-                    <div class="w3-col l6 w3-center w3-right">
-                        <div id="title" class=" persian w3-xlarge bold "
-                             style=""></div>
-                    </div>
-                    <div class="w3-col l6">
+                <div class=" w3-col  l9 ">
+        <div class="w3-row">
+            <div class="w3-col l6 w3-center w3-right">
+                <div id="title" class=" persian w3-xlarge bold " style=""></div>
+            </div>
+            <div class="w3-col l6">
 
-                    </div>
+            </div>
+        </div>
+        <div class="w3-row-padding w3-margin-top">
+            <div class="w3-col l6 ">
+
+
+                @include('layouts.onlineUser')
+            </div>
+
+
+            <div class="w3-col l6 mx-auto w3-center w3-content " style="">
+
+                <div id="label" class=" px-5 w3-text-right persian w3-large w3-margin-top" dir="rtl"
+                    style=" line-height: 35px;">
+                    مبلغ
+                    اهدایی
+
+
                 </div>
-                <div class="w3-row-padding w3-margin-top">
-                    <div class="w3-col l6 ">
+                <form action="" style="" class="mt-2  px-5">
+                    <div class=" w3-row px-5">
 
+                        <div class="w3-col l6 w3-right">
+                            <div class="w3-row">
+                                <div class="w3-col l3 w3-right w3-xlarge" style="position: relative;top:10px">
+                                    000
+                                </div>
+                                <div class="w3-col l4  w3-right">
+                                    <input type="number" min="0" max="50" class="w3-input w3-border w3-round w3-xlarge"
+                                        required>
 
-                        @include('layouts.onlineUser')
-                    </div>
+                                </div>
+                                <div class="w3-col l5 persian w3-right-align font-weight-bold w3-large"
+                                    style="position: relative;right:5px;top:10px">
+                                    تومان
+                                </div>
 
-
-                    <div class="w3-col l6 mx-auto w3-center w3-content " style="">
-
-                        <div id="label" class=" px-5 w3-text-right persian w3-large w3-margin-top" dir="rtl"
-                             style=" line-height: 35px;">
-                            مبلغ
-                            اهدایی
-
-
+                            </div>
                         </div>
-                        <form action="" style="" class="mt-2  px-5">
-                            <div class=" w3-row px-5">
 
-                                <div class="w3-col l6 w3-right">
-                                    <div class="w3-row">
-                                        <div class="w3-col l3 w3-right w3-xlarge" style="position: relative;top:10px">
-                                            000
-                                        </div>
-                                        <div class="w3-col l4  w3-right">
-                                            <input type="number" min="0" max="50" class="w3-input w3-border w3-round w3-xlarge"
-                                                    required
-                                            >
-
-                                        </div>
-                                        <div class="w3-col l5 persian w3-right-align font-weight-bold w3-large"
-                                             style="position: relative;right:5px;top:10px">
-                                            تومان
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="w3-col  w3-right l3">
-                                    <button type="submit"
-                                            class="w3-button w3-right persian w3-round w3-light-gray w3-border "
-                                            style="position: relative;top:5px">ثبت
-                                    </button>
-                                </div>
-
-                            </div>
-
-
-                        </form>
-
-                        <div class="w3-padding-large" style="" id="showRandom">
-
-                            <div class="persian w3-justify w3-large " dir="rtl">
-                                منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
-                                از اعضاء را در دست قبل مشاهده کنید
-                            </div>
-                            <button class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint">
-                                موافقم
+                        <div class="w3-col  w3-right l3">
+                            <button type="submit" class="w3-button w3-right persian w3-round w3-light-gray w3-border "
+                                style="position: relative;top:5px">ثبت
                             </button>
                         </div>
 
-
                     </div>
+
+
+                </form>
+
+                <div class="w3-padding-large" style="" id="showRandom">
+
+                    <div class="persian w3-justify w3-large " dir="rtl">
+                        منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
+                        از اعضاء را در دست قبل مشاهده کنید
+                    </div>
+                    <button class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint">
+                        موافقم
+                    </button>
                 </div>
-            </div>
-            <div class="w3-col l3">
 
 
-                <h6 id="title" class="w3-right-align w3-margin-right persian">رتبه بندی نهایی</h6>
-                @include("layouts.orderList")
             </div>
         </div>
+    </div>
+    <div class="w3-col l3">
 
 
-        @include('layouts.progress_bar')
+        <h6 id="title" class="w3-right-align w3-margin-right persian">رتبه بندی نهایی</h6>
+        @include("layouts.orderList")
+    </div>
+    </div>
+
+
+    @include('layouts.progress_bar')
     </div>
 
     <div id="second_counter" class="w3-content w3-center w3-jumbo " style="margin-top: 300px">3</div>
@@ -103,8 +100,7 @@
 
 
     <script>
-        
-        var gameTimer=10; //40 s
+        var gameTimer = 10; //40 s
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -112,9 +108,9 @@
         var category = 2;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
-        var selectedCondition = {{Auth()->user()->condition}} ;
+        var selectedCondition = {{ Auth()->user()->condition }};
         var conditions = [
-           [  
+            [
                 [1, 50],
                 [8, 0],
                 [5, 25],
@@ -123,11 +119,11 @@
                 [2, 10],
                 [7, 45],
                 [6, 35],
-                [3, 50] 
+                [3, 50]
             ],
 
 
-            [  
+            [
                 [8, 50],
                 [1, 0],
                 [5, 25],
@@ -136,10 +132,10 @@
                 [2, 10],
                 [7, 45],
                 [6, 35],
-                [3, 50] 
+                [3, 50]
             ],
 
-            [  
+            [
                 [8, 0],
                 [1, 50],
                 [5, 25],
@@ -148,11 +144,11 @@
                 [2, 10],
                 [7, 45],
                 [6, 35],
-                [3, 50] 
+                [3, 50]
             ],
 
 
-            [  
+            [
                 [1, 0],
                 [8, 50],
                 [5, 25],
@@ -161,11 +157,11 @@
                 [2, 10],
                 [7, 45],
                 [6, 35],
-                [3, 50] 
+                [3, 50]
             ],
 
         ];
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -173,7 +169,11 @@
             });
 
 
-            var option = {content: "50000", placement: "left", html: true};
+            var option = {
+                content: "50000",
+                placement: "left",
+                html: true
+            };
 
             $("#pp4").removeClass("w3-hide ");
             var width = 100;
@@ -189,23 +189,19 @@
 
 
             setPersons();
-            $('form').submit(function (event) {
+            $('form').submit(function(event) {
                 event.preventDefault();
                 $.ajax({
-                    url: "answers/store_answer_question_game1"
-                    ,
-                    type: "POST"
-                    ,
+                    url: "answers/store_answer_question_game1",
+                    type: "POST",
                     data: {
-                        "result": $('input').val()
-                        ,
-                        "time": parseInt((100 - timer) / (100 / 15))
-                        ,
+                        "result": $('input').val(),
+                        "time": parseInt((100 - timer) / (100 / 15)),
                         "category": category
                     }
                 })
 
-                var value = ($('input').val()*1000);
+                var value = ($('input').val() * 1000);
                 option.content = value;
                 var remind = 50000 - value;
                 if (i % 2 != 0) {
@@ -233,19 +229,20 @@
             option.content = "nothing";
 
 
-            $("#randomPoint").click(function () {
+            $("#randomPoint").click(function() {
 
                 clearTimeout(session_id);
-                width=100;
-                $('#mybar').css('width','100%');
+                width = 100;
+                $('#mybar').css('width', '100%');
 
                 clearInterval(id);
                 clearPopOver();
                 $('#showRandom').addClass("w3-hide");
                 timeID = setInterval(randomPoint, 50);
-                setTimeout(function () {
+                setTimeout(function() {
                     var o = {
-                        content: "<span class='font-weight-bold w3-medium' >" + conditions[selectedCondition][countSession - 1][1] + ",000</span>",
+                        content: "<span class='font-weight-bold w3-medium' >" + conditions[
+                            selectedCondition][countSession - 1][1] + ",000</span>",
                         placement: "left",
                         html: true
                     };
@@ -263,9 +260,9 @@
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
                     move(gameTimer);
-                    setTimeout(function(){
+                    setTimeout(function() {
                         next();
-                    },(gameTimer*1000))
+                    }, (gameTimer * 1000))
                 }, 7000)
 
             });
@@ -291,7 +288,7 @@
 
                 $(id).popover("show");
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $(id).popover('dispose');
 
                 }, 1000)
@@ -341,14 +338,14 @@
                         $('#second_counter').removeClass("w3-hide");
                         $('#second_counter').text("3");
                         var second_counter = 2;
-                        var second_counter_id = setInterval(function(){
-                            if(second_counter==1){
+                        var second_counter_id = setInterval(function() {
+                            if (second_counter == 1) {
                                 clearInterval(second_counter_id);
                             }
                             $('#second_counter').text(second_counter);
                             second_counter--;
-                        },1000);
-                        setTimeout(function(){
+                        }, 1000);
+                        setTimeout(function() {
                             $('#second_counter').addClass("w3-hide");
                             $('#result').removeClass("w3-hide");
                             clearInterval(id);
@@ -356,14 +353,16 @@
                             width = 100;
 
                             move(gameTimer);
-                            $("#label").text("مبلغی که به صورت رندوم به دیگران  نمایش داده میشود را در زیر بنویسید (مبلغ اعلامی) ");
+                            $("#label").text(
+                                "مبلغی که به صورت رندوم به دیگران  نمایش داده میشود را در زیر بنویسید (مبلغ اعلامی) "
+                                );
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
                             category = 2;
-                          session_id= setTimeout(function(){
+                            session_id = setTimeout(function() {
                                 next();
-                            },(gameTimer*1000));
-                        },3000)
+                            }, (gameTimer * 1000));
+                        }, 3000)
 
 
 
@@ -371,7 +370,9 @@
                     } else {
                         width = 100;
                         move(gameTimer);
-                        $("#label").html("مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)");
+                        $("#label").html(
+                            "مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)"
+                            );
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
@@ -380,12 +381,12 @@
 
 
                         countSession++;
-                      session_id=  setTimeout(function(){
+                        session_id = setTimeout(function() {
                             next();
-                        },(gameTimer*1000));
+                        }, (gameTimer * 1000));
                     }
                 } else {
-                   window.location.replace('/end');
+                    window.location.replace('/end');
                 }
 
 
@@ -394,7 +395,8 @@
             }
 
             function selectOfPersonMoney() {
-                option.content = "<span class='w3-red'>" + conditions[selectedCondition][countSession][1] + "</span>";
+                option.content = "<span class='w3-red'>" + conditions[selectedCondition][countSession][1] +
+                    "</span>";
                 $("#pn1").popover({
                     content: content
                 });
@@ -431,22 +433,25 @@
                     top: "33px"
 
 
-                }, 1000, function () {
+                }, 1000, function() {
 
                 })
                 $('#coin').animate({
                     opacity: "0"
 
 
-                }, 200, function () {
-                    $('#coin').css({opacity: "1", top: "150px"})
+                }, 200, function() {
+                    $('#coin').css({
+                        opacity: "1",
+                        top: "150px"
+                    })
                     $('#coin').addClass("w3-hide");
                 })
             }
 
 
 
-            function clearPopOver(){
+            function clearPopOver() {
                 for (var n = 1; n <= 8; n++) {
                     $(('#pn' + n)).popover('dispose');
                 }
@@ -455,17 +460,14 @@
 
 
 
-           $('input').keypress(function (event) {
-            if (event.which < 48 || event.which > 57)
-            {
-                 event.preventDefault();
-            }
-           })
+            $('input').keypress(function(event) {
+                if (event.which < 48 || event.which > 57) {
+                    event.preventDefault();
+                }
+            })
 
 
         })
     </script>
 
 @endsection
-
-
