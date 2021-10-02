@@ -24,8 +24,8 @@
 
                                 </div>
                                 <div class="w3-col l6">
-                                    <input type="text" class="w3-input w3-border w3-round" maxlength="1" id="first_person"
-                                        style="text-transform: uppercase">
+                                    <input type="text" class="form-control" maxlength="1" id="first_person"
+                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
                                 </div>
                             </div>
                             <div class="w3-row-padding w3-clear w3-margin-top">
@@ -36,8 +36,8 @@
 
                                 </div>
                                 <div class="w3-col l6">
-                                    <input type="text" class="w3-input w3-border w3-round " maxlength="1" id="last_person"
-                                        style="text-transform: uppercase">
+                                    <input type="text" class="form-control " maxlength="1" id="last_person"
+                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
                                 </div>
                             </div>
 
@@ -69,8 +69,8 @@
                     <div class="  w3-right-align w3-xlarge"
                         style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
                 </div>
-                <div class="w3-col l10">
-                    <input type="range" class="slider" id="myRange">
+                <div class="w3-col l10 ">
+                    <input type="range" class="slider " id="myRange" >
                 </div>
                 <div class="w3-col l1 ">
                     <div class=" w3-left-align w3-xlarge"
@@ -166,13 +166,37 @@
         var endTimeQuestion;
         var canSend = true;
         var changedRange = false;
+
+        var startTimeRank;
+        var first_person;
+        var first_person_time;
+        var new_first_person;
+        var new_first_person_time;
+        var last_person;
+        var last_person_time;
+        var new_last_person;
+        var new_last_person_time;
+
+        function initialRankVariables() {
+            first_person = "";
+            first_person_time = "";
+            new_first_person = "";
+            new_first_person_time = "";
+            last_person = "";
+            last_person_time = "";
+            new_last_person = "";
+            new_last_person_time = "";
+        }
+
+        initialRankVariables();
+
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            var first_person = last_person = prev_first_person = prev_last_person = "";
+
 
             var rec = true;
             var user = Cookies.get('user_letter');
@@ -214,9 +238,9 @@
 
                     next();
                     rec = true;
-                    first_person = prev_first_person = "";
-                    canSend=true;
+                    canSend = true;
                     changedRange = false;
+                    sendRankData();
 
                 }
             }
@@ -224,6 +248,7 @@
 
 
             function hideSectionOne() {
+
                 $('#mybar').css('width', "100%");
                 width = 100;
                 clearInterval(id);
@@ -237,6 +262,7 @@
                 $('#valueOfMyRange').empty();
                 setPersonOrder();
                 animatePersons();
+
             }
 
 
@@ -268,7 +294,7 @@
                     })
 
                     canSend = false;
-                $('#record').addClass('w3-hide')
+                    $('#record').addClass('w3-hide')
 
 
                 }
@@ -335,6 +361,14 @@
                                                                                     $('form')
                                                                                         .addClass(
                                                                                             "w3-animate-opacity "
+                                                                                        );
+                                                                                    startTimeRank
+                                                                                        =
+                                                                                        new Date()
+                                                                                        .getTime();
+                                                                                    console
+                                                                                        .log(
+                                                                                            startTimeRank
                                                                                         )
                                                                                 }
                                                                             )
@@ -435,25 +469,64 @@
             $('#first_person').keyup(function() {
                 if ($(this).val()) {
 
-                    prev_first_person = first_person;
-                    first_person = $(this).val();
+                    if (first_person) {
+                        if (new_first_person) {
+                            first_person = new_first_person;
+                        }
+                        new_first_person = $(this).val();
+                    } else {
+                        first_person = $(this).val();
+                    }
+
+                    if (first_person_time) {
+                        if (new_first_person_time) {
+                            first_person_time = new_first_person_time
+                        } else {
+                            new_first_person_time = new Date().getTime();
+                        }
+
+                    } else {
+                        first_person_time = new Date().getTime();
+                    }
 
 
                 }
-                console.log('first_preson : ' + first_person);
-                console.log('prev_first_preson : ' + prev_first_person);
+                console.log('first_preson : ' + first_person + " time : " + (first_person_time -
+                    startTimeRank));
+                console.log('new_first_preson : ' + new_first_person + " time : " + (new_first_person_time -
+                    startTimeRank));
             })
 
 
             $('#last_person').keyup(function() {
                 if ($(this).val()) {
 
-                    prev_last_person = last_person;
-                    last_person = $(this).val();
+                    if (last_person) {
+                        if (new_last_person) {
+                            last_person = new_last_person;
+                        }
+                        new_last_person = $(this).val();
+                    } else {
+                        last_person = $(this).val();
+                    }
+
+                    if (last_person_time) {
+                        if (new_last_person_time) {
+                            last_person_time = new_last_person_time
+                        } else {
+                            new_last_person_time = new Date().getTime();
+                        }
+
+                    } else {
+                        last_person_time = new Date().getTime();
+                    }
+
 
                 }
-                console.log('last_person : ' + last_person);
-                console.log('prev_last_person : ' + prev_last_person);
+                console.log('last_person : ' + last_person + " time : " + (last_person_time -
+                    startTimeRank));
+                console.log('new_last_person : ' + new_last_person + " time : " + (new_last_person_time -
+                    startTimeRank));
             })
 
 
@@ -463,27 +536,74 @@
 
         $('form').submit(function(e) {
             e.preventDefault();
+            sendRankData();
+
+        })
+
+
+        function sendRankData() {
+          if ($('#first_person').val() && $('#last_person').val()) {
+
+            if (first_person_time) {
+                first_person_time -= startTimeRank;
+            } else {
+                first_person_time = "";
+            }
+
+            if (new_first_person_time) {
+                new_first_person_time -= startTimeRank;
+            } else {
+                new_first_person_time = "";
+            }
+
+            if (last_person_time) {
+                last_person_time -= startTimeRank;
+            } else {
+                last_person_time = "";
+            }
+
+            if (new_last_person_time) {
+                new_last_person_time -= startTimeRank;
+            } else {
+                new_last_person_time = "";
+            }
+
             $.ajax({
-                url: "answers/store_rank",
+                url: "{{ route('rank') }}",
                 type: "POST",
                 data: {
-                    "first_person": $("#first_person").val(),
-                    "last_person": $('#last_person').val(),
-                    'time': parseInt((100 - timer) / (100 / 15))
+                    "first_person": first_person.toUpperCase(),
+                    "first_person_time": first_person_time,
+                    "new_first_person": new_first_person.toUpperCase(),
+                    "new_first_person_time": new_first_person_time,
+                    "first_person_correct": $('#p1').text(),
+                    "last_person": last_person.toUpperCase(),
+                    "last_person_time": last_person_time,
+                    "new_last_person": new_last_person.toUpperCase(),
+                    "new_last_person_time": new_last_person_time,
+                    "last_person_correct": $('#p8').text()
+
+                },
+                success: function(res) {
+                    console.log(res)
                 }
             })
             $("#first_person").val("");
             $("#last_person").val("");
             $('form').addClass("w3-hide");
+            initialRankVariables();
 
-        })
+          }else {
+            window.location.replace("{{ route('logout') }}");
+          }
+        }
 
 
         $(document).on('input', '#myRange', function() {
             $('#valueOfMyRange').text($(this).val());
-           if (canSend) {
-            $('#record').removeClass("w3-hide");
-           }
+            if (canSend) {
+                $('#record').removeClass("w3-hide");
+            }
             endTimeQuestion = new Date().getTime();
             changedRange = true;
 
