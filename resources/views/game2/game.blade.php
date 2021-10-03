@@ -100,7 +100,7 @@
 
 
     <script>
-        var gameTimer = 10; //40 s
+        var gameTimer = 15; //40 s
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -161,6 +161,7 @@
             ],
 
         ];
+        var randomSectionId;
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -231,6 +232,13 @@
 
             $("#randomPoint").click(function() {
 
+            // randomSection()
+
+            });
+
+
+            function randomSection() {
+                clearTimeout(randomSectionId);
                 clearTimeout(session_id);
                 width = 100;
                 $('#mybar').css('width', '100%');
@@ -264,8 +272,10 @@
                         next();
                     }, (gameTimer * 1000))
                 }, 7000)
+            }
 
-            });
+
+
             var t = 0;
 
             function randomPoint() {
@@ -382,7 +392,14 @@
 
                         countSession++;
                         session_id = setTimeout(function() {
+                            if(i>1){
+                               randomSectionId= setTimeout(function () {
+                                    randomSection();
+                                },18000)
+                            }
+
                             next();
+
                         }, (gameTimer * 1000));
                     }
                 } else {
