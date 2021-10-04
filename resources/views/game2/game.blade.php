@@ -9,7 +9,7 @@
     <div id="result" class="">
         <div class=" w3-row w3-margin-top ">
 
-                <div class=" w3-col  l9 ">
+                        <div class="   w3-col  l9 ">
         <div class="w3-row">
             <div class="w3-col l6 w3-center w3-right">
                 <div id="title" class=" persian w3-xlarge bold " style=""></div>
@@ -162,6 +162,16 @@
 
         ];
         var randomSectionId;
+        var varbal;
+        var varbal_time;
+        var new_varbal;
+        var new_varbal_time;
+        var practical;
+        var practical_time;
+        var new_practical;
+        var new_practical_time;
+        var startTimeMoney;
+
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -232,7 +242,7 @@
 
             $("#randomPoint").click(function() {
 
-            // randomSection()
+                // randomSection()
 
             });
 
@@ -365,11 +375,12 @@
                             move(gameTimer);
                             $("#label").text(
                                 "مبلغی که به صورت رندوم به دیگران  نمایش داده میشود را در زیر بنویسید (مبلغ اعلامی) "
-                                );
+                            );
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
                             category = 2;
                             session_id = setTimeout(function() {
+                                startTimeMoney = new Date().getTime();
                                 next();
                             }, (gameTimer * 1000));
                         }, 3000)
@@ -382,7 +393,7 @@
                         move(gameTimer);
                         $("#label").html(
                             "مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)"
-                            );
+                        );
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
@@ -392,12 +403,12 @@
 
                         countSession++;
                         session_id = setTimeout(function() {
-                            if(i>1){
-                               randomSectionId= setTimeout(function () {
+                            if (i > 1) {
+                                randomSectionId = setTimeout(function() {
                                     randomSection();
-                                },18000)
+                                }, 18000)
                             }
-
+                            startTimeMoney = new Date().getTime();
                             next();
 
                         }, (gameTimer * 1000));
@@ -480,6 +491,56 @@
             $('input').keypress(function(event) {
                 if (event.which < 48 || event.which > 57) {
                     event.preventDefault();
+                }
+            })
+
+
+            function initialVariable() {
+
+                varbal = "";
+                varbal_time = "";
+                new_varbal = "";
+                new_varbal_time = "";
+                practical = "";
+                practical_time = "";
+                new_practical = "";
+                new_practical_time = "";
+            };
+
+
+            $('input').keyup(function() {
+                if (i % 2 != 0) {
+                    if ($(this).val()) {
+
+                        if (varbal) {
+                            if (new_varbal) {
+                                varbal = new_varbal;
+                            }
+                            new_varbal = $(this).val();
+                        } else {
+                            varbal = $(this).val();
+                        }
+
+                        if (varbal_time) {
+                            if (new_varbal_time) {
+                                varbal_time = new_varbal_time
+                            } else {
+                                new_varbal_time = new Date().getTime();
+                            }
+
+                        } else {
+                            varbal_time = new Date().getTime();
+                        }
+
+
+                    }
+                    console.log('varbal : ' + varbal + " time : " + (varbal_time -
+                        startTimeMoney));
+                    console.log('new_varbal : ' + new_varbal + " time : " + (
+                        new_varbal_time -
+                        startTimeMoney));
+                } else {
+
                 }
             })
 
