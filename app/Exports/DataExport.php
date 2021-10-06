@@ -98,23 +98,6 @@ class DataExport implements FromCollection, WithHeadings
                     break;
             }
 
-
-            foreach ($user->money as $m) {
-                $a[$i][] = $m->verbal_time;
-                $a[$i][] = $m->new_verbal_time;
-                $a[$i][] = $m->verbal;
-                $a[$i][] = $m->new_verbal;
-                $a[$i][] = $m->practical_time;
-                $a[$i][] = $m->new_practical_time;
-                $a[$i][] = $m->practical;
-                $a[$i][] = $m->new_practical;
-            }
-
-            if (count($user->money) < 10) {
-                for ($j = 1; $j <= (10 - count($user->money)) * 8; $j++) {
-                    $a[$i][] = NULL;
-                }
-            }
             $a[$i][] = "Q(best estimation rt)";
             $a[$i][] = "if changed Q BE(rt)";
             $a[$i][] = "Q(BE ans)";
@@ -124,6 +107,17 @@ class DataExport implements FromCollection, WithHeadings
             $a[$i][] = "rate k(rt)";
             $a[$i][] = "rate (competitor)";
             $a[$i][] = "rate c(rt)";
+            foreach ($user->money as $m) {
+                $a[$i][] = $m->result;
+                $a[$i][] = $m->time;
+            }
+
+            if (count($user->money) < 10) {
+                for ($j = 1; $j <= (10 - count($user->money)) * 8; $j++) {
+                    $a[$i][] = NULL;
+                }
+            }
+
 
             $i++;
         }
@@ -165,16 +159,16 @@ class DataExport implements FromCollection, WithHeadings
         $header[] = "Q if changed BR(ans)";
         $header[] = "Q(BR correct ans)";
         $header[] = "condition";
-        for ($i = 1; $i <= 10; $i++) {
-            $header[] = $i . "verbal(rt)";
-            $header[] = "If changed " . $i . "v(rt)";
-            $header[] = $i . "v($)";
-            $header[] = "If changed " . $i . "v($)";
-            $header[] = $i . "practical(rt)";
-            $header[] = "If changed " . $i . "p(rt)";
-            $header[] = $i . "p($)";
-            $header[] = "If changed " . $i . "p($)";
-        }
+        // for ($i = 1; $i <= 10; $i++) {
+        //     $header[] = $i . "verbal(rt)";
+        //     $header[] = "If changed " . $i . "v(rt)";
+        //     $header[] = $i . "v($)";
+        //     $header[] = "If changed " . $i . "v($)";
+        //     $header[] = $i . "practical(rt)";
+        //     $header[] = "If changed " . $i . "p(rt)";
+        //     $header[] = $i . "p($)";
+        //     $header[] = "If changed " . $i . "p($)";
+        // }
         $header[] = "Q(best estimation rt)";
         $header[] = "if changed Q BE(rt)";
         $header[] = "Q(BE ans)";
