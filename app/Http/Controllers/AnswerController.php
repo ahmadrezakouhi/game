@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Rank;
 use App\Answer;
+use App\Money;
+use Carbon\Carbon;
+
 class AnswerController extends Controller
 {
 
@@ -23,38 +26,36 @@ class AnswerController extends Controller
     public function store_letter(Request $request){
         $user = auth()->user();
         $user->update([
-           "letter"=>$request->get('letter')
+           "letter"=>$request->get('letter'),
+           "letter_time"=>$request->get('letter_time'),
+          // "resolution"=>$request->get('resolution'),
+
         ]);
        return response()->json();
 
     }
 
     public function store_answer_question_game1(Request $request){
-        Answer::create([
-            'user_id'=>auth()->user()->id
-            ,
-            'result'=>$request->get('result')
-            ,
-            'time'=>$request->get('time')
-            ,
-            'category'=>$request->get('category')
-        ]);
+        $input= $request->all();
+        $input['user_id']=auth()->user()->id;
+        Answer::create($input);
         return response()->json();
     }
 
     public function store_rank(Request $request){
-        Rank::create([
-            'user_id'=>auth()->user()->id
-            ,
-            'first_person'=> $request->get('first_person')
-            ,
-            'last_person'=>$request->get('last_person')
-            ,
-            'time'=>$request->get('time')
-        ]);
+       $input = $request->all();
+       $input['user_id']= auth()->user()->id;
+       Rank::create($input);
 
-        return response()->json();
+        return response()->json($input);
     }
 
+    public function money(Request $request)
+    {
+        $input = $request->all();
+        $input['user_id']=auth()->user()->id;
+        Money::create($input);
+        return response()->json();
+    }
 
 }

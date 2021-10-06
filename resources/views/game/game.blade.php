@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','بازی اول')
+@section('title', 'بازی اول')
 @section('content')
 
 
@@ -24,8 +24,8 @@
 
                                 </div>
                                 <div class="w3-col l6">
-                                    <input type="text" class="w3-input w3-border w3-round" maxlength="1"
-                                           id="first_person" style="text-transform: uppercase">
+                                    <input type="text" class="form-control" maxlength="1" id="first_person"
+                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
                                 </div>
                             </div>
                             <div class="w3-row-padding w3-clear w3-margin-top">
@@ -36,14 +36,14 @@
 
                                 </div>
                                 <div class="w3-col l6">
-                                    <input type="text" class="w3-input w3-border w3-round " maxlength="1"
-                                           id="last_person"
-                                           style="text-transform: uppercase">
+                                    <input type="text" class="form-control " maxlength="1" id="last_person"
+                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
                                 </div>
                             </div>
 
                             <div class="w3-padding">
-                                <button class="w3-button w3-round w3-light-gray w3-border w3-margin-top persian" >ثبت</button>
+                                <button
+                                    class="w3-button w3-round w3-light-gray w3-border w3-margin-top persian">ثبت</button>
                             </div>
 
 
@@ -66,24 +66,27 @@
 
             <div class="w3-row">
                 <div class="w3-col l1 ">
-                    <div class="  w3-right-align w3-xlarge" style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
+                    <div class="  w3-right-align w3-xlarge"
+                        style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
                 </div>
-                <div class="w3-col l10">
-                    <input type="range" class="slider" id="myRange">
+                <div class="w3-col l10 ">
+                    <input type="range" class="slider " id="myRange" >
                 </div>
                 <div class="w3-col l1 ">
-                    <div class=" w3-left-align w3-xlarge" style="margin-top:0px;font-weight: bold;position: relative;top:-10px" id="max">150</div>
+                    <div class=" w3-left-align w3-xlarge"
+                        style="margin-top:0px;font-weight: bold;position: relative;top:-10px" id="max">150</div>
                 </div>
 
             </div>
-<div class="font-weight-bold w3-xlarge" id="valueOfMyRange"></div>
+            <div class="font-weight-bold w3-xlarge" id="valueOfMyRange"></div>
 
         </div>
-        <button class="w3-button w3-border w3-round w3-light-gray persian w3-hide" id="record" style="margin-top: 80px">ثبت</button>
+        <button class="w3-button w3-border w3-round w3-light-gray persian w3-hide" id="record"
+            style="margin-top: 80px">ثبت</button>
 
     </div>
 
-<div id="second_counter" class="w3-content w3-center w3-jumbo w3-hide" style="margin-top: 300px">3</div>
+    <div id="second_counter" class="w3-content w3-center w3-jumbo w3-hide" style="margin-top: 300px">3</div>
 
 
 
@@ -92,61 +95,60 @@
 
     <script>
         var answers = [];
-        var questions = [
-            {
-                question: "تراکم جمعیت در تهران، در هر کیلومتر مربع، چند نفر است؟"
-                , answer: 890
-                , min: 0
-                , max: 1000
+        var questions = [{
+                question: "تراکم جمعیت در تهران، در هر کیلومتر مربع، چند نفر است؟",
+                answer: 890,
+                min: 0,
+                max: 1000
             },
             {
-                question: "ایران دارای چند کیلومتر مرز آبی با احتساب دریای خزر،خلیج فارس و دریای عمان  دارد؟"
-                , answer: 2700
-                , min: 2000
-                , max: 3000
+                question: "ایران دارای چند کیلومتر مرز آبی با احتساب دریای خزر،خلیج فارس و دریای عمان  دارد؟",
+                answer: 2700,
+                min: 2000,
+                max: 3000
             },
             {
                 question: "طول مرز میان دو کشور ایران و عراق چند کیلومتر است؟",
-                answer: 1458
-                , min: 1000
-                , max: 2000
+                answer: 1458,
+                min: 1000,
+                max: 2000
             },
             {
                 question: "ارتفاع کل بارندگی ها در 6 ماه دوم سال 1399 چند میلیمتر بوده است؟",
-                answer: 107
-                , min: 0
-                , max: 1000
+                answer: 107,
+                min: 0,
+                max: 1000
             },
             {
-                question: "در نیمه ی نخست سال 98 مجموعا چند فقره جرم در حوزه ی جرایم جنایی در تهران صورت گرفته؟"
-                , answer: 153
-                , min: 0
-                , max: 1000
+                question: "در نیمه ی نخست سال 98 مجموعا چند فقره جرم در حوزه ی جرایم جنایی در تهران صورت گرفته؟",
+                answer: 153,
+                min: 0,
+                max: 1000
             },
             {
                 question: "چند درصد از جنگل های هیرکانی در استان گیلان واقع شده است؟",
-                answer: 26
-                , min: 0
-                , max: 1000
+                answer: 26,
+                min: 0,
+                max: 1000
 
             },
             {
                 question: "به طور متوسط وزن ابرهای کومولوس چند هزار کیلوگرم است؟",
-                answer: 5000
-                , min: 4000
-                , max: 5000
+                answer: 5000,
+                min: 4000,
+                max: 5000
             },
             {
                 question: "عمیق ترین نقطه ی خلیج فارس چند متر است؟",
-                answer: 93
-                , min: 0
-                , max: 1000
+                answer: 93,
+                min: 0,
+                max: 1000
             }
         ]
         var id;
         var i = 0;
         var session = ['اول', 'دوم', 'سوم', 'چهارم', 'پنجم', 'ششم', 'هفتم', 'هشتم'];
-       // var session2=['یک','دو','سه','چهار','پنج','شش','هفت','هشت']
+        // var session2=['یک','دو','سه','چهار','پنج','شش','هفت','هشت']
         var table = [
             [1, 3, 1, 1, 1, 2, 1, 1],
             [2, 5, 2, 4, 3, 1, 4, 2],
@@ -159,7 +161,36 @@
         ];
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
-        $(document).ready(function () {
+
+        var startTimeQuestion;
+        var endTimeQuestion;
+        var canSend = true;
+        var changedRange = false;
+
+        var startTimeRank;
+        var first_person;
+        var first_person_time;
+        var new_first_person;
+        var new_first_person_time;
+        var last_person;
+        var last_person_time;
+        var new_last_person;
+        var new_last_person_time;
+
+        function initialRankVariables() {
+            first_person = "";
+            first_person_time = "";
+            new_first_person = "";
+            new_first_person_time = "";
+            last_person = "";
+            last_person_time = "";
+            new_last_person = "";
+            new_last_person_time = "";
+        }
+
+        initialRankVariables();
+
+        $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -172,47 +203,52 @@
             removeVarPerson();
             varPersons.push(user);
             var persons = varPersons.concat(constPersons);
-            console.log(varPersons);
-            console.log(user);
-
-
-              createQuestion();
 
 
 
-            var r= 0;
-           var idRepeat = setInterval(function () {
-               if(r>8) {
+            createQuestion();
 
-               // }else {
-                   clearInterval(idRepeat);
-               }
-               choose_section();
-               
-            },33000)
-            function choose_section(){
-               if(rec){
-                   $('#second_counter').addClass("w3-hide");
-                   record();
-                   rec=false;
-               }else{
 
-                   next();
-                   rec=true;
-               }
+            var r = 0;
+            var idRepeat = setInterval(function() {
+                if (r > 8) {
+
+                    // }else {
+                    clearInterval(idRepeat);
+                }
+                if (!changedRange) {
+                    window.location.replace("{{ route('logout') }}");
+                }
+                choose_section();
+
+            }, 33000)
+
+            function choose_section() {
+
+                if (rec) {
+                    $('#second_counter').addClass("w3-hide");
+                    record();
+                    rec = false;
+
+                    hideSectionOne();
+
+
+
+                } else {
+
+                    next();
+                    rec = true;
+                    canSend = true;
+                    changedRange = false;
+                    sendRankData();
+
+                }
             }
-            function next(){
-                createQuestion();
-                $('#record').addClass('w3-hide');
-            }
 
 
-            // $("#record").click(function () {
-            //  record();
-            // });
 
+            function hideSectionOne() {
 
-            function record(){
                 $('#mybar').css('width', "100%");
                 width = 100;
                 clearInterval(id);
@@ -222,25 +258,49 @@
                 $("#next").addClass("w3-hide");
                 $('#title').text("رتبه بندی سوال " + session[i - 1]);
                 $('#title').addClass("w3-animate-right");
-                console.log((100 - timer) / (100 / 15))
-                $.ajax({
-                    url:"answers/store_answer_question_game1"
-                    ,
-                    type:"POST"
-                    ,
-                    data:{
-                        "result":$("#myRange").val()
-                        ,
-                        "time":parseInt((100 - timer) / (100 / 15))
-                        ,
-                        "category":1
-                    }
-                })
+
                 $('#valueOfMyRange').empty();
                 setPersonOrder();
                 animatePersons();
 
-                
+            }
+
+
+            function next() {
+                createQuestion();
+                $('#record').addClass('w3-hide');
+            }
+
+
+            $("#record").click(function() {
+                record();
+            });
+
+
+            function record() {
+                if (canSend) {
+
+
+
+
+                    $.ajax({
+                        url: "{{ route('answer') }}",
+                        type: "POST",
+                        data: {
+                            "result": $("#myRange").val(),
+                            "time": endTimeQuestion - startTimeQuestion,
+
+                        }
+                    })
+
+                    canSend = false;
+                    $('#record').addClass('w3-hide')
+
+
+                }
+
+
+
             }
 
 
@@ -259,41 +319,59 @@
                 $('#p1').parent().animate(
                     animation,
                     time,
-                    function () {
+                    function() {
                         $('#p2').parent().animate(
                             animation,
                             time,
-                            function () {
+                            function() {
                                 $('#p3').parent().animate(
                                     animation,
                                     time,
-                                    function () {
+                                    function() {
                                         $('#p4').parent().animate(
                                             animation,
                                             time,
-                                            function () {
+                                            function() {
                                                 $('#p5').parent().animate(
                                                     animation,
                                                     time,
-                                                    function () {
+                                                    function() {
                                                         $('#p6').parent().animate(
                                                             animation,
                                                             time,
-                                                            function () {
+                                                            function() {
                                                                 $('#p7').parent().animate(
                                                                     animation,
                                                                     time,
-                                                                    function () {
-                                                                        $('#p8').parent().animate(
-                                                                            animation,
-                                                                            time,
+                                                                    function() {
+                                                                        $('#p8')
+                                                                            .parent()
+                                                                            .animate(
+                                                                                animation,
+                                                                                time,
 
-                                                                            function () {
-                                                                                move(20);
-                                                                                $('form').removeClass("w3-hide ");
-                                                                                $('form').addClass("w3-animate-opacity ")
-                                                                            }
-                                                                        )
+                                                                                function() {
+                                                                                    move(
+                                                                                        20
+                                                                                    );
+                                                                                    $('form')
+                                                                                        .removeClass(
+                                                                                            "w3-hide "
+                                                                                        );
+                                                                                    $('form')
+                                                                                        .addClass(
+                                                                                            "w3-animate-opacity "
+                                                                                        );
+                                                                                    startTimeRank
+                                                                                        =
+                                                                                        new Date()
+                                                                                        .getTime();
+                                                                                    console
+                                                                                        .log(
+                                                                                            startTimeRank
+                                                                                        )
+                                                                                }
+                                                                            )
                                                                     }
                                                                 )
                                                             }
@@ -312,8 +390,11 @@
             }
 
             function createQuestion() {
-                if(i==8){
-                    window.location.replace("{{route('result')}}")
+                setTimeout(function() {
+                    startTimeQuestion = new Date().getTime();
+                }, 3000)
+                if (i == 8) {
+                    window.location.replace("{{ route('result') }}")
                 }
 
                 $("#result").addClass("w3-hide");
@@ -321,14 +402,14 @@
                 $('#second_counter').removeClass("w3-hide");
                 $('#second_counter').text("3");
                 var second_counter = 2;
-                var second_counter_id = setInterval(function(){
-                    if(second_counter==1){
+                var second_counter_id = setInterval(function() {
+                    if (second_counter == 1) {
                         clearInterval(second_counter_id);
                     }
                     $('#second_counter').text(second_counter);
                     second_counter--;
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function() {
                     $('#second_counter').addClass("w3-hide");
                     $('#progressBar').removeClass('w3-hide');
                     clearInterval(id);
@@ -337,14 +418,14 @@
 
                     move(30);
 
-                    $('#titleOfQuestion').text(" سوال " + (i+1));
+                    $('#titleOfQuestion').text(" سوال " + (i + 1));
                     $("#question").text(questions[i].question);
                     $("#myRange").attr({
                         "max": questions[i].max,
                         "min": questions[i].min,
-                       
+
                     });
-                    $("#myRange").val((questions[i].min+500));
+                    $("#myRange").val((questions[i].min + 500));
 
 
                     $("#min").text(questions[i].min);
@@ -352,7 +433,7 @@
                     $("#question_section").removeClass("w3-hide");
                     $("form").addClass("w3-hide");
                     i++;
-                },3000)
+                }, 3000)
 
             }
 
@@ -362,10 +443,10 @@
                 for (var x = 0; x < 8; x++) {
                     var id = "#p" + (table[x][i - 1]);
                     $(id).text(persons[x]);
-                    var id2 ="#pp"+(table[x][i-1]);
+                    var id2 = "#pp" + (table[x][i - 1]);
                     $(id2).addClass("w3-hide");
 
-                    if(x==3){
+                    if (x == 3) {
                         $(id2).removeClass("w3-hide");
                     }
 
@@ -385,44 +466,148 @@
 
 
 
+            $('#first_person').keyup(function() {
+                if ($(this).val()) {
+
+                    if (first_person) {
+                        if (new_first_person) {
+                            first_person = new_first_person;
+                        }
+                        new_first_person = $(this).val();
+                    } else {
+                        first_person = $(this).val();
+                    }
+
+                    if (first_person_time) {
+                        if (new_first_person_time) {
+                            first_person_time = new_first_person_time
+                        } else {
+                            new_first_person_time = new Date().getTime();
+                        }
+
+                    } else {
+                        first_person_time = new Date().getTime();
+                    }
 
 
+                }
+                console.log('first_preson : ' + first_person + " time : " + (first_person_time -
+                    startTimeRank));
+                console.log('new_first_preson : ' + new_first_person + " time : " + (new_first_person_time -
+                    startTimeRank));
+            })
 
+
+            $('#last_person').keyup(function() {
+                if ($(this).val()) {
+
+                    if (last_person) {
+                        if (new_last_person) {
+                            last_person = new_last_person;
+                        }
+                        new_last_person = $(this).val();
+                    } else {
+                        last_person = $(this).val();
+                    }
+
+                    if (last_person_time) {
+                        if (new_last_person_time) {
+                            last_person_time = new_last_person_time
+                        } else {
+                            new_last_person_time = new Date().getTime();
+                        }
+
+                    } else {
+                        last_person_time = new Date().getTime();
+                    }
+
+
+                }
+                console.log('last_person : ' + last_person + " time : " + (last_person_time -
+                    startTimeRank));
+                console.log('new_last_person : ' + new_last_person + " time : " + (new_last_person_time -
+                    startTimeRank));
+            })
 
 
 
 
         })
 
-        $('form').submit(function(e){
+        $('form').submit(function(e) {
             e.preventDefault();
+            sendRankData();
+
+        })
+
+
+        function sendRankData() {
+          if ($('#first_person').val() && $('#last_person').val()) {
+
+            if (first_person_time) {
+                first_person_time -= startTimeRank;
+            } else {
+                first_person_time = "";
+            }
+
+            if (new_first_person_time) {
+                new_first_person_time -= startTimeRank;
+            } else {
+                new_first_person_time = "";
+            }
+
+            if (last_person_time) {
+                last_person_time -= startTimeRank;
+            } else {
+                last_person_time = "";
+            }
+
+            if (new_last_person_time) {
+                new_last_person_time -= startTimeRank;
+            } else {
+                new_last_person_time = "";
+            }
+
             $.ajax({
-                url:"answers/store_rank"
-                ,
-                type:"POST"
-                ,
-                data :{
-                    "first_person":$("#first_person").val()
-                    ,
-                    "last_person":$('#last_person').val()
-                    ,
-                    'time':parseInt((100 - timer) / (100 / 15))
+                url: "{{ route('rank') }}",
+                type: "POST",
+                data: {
+                    "first_person": first_person.toUpperCase(),
+                    "first_person_time": first_person_time,
+                    "new_first_person": new_first_person.toUpperCase(),
+                    "new_first_person_time": new_first_person_time,
+                    "first_person_correct": $('#p1').text(),
+                    "last_person": last_person.toUpperCase(),
+                    "last_person_time": last_person_time,
+                    "new_last_person": new_last_person.toUpperCase(),
+                    "new_last_person_time": new_last_person_time,
+                    "last_person_correct": $('#p8').text()
+
+                },
+                success: function(res) {
+                    console.log(res)
                 }
             })
             $("#first_person").val("");
             $("#last_person").val("");
             $('form').addClass("w3-hide");
+            initialRankVariables();
 
-        })
+          }else {
+            window.location.replace("{{ route('logout') }}");
+          }
+        }
 
 
         $(document).on('input', '#myRange', function() {
-            $('#valueOfMyRange').text( $(this).val() );
-            $('#record').removeClass("w3-hide");
-        });
+            $('#valueOfMyRange').text($(this).val());
+            if (canSend) {
+                $('#record').removeClass("w3-hide");
+            }
+            endTimeQuestion = new Date().getTime();
+            changedRange = true;
 
+        });
     </script>
 
 @endsection
-
-
