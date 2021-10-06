@@ -54,6 +54,7 @@ Route::get("end", function () {
     return view("end_game.end");
 })->middleware('auth')->name('end');
 
+Route::view('estimate','estimate')->name('estimate');
 
 
 
