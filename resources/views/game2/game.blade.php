@@ -122,6 +122,7 @@
 
     <script>
         var gameTimer = 10; //40 s
+        var delayRandomSectionTime = (gameTimer * 1000) + 3000;
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -257,6 +258,7 @@
             $("#randomPoint").click(function() {
 
                 // randomSection()
+                $(this).addClass('w3-opacity-max');
 
             });
 
@@ -360,7 +362,7 @@
                 $('#showNumber').removeClass("w3-opacity-max");
                 registerd = false;
                 $('#showNumber').text("");
-
+                $('#randomPoint').removeClass('w3-opacity-max');
                 if (i <= 20) {
 
                     if (i % 2 != 0) {
@@ -430,7 +432,7 @@
 
 
                         countSession++;
-                        var delayRandomSectionTime = gameTimer + 3000;
+
                         session_id = setTimeout(function() {
                             if (i > 1) {
                                 randomSectionId = setTimeout(function() {
