@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Rank;
 use App\Answer;
+use App\Money;
 use Carbon\Carbon;
 
 class AnswerController extends Controller
@@ -49,5 +50,12 @@ class AnswerController extends Controller
         return response()->json($input);
     }
 
+    public function money(Request $request)
+    {
+        $input = $request->all();
+        $input['user_id']=auth()->user()->id;
+        Money::create($input);
+        return response()->json();
+    }
 
 }
