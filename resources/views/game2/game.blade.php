@@ -9,7 +9,7 @@
     <div id="result" class="">
         <div class=" w3-row w3-margin-top ">
 
-                        <div class="   w3-col  l9 ">
+                            <div class="    w3-col  l9 ">
         <div class="w3-row">
             <div class="w3-col l6 w3-center w3-right">
                 <div id="title" class=" persian w3-xlarge bold " style=""></div>
@@ -68,18 +68,19 @@
                 </form> --}}
 
                 <div id="numberSection">
-                    <div  class="">
-                       <span id="showNumber" class="w3-xxxlarge w3-opacity-max">0</span><span class="persian w3-xxlarge">تومان</span>
-                       <a class="w3-button w3-round w3-light-gray w3-border persian" style="text-decoration: none">ثبت</a>
+                    <div class="">
+                       <span id="showNumber" class="w3-xxlarge "></span><span class="persian w3-xlarge">تومان</span>
+                        <a id="register" class="w3-button w3-round w3-light-gray w3-border persian" style="text-decoration: none">ثبت</a>
                     </div>
-                    <div id="numbers" >
-                        @for ($i=0; $i<=10 ; $i++)
+                    <div id="numbers">
+                        @for ($i = 0; $i <= 10; $i++)
 
-                        <button class="w3-btn  w3-round w3-large  w3-margin-top" style="background-color:#77abbf;color:white">{{$i * 5}}
-                        </button>
-                        @if (($i-1)%3==0 && $i!=0)
-                            <br>
-                        @endif
+                            <button  class="w3-btn  w3-round w3-large  w3-margin-top"
+                                style="background-color:#77abbf;color:white" value={{$i * 5}}>{{ $i * 5 }}
+                            </button>
+                            @if (($i - 1) % 3 == 0 && $i != 0)
+                                <br>
+                            @endif
                         @endfor
 
                     </div>
@@ -92,7 +93,8 @@
                         منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
                         از اعضاء را در دست قبل مشاهده کنید
                     </div>
-                    <a class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint" style="text-decoration: none">
+                    <a class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint"
+                        style="text-decoration: none">
                         موافقم
                     </a>
                 </div>
@@ -124,7 +126,7 @@
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
 
-        var category = 2;
+        var category = 1;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
         var selectedCondition = {{ Auth()->user()->condition }};
@@ -182,6 +184,7 @@
         ];
 
         var startTimeMoney;
+        var registerd = false;
 
         $(document).ready(function() {
             $.ajaxSetup({
@@ -344,14 +347,16 @@
 
                 $('#numberSection').removeClass('w3-hide');
                 $('#label').removeClass('w3-hide');
-                 startTimeMoney = new Date().getTime();
+                startTimeMoney = new Date().getTime();
                 mainProgram();
             }
 
             function mainProgram() {
-                // startTimeMoney = new Date().getTime();
+
                 move(gameTimer);
-                $('#showNumber').text("0");
+                $('#showNumber').removeClass("w3-opacity-max");
+                registerd = false;
+                $('#showNumber').text("");
 
                 if (i <= 20) {
 
@@ -373,9 +378,9 @@
                         $('#second_counter').removeClass("w3-hide");
                         $('#second_counter').text("3");
                         var second_counter = 2;
-                        setTimeout(function(){
+                        setTimeout(function() {
                             startTimeMoney = new Date().getTime();
-                        },3000);
+                        }, 3000);
                         var second_counter_id = setInterval(function() {
                             if (second_counter == 1) {
                                 clearInterval(second_counter_id);
@@ -397,11 +402,11 @@
                             );
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
-                            category = 2;
+                            category = 1;
                             session_id = setTimeout(function() {
 
                                 next();
-                                 startTimeMoney = new Date().getTime();
+                                startTimeMoney = new Date().getTime();
                             }, (gameTimer * 1000));
                         }, 3000)
 
@@ -418,16 +423,16 @@
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
                         $("#user").popover("dispose");
-                        category = 3;
+                        category = 2;
 
 
                         countSession++;
                         session_id = setTimeout(function() {
                             if (i > 1) {
                                 randomSectionId = setTimeout(function() {
-                                    setTimeout(function () {
-                    startTimeMoney = new Date().getTime();
-                    },7000)
+                                    setTimeout(function() {
+                                        startTimeMoney = new Date().getTime();
+                                    }, 7000)
                                     randomSection();
                                 }, 18000);
                             }
@@ -511,17 +516,47 @@
 
 
 
-            $('button').click(function () {
-                if($(this).text() == 0){
-                    $('#showNumber').text($(this).text())
-                }else{
-                    $('#showNumber').text($(this).text()+"000")
+            $('button').click(function() {
+               if(!registerd){
+                if ($(this).val() == 0) {
+                    $('#showNumber').text($(this).val())
+                } else {
+                    $('#showNumber').text($(this).val() + "000")
                 }
-                console.log(new Date().getTime()-startTimeMoney)
+                console.log(new Date().getTime() - startTimeMoney)
+                var value = $(this).val();
+                switch (category) {
+                    case 1:
+                        value+="v"+parseInt((i/2));
+                        break;
+
+                    case 2:
+                    value+="p"+parseInt((i/2));
+                        break;
+                }
+
+                console.log($(this).val())
+
+                $.ajax({
+                    url: "{{ route('money') }}",
+                    type: "POST",
+                    data: {
+                        "result":value,
+                        "time": (new Date().getTime() - startTimeMoney),
+                        "category": category
+                    }
+                })
+               }
+
+
+
             })
 
 
-
+            $('#register').click(function(){
+                $('#showNumber').addClass("w3-opacity-max");
+                registerd = true;
+            })
 
 
         })
