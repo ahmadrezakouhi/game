@@ -112,6 +112,7 @@ Route::middleware('auth', 'admin')->prefix('category_answers')->group(function (
 Route::post('answers/store_letter', 'AnswerController@store_letter')->middleware('auth');
 Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1')->middleware('auth')->name('answer');
 Route::post('answers/store_rank', 'AnswerController@store_rank')->middleware('auth')->name('rank');
+Route::post('answers/money', 'AnswerController@money')->middleware('auth')->name('money');
 
 
 
