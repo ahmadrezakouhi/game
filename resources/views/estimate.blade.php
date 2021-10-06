@@ -12,6 +12,9 @@
         درمورد سوالات اطلاعات عمومی، چه کسی تخمین های منطقی تری داشت؟
 
     </div>
+    <p class="w3-margin-top">
+        حرف انگلیسی مرتبط با شرکت کننده را در کادر زیر بنویسید
+    </p>
     <form action="">
         <div class="w3-content w3-margin-top" style="max-width: 200px">
 
