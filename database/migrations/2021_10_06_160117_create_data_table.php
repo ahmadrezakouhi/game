@@ -15,6 +15,11 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->biginteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('result')->nullable();
+            $table->integer('time')->nullable();
+            $table->integer('category')->nullable();
             $table->timestamps();
         });
     }
