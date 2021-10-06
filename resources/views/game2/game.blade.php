@@ -69,7 +69,7 @@
 
                 <div id="numberSection">
                     <div class="">
-                       <span id="showNumber" class="w3-xxlarge "></span><span class="persian w3-xlarge">تومان</span>
+                       <span id="showNumber" class="w3-xxlarge " style="position: relative;top:10px"></span><span class="persian w3-xlarge"> تومان </span>
                         <a id="register" class="w3-button w3-round w3-light-gray w3-border persian" style="text-decoration: none">ثبت</a>
                     </div>
                     <div id="numbers">
