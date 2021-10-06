@@ -52,7 +52,7 @@ Route::get('result', function () {
 
 Route::get("end", function () {
     return view("end_game.end");
-})->middleware('auth', 'can_play')->name('end');
+})->middleware('auth')->name('end');
 
 
 
