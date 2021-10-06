@@ -20,9 +20,7 @@ cursor: pointer">
             <li class="nav-item active">
                 <a class="nav-link text-right persian" href="{{route('users')}}">مدیریت کاربر ها</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link text-right persian" href="{{route('questions')}}">بخش سوال ها</a>
-            </li>
+            
 
 
         </ul>
