@@ -35,7 +35,7 @@
 
 
                 </div>
-                <form action="" style="" class="mt-2  px-5">
+                {{-- <form action="" style="" class="mt-2  px-5">
                     <div class=" w3-row px-5">
 
                         <div class="w3-col l6 w3-right">
@@ -65,7 +65,26 @@
                     </div>
 
 
-                </form>
+                </form> --}}
+
+                <div id="numberSection">
+                    <div  class="">
+                       <span id="showNumber" class="w3-xxxlarge w3-opacity-max">0</span><span class="persian w3-xxlarge">تومان</span>
+                       <a class="w3-button w3-round w3-light-gray w3-border persian" style="text-decoration: none">ثبت</a>
+                    </div>
+                    <div id="numbers" >
+                        @for ($i=0; $i<=10 ; $i++)
+
+                        <button class="w3-btn  w3-round w3-large  w3-margin-top" style="background-color:#77abbf;color:white">{{$i * 5}}
+                        </button>
+                        @if (($i-1)%3==0 && $i!=0)
+                            <br>
+                        @endif
+                        @endfor
+
+                    </div>
+                </div>
+
 
                 <div class="w3-padding-large" style="" id="showRandom">
 
@@ -73,9 +92,9 @@
                         منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
                         از اعضاء را در دست قبل مشاهده کنید
                     </div>
-                    <button class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint">
+                    <a class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint" style="text-decoration: none">
                         موافقم
-                    </button>
+                    </a>
                 </div>
 
 
@@ -161,15 +180,7 @@
             ],
 
         ];
-        var randomSectionId;
-        var varbal;
-        var varbal_time;
-        var new_varbal;
-        var new_varbal_time;
-        var practical;
-        var practical_time;
-        var new_practical;
-        var new_practical_time;
+
         var startTimeMoney;
 
         $(document).ready(function() {
@@ -230,7 +241,7 @@
                         conditions[selectedCondition][4][1] = value;
                     }
                 }
-                $('form').addClass('w3-hide');
+                $('#numberSection').addClass('w3-hide');
                 $('#label').addClass('w3-hide');
 
 
@@ -272,14 +283,16 @@
                     }
                     $(id).popover(o);
                     $(id).popover("show");
-                    $('form').removeClass("w3-hide");
+                    $('#numberSection').removeClass("w3-hide");
                     $('#label').removeClass('w3-hide');
 
                     $('#showRandom').addClass("w3-hide");
                     width = 100;
                     move(gameTimer);
                     setTimeout(function() {
+
                         next();
+
                     }, (gameTimer * 1000))
                 }, 7000)
             }
@@ -329,22 +342,23 @@
                 }
                 clearInterval(id);
 
-                $('form').removeClass('w3-hide');
+                $('#numberSection').removeClass('w3-hide');
                 $('#label').removeClass('w3-hide');
-
+                 startTimeMoney = new Date().getTime();
                 mainProgram();
             }
 
             function mainProgram() {
+                // startTimeMoney = new Date().getTime();
                 move(gameTimer);
-                $('input').val("");
+                $('#showNumber').text("0");
 
                 if (i <= 20) {
 
                     if (i % 2 != 0) {
 
                         if (i > 1) {
-                            $('form').addClass("w3-hide");
+                            $('#numberSection').addClass("w3-hide");
                             $('#label').addClass('w3-hide');
 
                             $('#showRandom').removeClass("w3-hide");
@@ -353,17 +367,22 @@
                             $('#showRandom').addClass("w3-hide");
 
                         }
+
                         clearPopOver();
                         $("#result").addClass("w3-hide");
                         $('#second_counter').removeClass("w3-hide");
                         $('#second_counter').text("3");
                         var second_counter = 2;
+                        setTimeout(function(){
+                            startTimeMoney = new Date().getTime();
+                        },3000);
                         var second_counter_id = setInterval(function() {
                             if (second_counter == 1) {
                                 clearInterval(second_counter_id);
                             }
                             $('#second_counter').text(second_counter);
                             second_counter--;
+
                         }, 1000);
                         setTimeout(function() {
                             $('#second_counter').addClass("w3-hide");
@@ -374,14 +393,15 @@
 
                             move(gameTimer);
                             $("#label").text(
-                                "مبلغی که به صورت رندوم به دیگران  نمایش داده میشود را در زیر بنویسید (مبلغ اعلامی) "
+                                "مبلغی که به صورت رندم ممکن است به شرکت کنندگان نمایش داده شود را از بین گزینه های زیر انتخاب کنید (مبلغ اعلامی)"
                             );
                             $("#bag,hr ,#money ,#background_money,#description").addClass("w3-hide");
                             $('#title').text("دست " + session[countSession]);
                             category = 2;
                             session_id = setTimeout(function() {
-                                startTimeMoney = new Date().getTime();
+
                                 next();
+                                 startTimeMoney = new Date().getTime();
                             }, (gameTimer * 1000));
                         }, 3000)
 
@@ -392,7 +412,7 @@
                         width = 100;
                         move(gameTimer);
                         $("#label").html(
-                            "مبلغی که با دیگران به اشتراک می گذارید ولی  به آنها نمایش داده نمی شود  را در زیر بنویسید (مبلغ اهدایی)"
+                            "مبلغی که به صندوق کل منتقل می شود ولی مقدار آن مخفیانه خواهد ماند را از بین گزینه های زیر انتخاب کنید (مبلغ اهدایی)"
                         );
                         $('#showRandom').addClass("w3-hide");
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
@@ -405,8 +425,11 @@
                         session_id = setTimeout(function() {
                             if (i > 1) {
                                 randomSectionId = setTimeout(function() {
+                                    setTimeout(function () {
+                    startTimeMoney = new Date().getTime();
+                    },7000)
                                     randomSection();
-                                }, 18000)
+                                }, 18000);
                             }
                             startTimeMoney = new Date().getTime();
                             next();
@@ -488,61 +511,17 @@
 
 
 
-            $('input').keypress(function(event) {
-                if (event.which < 48 || event.which > 57) {
-                    event.preventDefault();
+            $('button').click(function () {
+                if($(this).text() == 0){
+                    $('#showNumber').text($(this).text())
+                }else{
+                    $('#showNumber').text($(this).text()+"000")
                 }
+                console.log(new Date().getTime()-startTimeMoney)
             })
 
 
-            function initialVariable() {
 
-                varbal = "";
-                varbal_time = "";
-                new_varbal = "";
-                new_varbal_time = "";
-                practical = "";
-                practical_time = "";
-                new_practical = "";
-                new_practical_time = "";
-            };
-
-
-            $('input').keyup(function() {
-                if (i % 2 != 0) {
-                    if ($(this).val()) {
-
-                        if (varbal) {
-                            if (new_varbal) {
-                                varbal = new_varbal;
-                            }
-                            new_varbal = $(this).val();
-                        } else {
-                            varbal = $(this).val();
-                        }
-
-                        if (varbal_time) {
-                            if (new_varbal_time) {
-                                varbal_time = new_varbal_time
-                            } else {
-                                new_varbal_time = new Date().getTime();
-                            }
-
-                        } else {
-                            varbal_time = new Date().getTime();
-                        }
-
-
-                    }
-                    console.log('varbal : ' + varbal + " time : " + (varbal_time -
-                        startTimeMoney));
-                    console.log('new_varbal : ' + new_varbal + " time : " + (
-                        new_varbal_time -
-                        startTimeMoney));
-                } else {
-
-                }
-            })
 
 
         })
