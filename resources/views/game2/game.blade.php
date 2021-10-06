@@ -121,7 +121,7 @@
 
 
     <script>
-        var gameTimer = 15; //40 s
+        var gameTimer = 10; //40 s
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
@@ -185,7 +185,7 @@
 
         var startTimeMoney;
         var registerd = false;
-
+        var choosed = false;
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -339,7 +339,9 @@
 
 
             function next() {
-
+                if(!choosed){
+                    window.location.replace('{{route("logout")}}');
+                }
                 if (countSession >= 1 && countSession < 10) {
                     $("#pps" + conditions[selectedCondition][countSession - 1][0]).popover("dispose");
                 }
@@ -354,6 +356,7 @@
             function mainProgram() {
 
                 move(gameTimer);
+                choosed = false;
                 $('#showNumber').removeClass("w3-opacity-max");
                 registerd = false;
                 $('#showNumber').text("");
@@ -427,6 +430,7 @@
 
 
                         countSession++;
+                        var delayRandomSectionTime = gameTimer + 3000;
                         session_id = setTimeout(function() {
                             if (i > 1) {
                                 randomSectionId = setTimeout(function() {
@@ -434,7 +438,7 @@
                                         startTimeMoney = new Date().getTime();
                                     }, 7000)
                                     randomSection();
-                                }, 18000);
+                                }, delayRandomSectionTime );
                             }
                             startTimeMoney = new Date().getTime();
                             next();
@@ -547,6 +551,8 @@
                     }
                 })
                }
+
+               choosed=true;
 
 
 
