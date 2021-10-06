@@ -55,7 +55,7 @@ Route::get("end", function () {
 })->middleware('auth')->name('end');
 
 Route::view('estimate','estimate')->name('estimate');
-
+Route::view('best-score','best_score')->name('best-score');
 
 
 Route::get('choose_level', function () {
