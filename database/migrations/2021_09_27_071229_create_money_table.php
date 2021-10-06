@@ -17,14 +17,9 @@ class CreateMoneyTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('verbal')->nullable();
-            $table->integer('verbal_time')->nullable();
-            $table->integer('new_verbal')->nullable();
-            $table->integer('new_verbal_time')->nullable();
-            $table->integer('practical')->nullable();
-            $table->integer('practical_time')->nullable();
-            $table->integer('new_practical')->nullable();
-            $table->integer('new_practical_time')->nullable();
+            $table->string('result')->nullable();
+            $table->integer('time')->nullable();
+            $table->integer('category')->nullable();
             $table->timestamps();
         });
     }
