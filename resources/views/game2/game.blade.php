@@ -448,7 +448,7 @@
                         }, (gameTimer * 1000));
                     }
                 } else {
-                    window.location.replace('/end');
+                    window.location.replace("{{route('estimate')}}");
                 }
 
 
