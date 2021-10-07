@@ -88,7 +88,7 @@ Route::middleware('auth', 'admin')->prefix('users')->group(function () {
 
 // #################### end crud user #######################
 
-Route::get('users/{id}/answers', 'AnswerController@show')->middleware('auth', 'admin')->name('users.answers.show');
+
 
 
 Route::middleware('auth', 'admin')->prefix('questions')->group(function () {
