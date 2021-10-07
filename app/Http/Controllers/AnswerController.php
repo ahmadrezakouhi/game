@@ -13,14 +13,7 @@ class AnswerController extends Controller
 {
 
 
-    public function show($id){
-        $user = User::with('answers')->with('ranks')->findOrFail($id);
-        $answers_cat1 = $user->answers()->where('category',1)->get();
-        $ranks = $user->ranks()->get();
-        $answers_cat2 = $user->answers()->where('category',2)->get();
-        $answers_cat3 = $user->answers()->where('category',3)->get();
-        return view('result.index',compact('user','ranks','answers_cat1','answers_cat2','answers_cat3'));
-    }
+  
 
 
     public function store_letter(Request $request){
