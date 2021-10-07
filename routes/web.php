@@ -11,7 +11,9 @@
 |
 */
 
-use App\User;
+use App\Exports\DataExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 Route::get('/', function () {
     return redirect()->to('login');
@@ -28,7 +30,7 @@ Route::get('connectUsers', function () {
 
 Route::get('game1', function () {
     return view("game.game");
-})//->middleware('auth', 'can_play')->name('game2')
+}) //->middleware('auth', 'can_play')->name('game2')
 ;
 
 Route::get('game1/guide', function () {
@@ -42,20 +44,20 @@ Route::get('game2/guide', function () {
 Route::get('game2', function () {
     return view("game2.game");
 })
-// ->middleware('auth', 'can_play')
-->name('game2');
+    // ->middleware('auth', 'can_play')
+    ->name('game2');
 
 Route::get('result', function () {
     return view("game.result");
-})//->middleware('auth', 'can_play')
-->name('result');
+}) //->middleware('auth', 'can_play')
+    ->name('result');
 
 Route::get("end", function () {
     return view("end_game.end");
 })->middleware('auth')->name('end');
 
-Route::view('estimate','estimate')->name('estimate');
-Route::view('best-score','best_score')->name('best-score');
+Route::view('estimate', 'estimate')->name('estimate');
+Route::view('best-score', 'best_score')->name('best-score');
 
 
 Route::get('choose_level', function () {
@@ -100,56 +102,7 @@ Route::post('answers/money', 'AnswerController@money')->middleware('auth')->name
 
 
 
+Route::get('export', function () {
 
-
-
-use App\Exports\DataExport;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Answer;
-use App\Money;
-use App\Rank;
-
-Route::get('export',function ()
-{
-//     $users = User::all();
-//     $a = array();
-//     $i = 0;
-
-//   foreach ($users as $user) {
-//       $a[$i][]=$user->email;
-//     foreach ($user->answers as $answer) {
-//         $a[$i][]=$answer->id;
-//         $a[$i][]=$answer->prev_result;
-//         $a[$i][]=$answer->prev_time;
-//         $a[$i][]=$answer->result;
-//         $a[$i][]=$answer->time;
-//     }
-//     $i++;
-//   }
-    // dd($a);
-return Excel::download(new DataExport , 'data.xlsx');
-});
-
-Route::post('test', function (Request $request) {
-    Answer::create($request->all());
-    return response('added');
-});
-
-
-Route::post('test2', function (Request $request) {
-    Rank::create($request->all());
-    return response('added');
-});
-
-
-Route::post('test3', function (Request $request) {
-    $input = $request->all();
-    $input['user_id']=2;
-    Money::create($input);
-    return response('addeddddd');
-});
-
-Route::get('token',function(){
-    echo csrf_token();
+    return Excel::download(new DataExport, 'data.xlsx');
 });
