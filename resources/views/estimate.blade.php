@@ -30,10 +30,9 @@
     </div>
 
 
-    @include('layouts.progress_bar')
 
     <script>
-        var time = 20;
+
         var estimate;
         var estimate_time;
         var new_estimate;
@@ -49,12 +48,10 @@
 
 
             var startTime = new Date().getTime();
-            move(time)
 
 
-            // setTimeout(function() {
-            //     window.location.replace("{{ route('end') }}")
-            // }, time * 1000)
+
+
 
 
 
