@@ -99,7 +99,7 @@ Route::post('answers/store_answer_question_game1', 'AnswerController@store_answe
 Route::post('answers/rank', 'AnswerController@rank')->middleware('auth')->name('rank');
 Route::post('answers/money', 'AnswerController@money')->middleware('auth')->name('money');
 
-
+Route::post('answers/questions','AnswerController@questions')->middleware('auth')->name('questions');
 
 
 Route::get('export', function () {
