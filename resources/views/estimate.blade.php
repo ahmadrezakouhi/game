@@ -52,9 +52,7 @@
             move(time)
 
 
-            // setTimeout(function() {
-            //     window.location.replace("{{ route('end') }}")
-            // }, time * 1000)
+            
 
 
 
