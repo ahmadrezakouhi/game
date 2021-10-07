@@ -91,24 +91,6 @@ Route::middleware('auth', 'admin')->prefix('users')->group(function () {
 
 
 
-Route::middleware('auth', 'admin')->prefix('questions')->group(function () {
-    Route::get('', 'QuestionController@index')->name('questions');
-    Route::post('', 'QuestionController@store')->name('questions.store');
-    Route::delete('{id}', 'QuestionController@destroy')->name('questions.destroy');
-});
-
-
-
-
-Route::middleware('auth', 'admin')->prefix('categories')->group(function () {
-    Route::post('', 'CategoryController@store')->name('categories.store');
-    Route::delete('{id}', 'CategoryController@destroy')->name('categories.destroy');
-});
-
-Route::middleware('auth', 'admin')->prefix('category_answers')->group(function () {
-    Route::post('', 'CategoryAnswerController@store')->name('category_answers');
-    Route::delete('{id}', 'CategoryAnswerController@destroy')->name('category_answers.destroy');
-});
 
 Route::post('answers/store_letter', 'AnswerController@store_letter')->middleware('auth');
 Route::post('answers/store_answer_question_game1', 'AnswerController@store_answer_question_game1')->middleware('auth')->name('answer');
@@ -118,12 +100,7 @@ Route::post('answers/money', 'AnswerController@money')->middleware('auth')->name
 
 
 
-// ######################### user answer questions ################################################
 
-Route::get('answer-questions', 'UserAnswerQuestionController@questions')->middleware('auth', 'can_answer');
-Route::post('answer-questions', 'UserAnswerQuestionController@answerQuestion')->middleware('auth', 'can_answer')->name('answer-questions');
-
-// ######################### end user answer questions #############################################
 
 
 use App\Exports\DataExport;
