@@ -56,15 +56,27 @@
 
 
             $('button').click(function() {
+
+              if(estimate){
                 $.ajax({
                     url: " {{ route('questions') }} ",
                     type: "POST",
                     data: {
-                        "result": $('input').val(),
-                        "time": (new Date().getTime() - startTime),
+                        "result": estimate,
+                        "time": (estimate_time - startTime),
                         "category": 1
                     }
+                    ,
+                    success:function(response){
+                        window.location.replace("{{route('end')}}");
+                    }
                 })
+
+              }
+
+
+
+
             })
 
 
