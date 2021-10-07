@@ -13,7 +13,7 @@ class AnswerController extends Controller
 {
 
 
-  
+
 
 
     public function store_letter(Request $request){
@@ -35,7 +35,7 @@ class AnswerController extends Controller
         return response()->json();
     }
 
-    public function store_rank(Request $request){
+    public function rank(Request $request){
        $input = $request->all();
        $input['user_id']= auth()->user()->id;
        Rank::create($input);
