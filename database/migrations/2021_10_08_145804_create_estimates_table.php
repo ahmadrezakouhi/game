@@ -15,7 +15,7 @@ class CreateEstimatesTable extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('best_estimate')->nullable();
             $table->integer('best_estimate_time')->nullable();
