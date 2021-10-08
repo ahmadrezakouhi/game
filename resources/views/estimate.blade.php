@@ -25,7 +25,7 @@
             </form>
         </div>
 
-        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top">بعدی</button>
+        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top w3-hide">بعدی</button>
 
     </div>
 
@@ -82,7 +82,7 @@
 
             $('input').keyup(function() {
                 if ($(this).val()) {
-
+                    $('button').removeClass('w3-hide');
                     if (estimate) {
                         if (new_estimate) {
                             estimate = new_estimate;
@@ -105,11 +105,13 @@
                     }
 
 
+                }else {
+                    $('button').addClass('w3-hide');
                 }
-                console.log('estimate : ' + estimate + " time : " + (estimate_time -
-                    startTime));
-                console.log('new_estimate : ' + new_estimate + " time : " + (new_estimate_time -
-                    startTime));
+                // console.log('estimate : ' + estimate + " time : " + (estimate_time -
+                //     startTime));
+                // console.log('new_estimate : ' + new_estimate + " time : " + (new_estimate_time -
+                //     startTime));
             })
 
 
