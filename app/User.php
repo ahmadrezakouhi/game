@@ -59,4 +59,13 @@ class User extends Authenticatable
     }
 
 
+
+    public function estimate()
+    {
+        return $this->hasOne(Estimate::class);
+    }
+
+    
+
+
 }
