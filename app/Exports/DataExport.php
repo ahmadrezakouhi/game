@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use App\User;
-use App\Answer;
+
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 
@@ -103,10 +103,10 @@ class DataExport implements FromCollection, WithHeadings
             $a[$i][] = "Q(BE ans)";
             $a[$i][] = "If changed Q BE(ans)";
             $a[$i][] = "Q(BE correct ans)";
-            $a[$i][] = "rate(knowledge)";
-            $a[$i][] = "rate k(rt)";
-            $a[$i][] = "rate (competitor)";
-            $a[$i][] = "rate c(rt)";
+            $a[$i][] = $user->questions()->where("category",4)->first()->result;
+            $a[$i][] = $user->questions()->where("category",4)->first()->time;
+            $a[$i][] = $user->questions()->where("category",5)->first()->result;
+            $a[$i][] = $user->questions()->where("category",5)->first()->time;;
             foreach ($user->money as $m) {
                 $a[$i][] = $m->result;
                 $a[$i][] = $m->time;
