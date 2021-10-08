@@ -15,6 +15,10 @@ class CreateScoresTable extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('best_score')->nullable();
+            $table->integer('best_score_time')->nullable();
+            $table->string('new_best_score')->nullable();
+            $table->integer('new_best_score_time')->nullable();
             $table->timestamps();
         });
     }
