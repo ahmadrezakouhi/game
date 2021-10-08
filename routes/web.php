@@ -100,7 +100,8 @@ Route::post('answers/rank', 'AnswerController@rank')->middleware('auth')->name('
 Route::post('answers/money', 'AnswerController@money')->middleware('auth')->name('money');
 
 Route::post('answers/questions','AnswerController@questions')->middleware('auth')->name('questions');
-
+Route::post('answers/estimate', 'EstimateController@estimate')->middleware('auth')->name('estimate');
+Route::post('answers/score','ScoreController@score')->middleware('auth')->name('score');
 
 Route::get('export', function () {
 
