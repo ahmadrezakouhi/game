@@ -65,7 +65,12 @@ class User extends Authenticatable
         return $this->hasOne(Estimate::class);
     }
 
-    
+
+
+    public function score()
+    {
+        return $this->hasOne(Score::class);
+    }
 
 
 }
