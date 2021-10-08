@@ -15,6 +15,10 @@ class CreateEstimatesTable extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('best_estimate')->nullable();
+            $table->integer('best_estimate_time')->nullable();
+            $table->string('new_best_estimate')->nullable();
+            $table->integer('new_best_estimate_time')->nullable();
             $table->timestamps();
         });
     }
