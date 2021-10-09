@@ -7,23 +7,23 @@
 
         </div>
 
-<div  class="" style="margin-top: 100px">
-    <div class="w3-xlarge persian">
-        در بین شما، چه کسی در رتبه بندی ها، بیشترین امتیاز را کسب کرد؟
-    </div>
-    <p class="w3-margin-top persian">
-        حرف انگلیسی مرتبط با شرکت کننده را در کادر زیر بنویسید
-    </p>
-    <form action="">
-        <div class="w3-content w3-margin-top" style="max-width: 200px">
+        <div class="" style=" margin-top: 100px">
+            <div class="w3-xlarge persian">
+                در بین شما، چه کسی در رتبه بندی ها، بیشترین امتیاز را کسب کرد؟
+            </div>
+            <p class="w3-margin-top persian">
+                حرف انگلیسی مرتبط با شرکت کننده را در کادر زیر بنویسید
+            </p>
+            <form action="">
+                <div class="w3-content w3-margin-top" style="max-width: 200px">
 
-                <input type="text" type="text" class="form-control " maxlength="1" style="text-transform: uppercase">
+                    <input type="text" type="text" class="form-control " maxlength="1" style="text-transform: uppercase">
 
+                </div>
+            </form>
         </div>
-    </form>
-</div>
 
-        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top">بعدی</button>
+        {{-- <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top">بعدی</button> --}}
 
     </div>
 
@@ -31,7 +31,7 @@
     @include('layouts.progress_bar')
 
     <script>
- var time = 20;
+        var time = 20;
         var best_score;
         var best_score_time;
         var new_best_score;
@@ -50,23 +50,23 @@
             move(time)
 
 
-            // setTimeout(function() {
-            //     window.location.replace("{{ route('end') }}")
-            // }, time * 1000)
+            setTimeout(function() {
+                sendBestScoreData();
+            }, time * 1000)
 
 
 
-            $('button').click(function() {
 
-                if(best_score_time){
+            function sendBestScoreData() {
+                if (best_score_time) {
                     best_score_time -= startTime;
-                }else{
+                } else {
                     best_score_time = "";
                 }
 
-                if(new_best_score_time){
+                if (new_best_score_time) {
                     new_best_score_time -= startTime;
-                }else{
+                } else {
                     new_best_score_time = "";
                 }
 
@@ -75,18 +75,19 @@
                     url: " {{ route('score') }} ",
                     type: "POST",
                     data: {
-                       "best_score":best_score,
-                       "best_score_time":best_score_time,
-                       "new_best_score":new_best_score,
-                       "new_best_score_time":new_best_score_time
+                        "best_score": best_score,
+                        "best_score_time": best_score_time,
+                        "new_best_score": new_best_score,
+                        "new_best_score_time": new_best_score_time
 
-                    }
-                    ,
-                    success:function(response){
-                        console.log(response);
+                    },
+                    success: function(response) {
+                        window.location.replace("{{route('game2.guide')}}");
                     }
                 })
-            })
+            }
+
+
 
 
             $('input').keyup(function() {
@@ -106,7 +107,7 @@
                             best_score_time = new_best_score_time;
                             new_best_score_time = new Date().getTime();
                         } else {
-                             new_best_score_time = new Date().getTime();
+                            new_best_score_time = new Date().getTime();
                         }
 
                     } else {
@@ -124,8 +125,5 @@
 
 
         })
-
-
-
     </script>
 @endsection
