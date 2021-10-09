@@ -51,7 +51,12 @@
 
 
             setTimeout(function() {
-                sendBestScoreData();
+                if(best_score){
+                    sendBestScoreData();
+                }else{
+                    window.location.replace("{{route('logout')}}");
+                }
+
             }, time * 1000)
 
 
