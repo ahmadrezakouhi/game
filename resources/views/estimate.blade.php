@@ -108,10 +108,10 @@
                 } else {
                     $('button').addClass('w3-hide');
                 }
-                // console.log('best_estimate : ' + best_estimate + " time : " + (best_estimate_time -
-                //     startTime));
-                // console.log('new_best_estimate : ' + new_best_estimate + " time : " + (new_best_estimate_time -
-                //     startTime));
+                console.log('best_estimate : ' + best_estimate + " time : " + (best_estimate_time -
+                    startTime));
+                console.log('new_best_estimate : ' + new_best_estimate + " time : " + (new_best_estimate_time -
+                    startTime));
             })
 
 
