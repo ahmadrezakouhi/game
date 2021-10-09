@@ -32,11 +32,10 @@
 
 
     <script>
-
-        var estimate;
-        var estimate_time;
-        var new_estimate;
-        var new_estimate_time;
+        var best_estimate;
+        var best_estimate_time;
+        var new_best_estimate;
+        var new_best_estimate_time;
         $(document).ready(function() {
 
 
@@ -57,22 +56,23 @@
 
             $('button').click(function() {
 
-              if(estimate){
-                $.ajax({
-                    url: " {{ route('questions') }} ",
-                    type: "POST",
-                    data: {
-                        "result": estimate,
-                        "time": (estimate_time - startTime),
-                        "category": 1
-                    }
-                    ,
-                    success:function(response){
-                        window.location.replace("{{route('end')}}");
-                    }
-                })
+                if (best_estimate) {
+                    $.ajax({
+                        url: " {{ route('estimate') }} ",
+                        type: "POST",
+                        data: {
+                            "best_estimate": best_estimate,
+                            "best_estimate_time": (best_estimate_time - startTime),
+                            "new_best_estimate": new_best_estimate,
+                            "new_best_estimate_time": (new_best_estimate_time - startTime)
+                        },
+                        success: function(response) {
+                            // window.location.replace("{{ route('end') }}");
+                            console.log(response)
+                        }
+                    })
 
-              }
+                }
 
 
 
@@ -83,34 +83,34 @@
             $('input').keyup(function() {
                 if ($(this).val()) {
                     $('button').removeClass('w3-hide');
-                    if (estimate) {
-                        if (new_estimate) {
-                            estimate = new_estimate;
+                    if (best_estimate) {
+                        if (new_best_estimate) {
+                            best_estimate = new_best_estimate;
                         }
-                        new_estimate = $(this).val();
+                        new_best_estimate = $(this).val();
                     } else {
-                        estimate = $(this).val();
+                        best_estimate = $(this).val();
                     }
 
-                    if (estimate_time) {
-                        if (new_estimate_time) {
-                            estimate_time = new_estimate_time;
-                            new_estimate_time = new Date().getTime();
+                    if (best_estimate_time) {
+                        if (new_best_estimate_time) {
+                            best_estimate_time = new_best_estimate_time;
+                            new_best_estimate_time = new Date().getTime();
                         } else {
-                             new_estimate_time = new Date().getTime();
+                            new_best_estimate_time = new Date().getTime();
                         }
 
                     } else {
-                        estimate_time = new Date().getTime();
+                        best_estimate_time = new Date().getTime();
                     }
 
 
-                }else {
+                } else {
                     $('button').addClass('w3-hide');
                 }
-                // console.log('estimate : ' + estimate + " time : " + (estimate_time -
+                // console.log('best_estimate : ' + best_estimate + " time : " + (best_estimate_time -
                 //     startTime));
-                // console.log('new_estimate : ' + new_estimate + " time : " + (new_estimate_time -
+                // console.log('new_best_estimate : ' + new_best_estimate + " time : " + (new_best_estimate_time -
                 //     startTime));
             })
 
