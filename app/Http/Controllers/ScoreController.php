@@ -11,7 +11,7 @@ class ScoreController extends Controller
     {
         $input = $request->all();
         $input['user_id']=auth()->user()->id;
-        Score::crete($input);
+        Score::create($input);
         return response()->json();
     }
 }
