@@ -56,7 +56,7 @@ move(10);
     // },5000)
 
     setInterval(function(){
-        window.location.replace("{{route('game2.guide')}}");
+        window.location.replace("{{route('best-score')}}");
     },10000)
 
 
