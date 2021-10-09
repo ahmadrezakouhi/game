@@ -57,13 +57,33 @@
 
 
             $('button').click(function() {
+
+                if(best_score_time){
+                    best_score_time -= startTime;
+                }else{
+                    best_score_time = "";
+                }
+
+                if(new_best_score_time){
+                    new_best_score_time -= startTime;
+                }else{
+                    new_best_score_time = "";
+                }
+
+
                 $.ajax({
-                    url: " {{ route('questions') }} ",
+                    url: " {{ route('score') }} ",
                     type: "POST",
                     data: {
-                        "result": $('input').val(),
-                        "time": (new Date().getTime() - startTime),
-                        "category": 1
+                       "best_score":best_score,
+                       "best_score_time":best_score_time,
+                       "new_best_score":new_best_score,
+                       "new_best_score_time":new_best_score_time
+
+                    }
+                    ,
+                    success:function(response){
+                        console.log(response);
                     }
                 })
             })
