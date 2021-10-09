@@ -56,15 +56,28 @@
 
             $('button').click(function() {
 
-                if (best_estimate) {
+              if($('input').val()){
+                  if(best_estimate_time){
+                      best_estimate_time -= startTime;
+                  }else{
+                      best_estimate_time = "";
+                  }
+
+                  if(new_best_estimate_time){
+                      new_best_estimate_time -= startTime;
+
+                  }else {
+                      new_best_estimate_time ="";
+                  }
+                  if (best_estimate) {
                     $.ajax({
                         url: " {{ route('estimate') }} ",
                         type: "POST",
                         data: {
                             "best_estimate": best_estimate,
-                            "best_estimate_time": (best_estimate_time - startTime),
+                            "best_estimate_time": best_estimate_time,
                             "new_best_estimate": new_best_estimate,
-                            "new_best_estimate_time": (new_best_estimate_time - startTime)
+                            "new_best_estimate_time": new_best_estimate_time
                         },
                         success: function(response) {
                             // window.location.replace("{{ route('end') }}");
@@ -73,6 +86,7 @@
                     })
 
                 }
+              }
 
 
 
