@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/selectLetter', function () {
     $user = auth()->user();
     $now = Carbon::parse(Carbon::now());
-    if (($user->time == $now->hour) && $now->minute <= 30) {
+    if (($user->time == $now->hour) && $now->minute <= 3) {
         $user->enter = $now->toTimeString();
         $user->save();
         return view('game.selectLetter');
@@ -73,6 +73,8 @@ Route::get('choose_level', function () {
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 Route::get('logout', function () {
     $user = auth()->user();
+    $now = Carbon::parse(Carbon::now());
+    $user->exit = $now->toTimeString();
     $user->can_play = 0;
     $user->save();
     Auth::logout();
