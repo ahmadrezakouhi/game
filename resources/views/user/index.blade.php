@@ -51,7 +51,7 @@
                                 {{'مذکر'}}
                                     @endif
                             </td>
-                            <td class="">{{$user->time}}</td>
+                            <td class="">{{\Carbon\Carbon::create($user->time)->toTimeString()}}</td>
                             <td class="persian">
 
                                 @if($user->can_play == 1)
