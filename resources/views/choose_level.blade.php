@@ -39,6 +39,15 @@
             </div>
         </div>
 
+
+@if(session()->has('error'))
+        <div class="w3-panel w3-red w3-card w3-round w3-padding persian w3-right-align" dir="rtl">
+            <h3 class="persian">اخطار!</h3>
+            <p class="">{{ session('error')}}</p>
+        </div>
+@endif
+
+
     </div>
 
 

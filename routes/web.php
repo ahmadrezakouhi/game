@@ -12,6 +12,7 @@
 */
 
 use App\Exports\DataExport;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -20,8 +21,14 @@ Route::get('/', function () {
 });
 
 Route::get('/selectLetter', function () {
+    $user = auth()->user();
+    $now = Carbon::parse(Carbon::now());
+    if(($user->time == $now->hour) && $now->minute <= 3 ){
+        return view('game.selectLetter');
+    }
+    session()->flash('error','برای انجام بازی به تنظیم زمان توسط ادمین نیاز دارید ');
+    return redirect('choose_level');
 
-    return view('game.selectLetter');
 })->name('select_letter')->middleware('auth');
 
 Route::get('connectUsers', function () {
@@ -61,6 +68,7 @@ Route::view('best-score', 'best_score')->name('best-score');
 
 
 Route::get('choose_level', function () {
+
     return view('choose_level');
 })->middleware('auth');
 
