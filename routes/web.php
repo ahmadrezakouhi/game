@@ -70,6 +70,9 @@ Route::get('choose_level', function () {
 
 Auth::routes();
 Route::get('logout', function () {
+    $user = auth()->user();
+    $user->can_play = 0;
+    $user->save();
     Auth::logout();
     return redirect()->to('login');
 })->middleware('auth')->name('logout');

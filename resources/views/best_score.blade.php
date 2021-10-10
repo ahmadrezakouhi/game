@@ -80,9 +80,9 @@
                     url: " {{ route('score') }} ",
                     type: "POST",
                     data: {
-                        "best_score": best_score,
+                        "best_score": best_score.toUpperCase(),
                         "best_score_time": best_score_time,
-                        "new_best_score": new_best_score,
+                        "new_best_score": new_best_score.toUpperCase(),
                         "new_best_score_time": new_best_score_time
 
                     },
