@@ -1,4 +1,5 @@
 @extends("layouts.main")
+@section('title','سوالات ارزیابی')
 @section('content')
 
     <div class="w3-content w3-center persian w3-justify" style="margin-top: 200px">
