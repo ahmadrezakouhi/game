@@ -11,9 +11,9 @@
 |
 */
 
-use App\Exports\DataExport;
+
 use Carbon\Carbon;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 
 Route::get('/', function () {
@@ -89,6 +89,7 @@ Route::middleware('auth', 'admin')->prefix('users')->group(function () {
     Route::get('{id}/edit', 'UserController@edit')->name('users.edit');
     Route::put('{id}', 'UserController@update')->name('users.update');
     Route::delete('{id}', 'UserController@destroy')->name('users.destroy');
+    Route::get('export', 'UserController@export')->name('export');
 });
 
 // #################### end crud user #######################
@@ -106,7 +107,4 @@ Route::post('answers/questions', 'AnswerController@questions')->middleware('auth
 Route::post('answers/estimate', 'EstimateController@estimate')->middleware('auth','can_play')->name('estimate');
 Route::post('answers/score', 'ScoreController@score')->middleware('auth','can_play')->name('score');
 
-Route::get('export', function () {
 
-    return Excel::download(new DataExport, 'data.xlsx');
-});

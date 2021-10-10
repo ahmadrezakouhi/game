@@ -7,6 +7,9 @@ use App\QuestionAnswer;
 use App\Rank;
 use Illuminate\Http\Request;
 use App\User;
+use App\Exports\DataExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class UserController extends Controller
 {
     public function index(){
@@ -84,7 +87,7 @@ class UserController extends Controller
             'condition'=>$request->get('condition')
             ,
             'can_play'=>$request->get('can_play') == 'on' ? 1 : 0
-            
+
             ,
             'time'=>$request->get('time')
         ]);
@@ -96,6 +99,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->back();
+    }
+
+
+    public function export(){
+        return Excel::download(new DataExport, 'data.xlsx');
     }
 
 
