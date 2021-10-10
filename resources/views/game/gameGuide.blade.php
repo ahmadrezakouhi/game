@@ -5,14 +5,14 @@
     <div class="w3-content w3-center w3-justify persian " style="margin-top: 200px;">
 
         <div id="guide1" class="w3-xlarge guide" dir="rtl" style="line-height: 50px">
-            در مرحله ی اول، همه ی افراد به صورت هم زمان
+            در مرحله ی اول و به صورت هم زمان , همه افراد
             <br>
-            به 8 سوال اطلاعات عمومی
+            در طی 30 ثانیه می بایست تخمین های خود را
             <br>
              با جابه جا کردن  <span>
                 <div class=" badge badge-pill w3-blue">&nbsp;</div>
             </span>
-            بر روی اسلایدر
+             بر روی اسلایدر مشخص کنند
 
 
             <span class="mx-auto"><div class="w3-row" style="">
@@ -28,7 +28,7 @@
 
             </div>
             </span>
-پاسخ را در 30 ثانیه تخمین خواهید زد.
+
 
 
         </div>
