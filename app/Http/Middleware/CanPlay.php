@@ -21,8 +21,7 @@ class CanPlay
 
         if($user->can_play == 1){
 
-            $user->can_play = 0;
-            $user->save();
+    
 
             return $next($request);
         }
