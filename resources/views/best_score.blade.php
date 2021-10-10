@@ -1,4 +1,5 @@
 @extends("layouts.main")
+@section('title','بخش رتبه بندی')
 @section('content')
 
     <div class="w3-content w3-center  w3-justify" style="margin-top: 200px">
@@ -121,10 +122,10 @@
 
 
                 }
-                console.log('best_score : ' + best_score + " time : " + (best_score_time -
-                    startTime));
-                console.log('new_best_score : ' + new_best_score + " time : " + (new_best_score_time -
-                    startTime));
+                // console.log('best_score : ' + best_score + " time : " + (best_score_time -
+                //     startTime));
+                // console.log('new_best_score : ' + new_best_score + " time : " + (new_best_score_time -
+                //     startTime));
             })
 
 

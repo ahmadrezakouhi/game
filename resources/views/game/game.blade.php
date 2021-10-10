@@ -366,10 +366,10 @@
                                                                                         =
                                                                                         new Date()
                                                                                         .getTime();
-                                                                                    console
-                                                                                        .log(
-                                                                                            startTimeRank
-                                                                                        )
+                                                                                    // console
+                                                                                    //     .log(
+                                                                                    //         startTimeRank
+                                                                                    //     )
                                                                                 }
                                                                             )
                                                                     }
@@ -491,10 +491,10 @@
 
 
                 }
-                console.log('first_preson : ' + first_person + " time : " + (first_person_time -
-                    startTimeRank));
-                console.log('new_first_preson : ' + new_first_person + " time : " + (new_first_person_time -
-                    startTimeRank));
+                // console.log('first_preson : ' + first_person + " time : " + (first_person_time -
+                //     startTimeRank));
+                // console.log('new_first_preson : ' + new_first_person + " time : " + (new_first_person_time -
+                //     startTimeRank));
             })
 
 
@@ -523,10 +523,10 @@
 
 
                 }
-                console.log('last_person : ' + last_person + " time : " + (last_person_time -
-                    startTimeRank));
-                console.log('new_last_person : ' + new_last_person + " time : " + (new_last_person_time -
-                    startTimeRank));
+                // console.log('last_person : ' + last_person + " time : " + (last_person_time -
+                //     startTimeRank));
+                // console.log('new_last_person : ' + new_last_person + " time : " + (new_last_person_time -
+                //     startTimeRank));
             })
 
 
@@ -585,7 +585,7 @@
 
                 },
                 success: function(res) {
-                    console.log(res)
+                    // console.log(res)
                 }
             })
             $("#first_person").val("");

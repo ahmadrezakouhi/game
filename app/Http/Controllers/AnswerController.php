@@ -23,7 +23,7 @@ class AnswerController extends Controller
         $user->update([
             "letter" => $request->get('letter'),
             "letter_time" => $request->get('letter_time'),
-            // "resolution"=>$request->get('resolution'),
+            "resolution"=>$request->get('resolution'),
 
         ]);
         return response()->json();
