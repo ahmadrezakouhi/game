@@ -2,8 +2,9 @@
 
 namespace App\Exports;
 
+use App\Estimate;
 use App\User;
-use App\Answer;
+
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 
@@ -75,12 +76,12 @@ class DataExport implements FromCollection, WithHeadings
                 }
             }
 
-
-            $a[$i][] = "Q(best rank rt)";
-            $a[$i][] = "Q if changed BR(rt)";
-            $a[$i][] = "Q(BR ans)";
-            $a[$i][] = "Q if changed BR(ans)";
-            $a[$i][] = "Q(BR correct ans)";
+            $score = $user->score()->first();
+            $a[$i][] = $score ? $score->best_score_time : NULL;
+            $a[$i][] = $score ? $score->new_best_score_time : NULL;
+            $a[$i][] = $score ? $score->best_score : NULL;
+            $a[$i][] = $score ? $score->new_best_score : NULL;
+            $a[$i][] = $persons[0];
             switch ($user->condition) {
                 case 0:
                     $a[$i][] = "pro1";
@@ -97,16 +98,19 @@ class DataExport implements FromCollection, WithHeadings
                     $a[$i][] = "anti1";
                     break;
             }
+            $first_question = $user->questions()->where("category",4)->first();
+            $second_question = $user->questions()->where('category',5)->first();
+            $estimate = $user->estimate()->first();
+            $a[$i][] = $estimate ? $estimate->best_estimate_time : NULL;
+            $a[$i][] = $estimate ? $estimate->new_best_estimate_time : NULL;
+            $a[$i][] = $estimate ? $estimate->best_estimate : NULL;
+            $a[$i][] = $estimate ? $estimate->new_best_estimate : NULL;
+            $a[$i][] = $persons[0];
+            $a[$i][] = $first_question ? $first_question->result : NULL;
+            $a[$i][] = $first_question ? $first_question->time : NULL;
+            $a[$i][] = $second_question ? $second_question->result : NULL;
+            $a[$i][] = $second_question ? $second_question->time : NULL;
 
-            $a[$i][] = "Q(best estimation rt)";
-            $a[$i][] = "if changed Q BE(rt)";
-            $a[$i][] = "Q(BE ans)";
-            $a[$i][] = "If changed Q BE(ans)";
-            $a[$i][] = "Q(BE correct ans)";
-            $a[$i][] = "rate(knowledge)";
-            $a[$i][] = "rate k(rt)";
-            $a[$i][] = "rate (competitor)";
-            $a[$i][] = "rate c(rt)";
             foreach ($user->money as $m) {
                 $a[$i][] = $m->result;
                 $a[$i][] = $m->time;

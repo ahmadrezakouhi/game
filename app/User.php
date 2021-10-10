@@ -52,4 +52,25 @@ class User extends Authenticatable
         return $this->hasMany(Money::class);
     }
 
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+
+
+    public function estimate()
+    {
+        return $this->hasOne(Estimate::class);
+    }
+
+
+
+    public function score()
+    {
+        return $this->hasOne(Score::class);
+    }
+
+
 }

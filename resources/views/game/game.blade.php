@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="w3-col l6">
                                     <input type="text" class="form-control" maxlength="1" id="first_person"
-                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
+                                        style="text-transform: uppercase" >
                                 </div>
                             </div>
                             <div class="w3-row-padding w3-clear w3-margin-top">
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="w3-col l6">
                                     <input type="text" class="form-control " maxlength="1" id="last_person"
-                                        style="text-transform: uppercase" required oninvalid="this.setCustomValidity('این فیلد خالی است ')">
+                                        style="text-transform: uppercase" >
                                 </div>
                             </div>
 
