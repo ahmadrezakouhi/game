@@ -64,8 +64,8 @@
         </div>
         <div class="slidecontainer " style="margin-top: 200px">
 
-            <div class="w3-row">
-                <div class="w3-col l1 ">
+            <div class="w3-row" id="rangeOuter">
+                <div class="w3-col l1 " >
                     <div class="  w3-right-align w3-xlarge"
                         style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
                 </div>
@@ -166,7 +166,7 @@
         var endTimeQuestion;
         var canSend = true;
         var changedRange = false;
-       
+
         var startTimeRank;
         var first_person;
         var first_person_time;
@@ -296,7 +296,8 @@
 
                     canSend = false;
                     $('#record').addClass('w3-hide')
-
+                    $("#myRange").prop('disabled', true);
+                    $("#rangeOuter").addClass('w3-opacity-max');
 
                 }
 
@@ -391,6 +392,8 @@
             }
 
             function createQuestion() {
+                $("#myRange").prop('disabled', false);
+                $('#rangeOuter').removeClass('w3-opacity-max');
                 setTimeout(function() {
                     startTimeQuestion = new Date().getTime();
                 }, 3000)
