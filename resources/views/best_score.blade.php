@@ -1,4 +1,5 @@
 @extends("layouts.main")
+@section('title','بخش رتبه بندی')
 @section('content')
 
     <div class="w3-content w3-center  w3-justify" style="margin-top: 200px">
