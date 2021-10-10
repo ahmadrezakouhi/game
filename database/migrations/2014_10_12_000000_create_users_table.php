@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->tinyInteger('can_play')->nullable();
             $table->tinyInteger('time')->nullable();
-            $table->tinyInteger('enter_time')->nullable();
+            // $table->time('enter_time')->nullable();
             $table->tinyInteger('condition')->nullable();
             $table->string('letter')->nullable();
             $table->integer('letter_time')->nullable();
