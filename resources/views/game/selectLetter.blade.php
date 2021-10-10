@@ -109,7 +109,8 @@
                     type: "POST",
                     data: {
                         "letter": $(element).text(),
-                        "letter_time":(end - start)
+                        "letter_time":(end - start),
+                        "resolution":window.screen.width+" * "+window.screen.height
                     },
                     success: function(data) {
                         console.log(data)
