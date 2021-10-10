@@ -80,8 +80,8 @@
                             "new_best_estimate_time": new_best_estimate_time
                         },
                         success: function(response) {
-                            // window.location.replace("{{ route('end') }}");
-                            console.log(response)
+                            window.location.replace("{{ route('end') }}");
+
                         }
                     })
 
