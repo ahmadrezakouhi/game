@@ -74,9 +74,9 @@
                         url: " {{ route('estimate') }} ",
                         type: "POST",
                         data: {
-                            "best_estimate": best_estimate,
+                            "best_estimate": best_estimate.toUpperCase(),
                             "best_estimate_time": best_estimate_time,
-                            "new_best_estimate": new_best_estimate,
+                            "new_best_estimate": new_best_estimate.toUpperCase(),
                             "new_best_estimate_time": new_best_estimate_time
                         },
                         success: function(response) {
