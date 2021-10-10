@@ -1,6 +1,6 @@
 @extends("layouts.main")
 
-@section('title', '')
+@section('title', 'انتخاب حرف')
 @section('content')
     <div class="w3-content w3-margin-top w3-center ">
         <h3 class="persian">خوش آمدید</h3>
@@ -47,6 +47,8 @@
 
 
     <script>
+        var selected =false;
+        var time = 15;
         $(document).ready(function() {
 
             var start = new Date().getTime();
@@ -88,7 +90,7 @@
 
             function clickButtons(element) {
                  end = new Date().getTime();
-                console.log(end - start);
+                // console.log(end - start);
 
                 if (element.id == "h" || element.id == "g" ||
                     element.id == "o" || element.id == "m") {
@@ -99,6 +101,7 @@
                     $('#word').text($(element).text())
                     $("form").removeClass("w3-hide")
                     var user = "user=" + $(element).text();
+                    selected = true;
 
                 }
 
@@ -113,16 +116,20 @@
                         "resolution":window.screen.width+" * "+window.screen.height
                     },
                     success: function(data) {
-                        console.log(data)
+                        // console.log(data)
                     }
                 })
             }
 
 
-            {{-- setInterval(function(){ --}}
-            {{-- window.location.replace("{{route('logout')}}"); --}}
-            {{-- },60000) --}}
-            move(60)
+            setTimeout(function () {
+                if(selected){
+                    window.location.replace("{{ route('connect.users') }}");
+                }else {
+                    window.location.replace(" {{ route('logout') }}");
+                }
+            },time * 1000);
+            move(time)
 
 
         })
