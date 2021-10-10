@@ -64,8 +64,8 @@
         </div>
         <div class="slidecontainer " style="margin-top: 200px">
 
-            <div class="w3-row">
-                <div class="w3-col l1 ">
+            <div class="w3-row" id="rangeOuter">
+                <div class="w3-col l1 " >
                     <div class="  w3-right-align w3-xlarge"
                         style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">150</div>
                 </div>
@@ -186,6 +186,7 @@
             last_person_time = "";
             new_last_person = "";
             new_last_person_time = "";
+
         }
 
         initialRankVariables();
@@ -295,7 +296,8 @@
 
                     canSend = false;
                     $('#record').addClass('w3-hide')
-
+                    $("#myRange").prop('disabled', true);
+                    $("#rangeOuter").addClass('w3-opacity-max');
 
                 }
 
@@ -390,6 +392,8 @@
             }
 
             function createQuestion() {
+                $("#myRange").prop('disabled', false);
+                $('#rangeOuter').removeClass('w3-opacity-max');
                 setTimeout(function() {
                     startTimeQuestion = new Date().getTime();
                 }, 3000)
@@ -529,16 +533,16 @@
                 //     startTimeRank));
             })
 
-
-
-
-        })
-
-        $('form').submit(function(e) {
+            $('form').submit(function(e) {
             e.preventDefault();
-            sendRankData();
+
+            $(this).addClass('w3-hide');
+        })
+
 
         })
+
+
 
 
         function sendRankData() {
@@ -593,7 +597,7 @@
             $('form').addClass("w3-hide");
             initialRankVariables();
 
-          }else {
+          }else{
             window.location.replace("{{ route('logout') }}");
           }
         }

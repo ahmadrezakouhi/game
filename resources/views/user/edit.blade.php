@@ -95,41 +95,41 @@
                             کاندیشن
                         </div>
                         <div class="custom-control custom-radio custom-control-inline float-right mt-2 ">
-                            <input type="radio" class="custom-control-input" id="pro1" name="condition" value="0" 
+                            <input type="radio" class="custom-control-input" id="pro1" name="condition" value="0"
                             @if ($user->condition==0)
                                 {{'checked'}}
                             @endif
-                            
+
                             >
                             <label class="custom-control-label " for="pro1">pro1</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline float-right mt-2">
-                            <input type="radio" class="custom-control-input" id="pro8" name="condition" value="1" 
-                            
+                            <input type="radio" class="custom-control-input" id="pro8" name="condition" value="1"
+
                             @if ($user->condition==1)
                                 {{'checked'}}
                             @endif
-                            
+
                             >
                             <label class="custom-control-label " for="pro8">pro8</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline float-right mt-2">
-                            <input type="radio" class="custom-control-input" id="anti8" name="condition" value="2" 
-                            
+                            <input type="radio" class="custom-control-input" id="anti8" name="condition" value="2"
+
                             @if ($user->condition==2)
                                 {{'checked'}}
                             @endif
-                            
+
                             >
                             <label class="custom-control-label " for="anti8">anti8</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline float-right mt-2">
-                            <input type="radio" class="custom-control-input" id="anti1" name="condition" value="3" 
-                            
+                            <input type="radio" class="custom-control-input" id="anti1" name="condition" value="3"
+
                             @if ($user->condition==3)
                                 {{'checked'}}
                             @endif
-                            
+
                             >
                             <label class="custom-control-label " for="anti1">anti1</label>
                         </div>
@@ -164,7 +164,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary persian btn-block font-weight-bold mt-3">ثبت</button>
+                    <button type="submit" class="btn btn-primary persian btn-block font-weight-bold mt-3">تغییر</button>
                 </form>
             </div>
         </div>
@@ -176,7 +176,15 @@
     <script>
         $(document).ready(function () {
                 $('.toast').toast('show');
-
+                $('#time').mdtimepicker({
+                timeFormat: 'hh:mm:ss.000', // format of the time value (data-time attribute)
+                format: 'hh:mm tt', // format of the input value
+                readOnly: false, // determines if input is readonly
+                hourPadding: false,
+                theme: 'black',
+                okLabel: 'تائید',
+                cancelLabel: 'انصراف',
+            });
             }
         )
     </script>

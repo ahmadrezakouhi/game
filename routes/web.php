@@ -23,7 +23,8 @@ Route::get('/', function () {
 Route::get('/selectLetter', function () {
     $user = auth()->user();
     $now = Carbon::parse(Carbon::now());
-    if (($user->time == $now->hour) && $now->minute <= 3) {
+    $userTime = new Carbon($user->time);
+    if (($userTime->hour == $now->hour) && ($userTime->minute -$now->minute) > 0 && ($userTime->minute -$now->minute) <= 3) {
         $user->enter = $now->toTimeString();
         $user->save();
         return view('game.selectLetter');
@@ -38,7 +39,7 @@ Route::get('connectUsers', function () {
 
 Route::get('game1', function () {
     return view("game.game");
-})->middleware('auth', 'can_play')->name('game2');
+})->middleware('auth', 'can_play')->name('game1');
 
 Route::get('game1/guide', function () {
     return view("game.gameGuide");
@@ -112,3 +113,6 @@ Route::post('answers/money', 'AnswerController@money')->middleware('auth', 'can_
 Route::post('answers/questions', 'AnswerController@questions')->middleware('auth', 'can_play')->name('questions');
 Route::post('answers/estimate', 'EstimateController@estimate')->middleware('auth', 'can_play')->name('estimate');
 Route::post('answers/score', 'ScoreController@score')->middleware('auth', 'can_play')->name('score');
+
+
+
