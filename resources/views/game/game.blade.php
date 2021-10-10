@@ -166,7 +166,7 @@
         var endTimeQuestion;
         var canSend = true;
         var changedRange = false;
-
+       
         var startTimeRank;
         var first_person;
         var first_person_time;
@@ -186,6 +186,7 @@
             last_person_time = "";
             new_last_person = "";
             new_last_person_time = "";
+
         }
 
         initialRankVariables();
@@ -529,16 +530,16 @@
                 //     startTimeRank));
             })
 
-
-
-
-        })
-
-        $('form').submit(function(e) {
+            $('form').submit(function(e) {
             e.preventDefault();
-            sendRankData();
+
+            $(this).addClass('w3-hide');
+        })
+
 
         })
+
+
 
 
         function sendRankData() {
@@ -593,7 +594,7 @@
             $('form').addClass("w3-hide");
             initialRankVariables();
 
-          }else {
+          }else{
             window.location.replace("{{ route('logout') }}");
           }
         }
