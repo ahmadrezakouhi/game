@@ -48,7 +48,7 @@
 
     <script>
         var selected =false;
-        var time = 15;
+        var time = 60;
         $(document).ready(function() {
 
             var start = new Date().getTime();
