@@ -34,7 +34,7 @@ Route::get('/selectLetter', function () {
 
 Route::get('connectUsers', function () {
     return  view('game.connectUsers');
-})->middleware('auth', 'can_play');
+})->middleware('auth', 'can_play')->name('connect.users');
 
 Route::get('game1', function () {
     return view("game.game");
