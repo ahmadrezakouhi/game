@@ -122,10 +122,10 @@
 
 
                 }
-                console.log('best_score : ' + best_score + " time : " + (best_score_time -
-                    startTime));
-                console.log('new_best_score : ' + new_best_score + " time : " + (new_best_score_time -
-                    startTime));
+                // console.log('best_score : ' + best_score + " time : " + (best_score_time -
+                //     startTime));
+                // console.log('new_best_score : ' + new_best_score + " time : " + (new_best_score_time -
+                //     startTime));
             })
 
 
