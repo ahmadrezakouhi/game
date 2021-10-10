@@ -68,7 +68,7 @@ Route::get('choose_level', function () {
 })->middleware('auth');
 
 
-Auth::routes();
+ Auth::routes(['register'=>false,'reset'=>false,'verify'=>false]);
 Route::get('logout', function () {
     $user = auth()->user();
     $user->can_play = 0;
@@ -79,7 +79,6 @@ Route::get('logout', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
 
 
