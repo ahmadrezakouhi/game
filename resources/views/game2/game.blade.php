@@ -529,7 +529,7 @@
                 } else {
                     $('#showNumber').text($(this).val() + "000")
                 }
-                console.log(new Date().getTime() - startTimeMoney)
+                // console.log(new Date().getTime() - startTimeMoney)
                 var value = $(this).val();
                 switch (category) {
                     case 1:
@@ -541,7 +541,7 @@
                         break;
                 }
 
-                console.log($(this).val())
+                // console.log($(this).val())
 
                 $.ajax({
                     url: "{{ route('money') }}",
