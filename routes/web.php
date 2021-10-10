@@ -38,7 +38,7 @@ Route::get('connectUsers', function () {
 
 Route::get('game1', function () {
     return view("game.game");
-})->middleware('auth', 'can_play')->name('game2');
+})->middleware('auth', 'can_play')->name('game1');
 
 Route::get('game1/guide', function () {
     return view("game.gameGuide");
