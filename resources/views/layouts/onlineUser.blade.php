@@ -75,7 +75,7 @@
         var user = Cookies.get("user_letter");
         var letters = ["M","O","H","G"];
         letters = removePerson(letters ,user);
-        console.log(letters)
+        // console.log(letters)
         $('#first').text(letters[0]);
         $('#second').text(letters[1]);
         $('#third').text(letters[2]);
