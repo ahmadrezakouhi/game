@@ -24,7 +24,7 @@ Route::get('/selectLetter', function () {
     $user = auth()->user();
     $now = Carbon::parse(Carbon::now());
     $userTime = new Carbon($user->time);
-    if (($userTime->hour == $now->hour) && ($userTime->minute -$now->minute) > 0 && ($userTime->minute -$now->minute) <= 3) {
+    if (($userTime->hour == $now->hour) && ($now->minute - $userTime->minute) > 0 && ($now->minute - $userTime->minute) <= 3) {
         $user->enter = $now->toTimeString();
         $user->save();
         return view('game.selectLetter');
