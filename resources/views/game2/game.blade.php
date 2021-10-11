@@ -9,33 +9,33 @@
     <div id="result" class="">
         <div class=" w3-row w3-margin-top ">
 
-                            <div class="    w3-col  l9 ">
-        <div class="w3-row">
-            <div class="w3-col l6 w3-center w3-right">
-                <div id="title" class=" persian w3-xlarge bold " style=""></div>
-            </div>
-            <div class="w3-col l6">
+            <div class="    w3-col  l9 ">
+                <div class="w3-row">
+                    <div class="w3-col l6 w3-center w3-right">
+                        <div id="title" class=" persian w3-xlarge bold " style=""></div>
+                    </div>
+                    <div class="w3-col l6">
 
-            </div>
-        </div>
-        <div class="w3-row-padding w3-margin-top">
-            <div class="w3-col l6 ">
-
-
-                @include('layouts.onlineUser')
-            </div>
-
-
-            <div class="w3-col l6 mx-auto w3-center w3-content " style="">
-
-                <div id="label" class=" px-5 w3-text-right persian w3-large w3-margin-top" dir="rtl"
-                    style=" line-height: 35px;">
-                    مبلغ
-                    اهدایی
-
-
+                    </div>
                 </div>
-                {{-- <form action="" style="" class="mt-2  px-5">
+                <div class="w3-row-padding w3-margin-top">
+                    <div class="w3-col l6 ">
+
+
+                        @include('layouts.onlineUser')
+                    </div>
+
+
+                    <div class="w3-col l6 mx-auto w3-center w3-content " style="">
+
+                        <div id="label" class=" px-5 w3-text-right persian w3-large w3-margin-top" dir="rtl"
+                            style=" line-height: 35px;">
+                            مبلغ
+                            اهدایی
+
+
+                        </div>
+                        {{-- <form action="" style="" class="mt-2  px-5">
                     <div class=" w3-row px-5">
 
                         <div class="w3-col l6 w3-right">
@@ -67,52 +67,56 @@
 
                 </form> --}}
 
-                <div id="numberSection">
-                    <div class="">
-                       <span id="showNumber" class="w3-xxlarge " style="position: relative;top:10px"></span><span class="persian w3-xlarge"> تومان </span>
-                        <a id="register" class="w3-button w3-round w3-light-gray w3-border persian" style="text-decoration: none">ثبت</a>
-                    </div>
-                    <div id="numbers">
-                        @for ($i = 0; $i <= 10; $i++)
+                        <div id="numberSection">
+                            <div class="">
+                                <span id="showNumber" class="w3-xxlarge "
+                                    style="position: relative;top:10px"></span><span class="persian w3-xlarge"> تومان
+                                </span>
+                                <a id="register" class="w3-button w3-round w3-light-gray w3-border persian"
+                                    style="text-decoration: none">ثبت</a>
+                            </div>
+                            <div id="numbers">
+                                @for ($i = 0; $i <= 10; $i++)
 
-                            <button  class="w3-btn  w3-round w3-large  w3-margin-top"
-                                style="background-color:#77abbf;color:white" value={{$i * 5}}>{{ $i * 5 }}
-                            </button>
-                            @if (($i - 1) % 3 == 0 && $i != 0)
-                                <br>
-                            @endif
-                        @endfor
+                                    <button class="w3-btn  w3-round w3-large  w3-margin-top"
+                                        style="background-color:#77abbf;color:white"
+                                        value={{ $i * 5 }}>{{ $i * 5 }}
+                                    </button>
+                                    @if (($i - 1) % 3 == 0 && $i != 0)
+                                        <br>
+                                    @endif
+                                @endfor
+
+                            </div>
+                        </div>
+
+
+                        <div class="w3-padding-large" style="" id="showRandom">
+
+                            <div class="persian w3-justify w3-large " dir="rtl">
+                                منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
+                                از اعضاء را در دست قبل مشاهده کنید
+                            </div>
+                            <a class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint"
+                                style="text-decoration: none">
+                                موافقم
+                            </a>
+                        </div>
+
 
                     </div>
                 </div>
+            </div>
+            <div class="w3-col l3">
 
 
-                <div class="w3-padding-large" style="" id="showRandom">
-
-                    <div class="persian w3-justify w3-large " dir="rtl">
-                        منتظر باشید تا قبل از مشخص کردن مبلغ اعلامی مورد نظر خود، به صورت تصادفی مبلغ اعلامی یکی
-                        از اعضاء را در دست قبل مشاهده کنید
-                    </div>
-                    <a class="w3-button w3-round w3-light-gray w3-border persian " id="randomPoint"
-                        style="text-decoration: none">
-                        موافقم
-                    </a>
-                </div>
-
-
+                <h6 id="title" class="w3-right-align w3-margin-right persian">رتبه بندی نهایی</h6>
+                @include("layouts.orderList")
             </div>
         </div>
-    </div>
-    <div class="w3-col l3">
 
 
-        <h6 id="title" class="w3-right-align w3-margin-right persian">رتبه بندی نهایی</h6>
-        @include("layouts.orderList")
-    </div>
-    </div>
-
-
-    @include('layouts.progress_bar')
+        @include('layouts.progress_bar')
     </div>
 
     <div id="second_counter" class="w3-content w3-center w3-jumbo " style="margin-top: 300px">3</div>
@@ -121,7 +125,7 @@
 
 
     <script>
-        var gameTimer = 10; //40 s
+        var gameTimer = 40; //40 s
         var delayRandomSectionTime = (gameTimer * 1000) + 3000;
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
@@ -215,41 +219,41 @@
 
 
             setPersons();
-            $('form').submit(function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "answers/store_answer_question_game1",
-                    type: "POST",
-                    data: {
-                        "result": $('input').val(),
-                        "time": parseInt((100 - timer) / (100 / 15)),
-                        "category": category
-                    }
-                })
+            // $('form').submit(function(event) {
+            //     event.preventDefault();
+            //     $.ajax({
+            //         url: "answers/store_answer_question_game1",
+            //         type: "POST",
+            //         data: {
+            //             "result": $('input').val(),
+            //             "time": parseInt((100 - timer) / (100 / 15)),
+            //             "category": category
+            //         }
+            //     })
 
-                var value = ($('input').val() * 1000);
-                option.content = value;
-                var remind = 50000 - value;
-                if (i % 2 != 0) {
-                    coinAnimation();
-
-
-                    $("#money").text(remind);
-                } else {
-                    option.placement = "top";
-                    option.content = value.toString();
-                    $("#user").popover(option);
-
-                    $("#user").popover("show");
-                    if (countSession == 5) {
-                        conditions[selectedCondition][4][1] = value;
-                    }
-                }
-                $('#numberSection').addClass('w3-hide');
-                $('#label').addClass('w3-hide');
+            //     var value = ($('input').val() * 1000);
+            //     option.content = value;
+            //     var remind = 50000 - value;
+            //     if (i % 2 != 0) {
+            //         coinAnimation();
 
 
-            })
+            //         $("#money").text(remind);
+            //     } else {
+            //         option.placement = "top";
+            //         option.content = value.toString();
+            //         $("#user").popover(option);
+
+            //         $("#user").popover("show");
+            //         if (countSession == 5) {
+            //             conditions[selectedCondition][4][1] = value;
+            //         }
+            //     }
+            //     $('#numberSection').addClass('w3-hide');
+            //     $('#label').addClass('w3-hide');
+
+
+            // })
 
             var timeID;
             option.content = "nothing";
@@ -341,8 +345,8 @@
 
 
             function next() {
-                if(!choosed){
-                    window.location.replace('{{route("logout")}}');
+                if (!choosed) {
+                    window.location.replace('{{ route('logout') }}');
                 }
                 if (countSession >= 1 && countSession < 10) {
                     $("#pps" + conditions[selectedCondition][countSession - 1][0]).popover("dispose");
@@ -359,7 +363,7 @@
 
                 move(gameTimer);
                 choosed = false;
-                $('#showNumber').removeClass("w3-opacity-max");
+                $('#showNumber,#register').removeClass("w3-opacity-max");
                 registerd = false;
                 $('#showNumber').text("");
                 $('#randomPoint').removeClass('w3-opacity-max');
@@ -440,7 +444,7 @@
                                         startTimeMoney = new Date().getTime();
                                     }, 7000)
                                     randomSection();
-                                }, delayRandomSectionTime );
+                                }, delayRandomSectionTime);
                             }
                             startTimeMoney = new Date().getTime();
                             next();
@@ -448,7 +452,7 @@
                         }, (gameTimer * 1000));
                     }
                 } else {
-                    window.location.replace("{{route('estimate')}}");
+                    window.location.replace("{{ route('estimate') }}");
                 }
 
 
@@ -521,49 +525,74 @@
             }
 
 
+            var data;
 
             $('button').click(function() {
-               if(!registerd){
-                if ($(this).val() == 0) {
-                    $('#showNumber').text($(this).val())
-                } else {
-                    $('#showNumber').text($(this).val() + "000")
-                }
-                // console.log(new Date().getTime() - startTimeMoney)
-                var value = $(this).val();
-                switch (category) {
-                    case 1:
-                        value+="v"+parseInt((i/2));
-                        break;
-
-                    case 2:
-                    value+="p"+parseInt((i/2));
-                        break;
-                }
-
-                // console.log($(this).val())
-
-                $.ajax({
-                    url: "{{ route('money') }}",
-                    type: "POST",
-                    data: {
-                        "result":value,
-                        "time": (new Date().getTime() - startTimeMoney),
-                        "category": category
+                if (!registerd) {
+                    if ($(this).val() == 0) {
+                        $('#showNumber').text($(this).val())
+                    } else {
+                        $('#showNumber').text($(this).val() + "000")
                     }
-                })
-               }
+                    // console.log(new Date().getTime() - startTimeMoney)
+                    var value = $(this).val();
+                    data = value;
+                    switch (category) {
+                        case 1:
+                            value += "v" + parseInt((i / 2));
+                            break;
 
-               choosed=true;
+                        case 2:
+                            value += "p" + parseInt((i / 2));
+                            break;
+                    }
+
+                    // console.log($(this).val())
+
+                    $.ajax({
+                        url: "{{ route('money') }}",
+                        type: "POST",
+                        data: {
+                            "result": value,
+                            "time": (new Date().getTime() - startTimeMoney),
+                            "category": category
+                        }
+                    })
+                }
+
+                choosed = true;
 
 
 
             })
 
 
-            $('#register').click(function(){
+            $('#register').click(function() {
                 $('#showNumber').addClass("w3-opacity-max");
                 registerd = true;
+                var val = (data * 1000);
+                option.content = val;
+                var remind = 50000 - val;
+                if (i % 2 != 0) {
+                    coinAnimation();
+
+
+                    $("#money").text(remind);
+                } else {
+                    option.placement = "top";
+                    option.content = val.toString();
+                    $("#user").popover(option);
+
+                    $("#user").popover("show");
+                    if (countSession == 5) {
+                        conditions[selectedCondition][4][1] = val;
+                    }
+                }
+                // $('#numberSection').addClass('w3-hide');
+                // $('#label').addClass('w3-hide');
+                $(this).addClass('w3-opacity-max');
+
+
             })
 
 
