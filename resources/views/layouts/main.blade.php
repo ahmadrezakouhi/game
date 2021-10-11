@@ -15,6 +15,7 @@
     <script src="/js/js.cookie.min.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/ion.rangeSlider.min.js"></script>
+    <script src="{{ asset('js/prevent.back.js')}}"></script>
     <title>@yield('title')</title>
     <style>
         .slidecontainer {

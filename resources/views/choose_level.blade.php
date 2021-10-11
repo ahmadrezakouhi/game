@@ -4,10 +4,6 @@
     @include('layouts.user.navbar')
     <div class="container " style="margin-top: 100px">
 
-        <div class="w3-panel w3-pale-yellow w3-border w3-border-yellow w3-round w3-round w3-padding persian w3-right-align" dir="rtl">
-
-            <h3 class="persian w3-text-orange">در صورت فعال نبودن بخش بازی به ادمین اطلاع دهید.</h3>
-        </div>
 
         <div class="row">
             <div class="col-md-6">
