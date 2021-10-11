@@ -26,7 +26,7 @@
             </form>
         </div>
 
-        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top w3-hide">بعدی</button>
+        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top w3-hide">ثبت</button>
 
     </div>
 
