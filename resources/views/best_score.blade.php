@@ -24,7 +24,7 @@
             </form>
         </div>
 
-        {{-- <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top">بعدی</button> --}}
+        <button class="w3-button w3-round w3-light-gray w3-border w3-border-gray persian w3-margin-top">ثبت</button>
 
     </div>
 
@@ -32,11 +32,11 @@
     @include('layouts.progress_bar')
 
     <script>
-        var time = 20;
-        var best_score;
-        var best_score_time;
-        var new_best_score;
-        var new_best_score_time;
+        var time = 10;
+        var best_score="";
+        var best_score_time="";
+        var new_best_score="";
+        var new_best_score_time="";
         $(document).ready(function() {
 
 
@@ -92,6 +92,12 @@
                     }
                 })
             }
+
+
+            $('button').click(function () {
+                $(this).addClass('w3-opacity-max');
+                $('input').prop('disabled',true);
+            })
 
 
 
