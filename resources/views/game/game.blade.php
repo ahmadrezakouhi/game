@@ -102,7 +102,7 @@
                 max: 1000
             },
             {
-                question: "ایران دارای چند کیلومتر مرز آبی با احتساب دریای خزر،خلیج فارس و دریای عمان  دارد؟",
+                question: "ایران دارای چند کیلومتر مرز آبی با احتساب دریای خزر،خلیج فارس و دریای عمان  است؟",
                 answer: 2700,
                 min: 2000,
                 max: 3000
@@ -222,7 +222,7 @@
                 }
                 choose_section();
 
-            }, 33000)
+            }, 23000)
 
             function choose_section() {
 
@@ -420,7 +420,7 @@
                     $('#mybar').css('width', "100%");
                     width = 100;
 
-                    move(30);
+                    move(20);
 
                     $('#titleOfQuestion').text(" سوال " + (i + 1));
                     $("#question").text(questions[i].question);
