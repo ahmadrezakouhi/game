@@ -130,7 +130,7 @@
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
         var i = 1;
-
+        var data;
         var category = 1;
         var countSession = 0;
         var session = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
@@ -191,6 +191,8 @@
         var startTimeMoney;
         var registerd = false;
         var choosed = false;
+        var selectedID;
+        var verbal;
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {
@@ -286,9 +288,10 @@
                     };
                     var id;
                     if (conditions[selectedCondition][countSession - 1][0] == 4) {
-                        id = "#pp" + conditions[selectedCondition][countSession - 1][0];
+                       selectedID = id = "#pp" + conditions[selectedCondition][countSession - 1][0];
+                        o.content = "<span class='font-weight-bold w3-medium' >" +verbal+ ",000</span>";
                     } else {
-                        id = "#pn" + conditions[selectedCondition][countSession - 1][0];
+                       selectedID = id = "#pn" + conditions[selectedCondition][countSession - 1][0];
                     }
                     $(id).popover(o);
                     $(id).popover("show");
@@ -423,6 +426,8 @@
 
 
                     } else {
+
+                        $(selectedID).popover('dispose');
                         width = 100;
                         move(gameTimer);
                         $("#label").html(
@@ -432,6 +437,7 @@
                         $("#bag, hr , #money ,#background_money,#description").removeClass("w3-hide");
                         $("#money").text(50000);
                         $("#user").popover("dispose");
+
                         category = 2;
 
 
@@ -525,7 +531,7 @@
             }
 
 
-            var data;
+
 
             $('button').click(function() {
                 if (!registerd) {
@@ -540,12 +546,15 @@
                     switch (category) {
                         case 1:
                             value += "v" + parseInt((i / 2));
+                            verbal = data;
                             break;
 
                         case 2:
                             value += "p" + parseInt((i / 2));
                             break;
                     }
+
+
 
                     // console.log($(this).val())
 
