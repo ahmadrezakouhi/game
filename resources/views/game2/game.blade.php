@@ -125,7 +125,7 @@
 
 
     <script>
-        var gameTimer = 40; //40 s
+        var gameTimer = 10; //40 s
         var delayRandomSectionTime = (gameTimer * 1000) + 3000;
         var constPersons = ["P", "N", "B", "A"];
         var varPersons = ["H", "M", "O", "G"];
@@ -452,7 +452,7 @@
                         }, (gameTimer * 1000));
                     }
                 } else {
-                    window.location.replace("{{ route('estimate') }}");
+                    window.location.replace("{{ route('estimate-view') }}");
                 }
 
 

@@ -61,7 +61,7 @@ Route::get("end", function () {
     return view("end_game.end");
 })->middleware('auth', 'can_play')->name('end');
 
-Route::view('estimate', 'estimate')->middleware('auth', 'can_play')->name('estimate');
+Route::view('estimate', 'estimate')->middleware('auth', 'can_play')->name('estimate-view');
 Route::view('best-score', 'best_score')->middleware('auth', 'can_play')->name('best-score');
 
 
