@@ -51,7 +51,7 @@
         <div id="guide6" class="w3-xlarge w3-hide guide" dir="rtl" style="line-height: 50px">
             برای نوشتن و ثبت مبالغ اعلامی و اهدایی خود در این مرحله
             <br>
-            تنها 40 ثانیه
+            تنها 25 ثانیه
             <br>
             فرصت دارید
 
