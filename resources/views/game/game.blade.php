@@ -222,7 +222,7 @@
                 }
                 choose_section();
 
-            }, 23000)
+            }, 33000)
 
             function choose_section() {
 
@@ -368,10 +368,7 @@
                                                                                         =
                                                                                         new Date()
                                                                                         .getTime();
-                                                                                    // console
-                                                                                    //     .log(
-                                                                                    //         startTimeRank
-                                                                                    //     )
+                                                                                    
                                                                                 }
                                                                             )
                                                                     }
@@ -420,7 +417,7 @@
                     $('#mybar').css('width', "100%");
                     width = 100;
 
-                    move(20);
+                    move(30);
 
                     $('#titleOfQuestion').text(" سوال " + (i + 1));
                     $("#question").text(questions[i].question);
