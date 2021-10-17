@@ -569,7 +569,9 @@
                     })
                 }
 
-                choosed = true;
+                if(!registerd){
+                    choosed = true;
+                }
 
 
 
@@ -592,7 +594,9 @@
                 } else {
                     option.placement = "top";
                     option.content = val.toString();
-                    $("#user").popover(option);
+                    if(val){
+                        $("#user").popover(option);
+                    }
 
                     $("#user").popover("show");
                     if (countSession == 5) {
@@ -603,7 +607,7 @@
                 // $('#label').addClass('w3-hide');
                 $(this).addClass('w3-opacity-max');
 
-
+                // $('button').attr('disabled',true);
             })
 
 
