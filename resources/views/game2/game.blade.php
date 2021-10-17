@@ -582,11 +582,13 @@
                 var val = (data * 1000);
                 option.content = val;
                 var remind = 50000 - val;
-                if (i % 2 != 0 && choosed) {
+                if (i % 2 != 0 ) {
+                    if(choosed){
                     coinAnimation();
 
 
                     $("#money").text(remind);
+                    }
                 } else {
                     option.placement = "top";
                     option.content = val.toString();
