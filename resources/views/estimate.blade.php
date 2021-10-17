@@ -33,10 +33,10 @@
 
 
     <script>
-        var best_estimate;
-        var best_estimate_time;
-        var new_best_estimate;
-        var new_best_estimate_time;
+        var best_estimate="";
+        var best_estimate_time="";
+        var new_best_estimate="";
+        var new_best_estimate_time="";
         $(document).ready(function() {
 
 
