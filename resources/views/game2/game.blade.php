@@ -582,7 +582,7 @@
                 var val = (data * 1000);
                 option.content = val;
                 var remind = 50000 - val;
-                if (i % 2 != 0) {
+                if (i % 2 != 0 && choosed) {
                     coinAnimation();
 
 
