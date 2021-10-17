@@ -46,12 +46,12 @@ class DataExport implements FromCollection, WithHeadings
                 $a[$i][] = $rank->new_first_person_time;
                 $a[$i][] = $rank->first_person;
                 $a[$i][] = $rank->new_first_person;
-                $a[$i][] = ""; // should work
+                $a[$i][] = $rank->first_person_correct;
                 $a[$i][] = $rank->last_person_time;
                 $a[$i][] = $rank->new_last_person_time;
                 $a[$i][] = $rank->last_person;
                 $a[$i][] = $rank->new_last_person;
-                $a[$i][] = ""; //should work
+                $a[$i][] = $rank->last_person_correct;
 
             }
 
