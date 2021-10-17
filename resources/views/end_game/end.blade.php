@@ -10,8 +10,21 @@
 
         <div id="answer" class="" style=" margin-top: 100px">
             <form action="">
+                <div class="w3-row">
 
-                <input type="text" class="w3-xxxlarge" id="demo"  value="" />
+                    <div class="w3-col l1">
+                        <div class="  w3-right-align "
+                        style="margin-top:0px; font-weight: bold;position: relative;top:-10px" id="min">به هیچ وجه</div>
+                    </div>
+                    <div class="w3-col l10">
+
+                        <input type="text" class="w3-xxxlarge" id="demo"  value="" />
+                    </div>
+                    <div class="w3-col l1">
+                        <div class=" w3-left-align "
+                        style="margin-top:0px;font-weight: bold;position: relative;top:-10px" id="max">بسیار زیاد</div>
+                    </div>
+                </div>
 
 
             </form>
